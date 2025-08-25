@@ -116,7 +116,7 @@ export default function ProductListing() {
                   </div>
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Analysis</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    We analyze your current listings and identify optimization opportunities.
+                    We analyze your current listings and identify optimization .
                   </p>
                 </div>
 
@@ -146,7 +146,7 @@ export default function ProductListing() {
                   </div>
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Monitoring</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    We continuously monitor performance and make adjustments as needed.
+                    We continuously monitor performance .
                   </p>
                 </div>
               </div>

@@ -115,12 +115,12 @@ export default function OrderManagement() {
                   How Our System Works
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  A seamless workflow designed to handle orders from placement to fulfillment.
+                  A seamless workflow designed to handle orders from placement.
                 </p>
               </div>
 
               <div className="relative">
-                <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-indigo-200 transform -translate-y-1/2"></div>
+                {/* Removed horizontal line */}
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
                   <div className="text-center relative">
                     <div className="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold relative z-10">
@@ -128,7 +128,7 @@ export default function OrderManagement() {
                     </div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Order Placement</h3>
                     <p className="text-gray-600 dark:text-gray-300">
-                      Customer places order through your website or app
+                      Customer places order through your website
                     </p>
                   </div>
 
@@ -138,7 +138,7 @@ export default function OrderManagement() {
                     </div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Order Confirmation</h3>
                     <p className="text-gray-600 dark:text-gray-300">
-                      System automatically confirms and validates the order
+                      System automatically confirms and validates
                     </p>
                   </div>
 
@@ -184,7 +184,7 @@ export default function OrderManagement() {
                   Proven Results
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Our order management solutions deliver measurable improvements to your business.
+                  Our order management solutions deliver measurable improvements.
                 </p>
               </div>
 
@@ -217,7 +217,7 @@ export default function OrderManagement() {
                   Seamless Integrations
                 </h2>
                 <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                  Connect with your existing tools and platforms for a unified workflow experience.
+                  Connect with your existing tools and platforms for a unified workflow.
                 </p>
               </div>
 
