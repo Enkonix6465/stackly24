@@ -1,0 +1,170 @@
+{
+  "users": [
+    {
+      "role": "admin",
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "mobile": "1234567890",
+      "password": "admin",
+      "loginTime": "2025-08-24T11:13:11.265Z",
+      "logoutTime": "2024-01-15T18:00:00.000Z",
+      "lastActive": "2025-08-24T11:13:11.265Z",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2025-08-24T11:13:11.268Z",
+      "isApproved": true,
+      "approvalDate": "2024-01-01T00:00:00.000Z",
+      "approvedBy": "system"
+    },
+    {
+      "role": "admin",
+      "username": "admin",
+      "email": "admin@example.com",
+      "mobile": "1234567890",
+      "password": "admin123",
+      "loginTime": "2024-01-15T10:30:00.000Z",
+      "logoutTime": "2024-01-15T18:00:00.000Z",
+      "lastActive": "2024-01-15T18:00:00.000Z",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-15T18:00:00.000Z",
+      "isApproved": true,
+      "approvalDate": "2024-01-01T00:00:00.000Z",
+      "approvedBy": "system"
+    },
+    {
+      "role": "user",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "mobile": "9876543210",
+      "password": "password123",
+      "loginTime": "2024-01-15T09:00:00.000Z",
+      "logoutTime": "2024-01-15T17:30:00.000Z",
+      "lastActive": "2024-01-15T17:30:00.000Z",
+      "createdAt": "2024-01-02T00:00:00.000Z",
+      "updatedAt": "2024-01-15T17:30:00.000Z"
+    },
+    {
+      "role": "user",
+      "username": "jane_smith",
+      "email": "jane@example.com",
+      "mobile": "5555555555",
+      "password": "securepass",
+      "loginTime": "2024-01-15T08:45:00.000Z",
+      "logoutTime": "2024-01-15T16:20:00.000Z",
+      "lastActive": "2024-01-15T16:20:00.000Z",
+      "createdAt": "2024-01-03T00:00:00.000Z",
+      "updatedAt": "2024-01-15T16:20:00.000Z"
+    },
+    {
+      "role": "admin",
+      "username": "jaya",
+      "email": "jaya@gmail.com",
+      "mobile": "1234567891",
+      "password": "admin",
+      "createdAt": "2025-08-24T10:47:43.169Z",
+      "updatedAt": "2025-08-24T10:47:43.169Z",
+      "isApproved": true,
+      "approvalDate": "2025-08-24T10:47:43.169Z",
+      "approvedBy": "admin"
+    },
+    {
+      "role": "admin",
+      "username": "new_admin",
+      "email": "newadmin@example.com",
+      "mobile": "1111111111",
+      "password": "newadmin123",
+      "createdAt": "2025-08-24T10:47:46.999Z",
+      "updatedAt": "2025-08-24T10:47:46.999Z",
+      "isApproved": true,
+      "approvalDate": "2025-08-24T10:47:46.999Z",
+      "approvedBy": "admin"
+    },
+    {
+      "role": "user",
+      "username": "Jay",
+      "email": "jay@gmail.com",
+      "mobile": "1234567892",
+      "password": "Jay",
+      "createdAt": "2025-08-24T11:14:05.638Z",
+      "updatedAt": "2025-08-24T11:14:24.302Z",
+      "loginTime": "2025-08-24T11:14:24.301Z",
+      "logoutTime": "-",
+      "lastActive": "2025-08-24T11:14:24.301Z"
+    },
+    {
+      "role": "user",
+      "username": "Surendra",
+      "email": "surendra@gmail.com",
+      "mobile": "12345667899",
+      "password": "user",
+      "createdAt": "2025-08-25T04:58:20.905Z",
+      "updatedAt": "2025-08-25T04:58:38.313Z",
+      "loginTime": "2025-08-25T04:58:38.312Z",
+      "logoutTime": "-",
+      "lastActive": "2025-08-25T04:58:38.312Z"
+    }
+  ],
+  "adminRequests": [
+    {
+      "id": "req_001",
+      "role": "admin",
+      "username": "new_admin",
+      "email": "newadmin@example.com",
+      "mobile": "1111111111",
+      "password": "newadmin123",
+      "createdAt": "2024-01-15T12:00:00.000Z",
+      "status": "approved",
+      "approvalDate": "2025-08-24T10:47:46.999Z",
+      "approvedBy": "admin"
+    },
+    {
+      "id": "req_002",
+      "role": "admin",
+      "username": "supervisor",
+      "email": "supervisor@example.com",
+      "mobile": "2222222222",
+      "password": "supervisor123",
+      "createdAt": "2024-01-14T15:30:00.000Z",
+      "status": "approved",
+      "approvalDate": "2024-01-15T09:00:00.000Z",
+      "approvedBy": "admin"
+    },
+    {
+      "id": "req_003",
+      "role": "admin",
+      "username": "manager",
+      "email": "manager@example.com",
+      "mobile": "3333333333",
+      "password": "manager123",
+      "createdAt": "2024-01-13T10:15:00.000Z",
+      "status": "rejected",
+      "approvalDate": "2024-01-14T14:20:00.000Z",
+      "approvedBy": "admin",
+      "rejectionReason": "Insufficient experience for admin role"
+    },
+    {
+      "role": "admin",
+      "username": "jaya",
+      "email": "jaya@gmail.com",
+      "mobile": "1234567891",
+      "password": "admin",
+      "id": "mepjx18pnxuqu6zwjvl",
+      "createdAt": "2025-08-24T10:34:31.177Z",
+      "status": "approved",
+      "approvalDate": "2025-08-24T10:47:43.169Z",
+      "approvedBy": "admin"
+    }
+  ],
+  "currentUser": {
+    "role": "user",
+    "username": "Surendra",
+    "email": "surendra@gmail.com",
+    "mobile": "12345667899",
+    "password": "user",
+    "createdAt": "2025-08-25T04:58:20.905Z",
+    "updatedAt": "2025-08-25T04:58:38.299Z",
+    "loginTime": "2025-08-25T04:58:38.299Z",
+    "logoutTime": "-",
+    "lastActive": "2025-08-25T04:58:38.299Z"
+  },
+  "lastUpdated": "2025-08-25T04:58:38.313Z"
+}
