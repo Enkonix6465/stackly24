@@ -57,11 +57,10 @@ export default function Footer() {
           <div className="md:w-1/6">
             <h3 className="text-lg font-bold text-indigo-400 mb-3">Quick Links</h3>
                     <ul className="space-y-2">
-          <li><Link href="/home1" className="hover:text-indigo-400 transition-colors">Home 1</Link></li>
-          <li><Link href="/" className="hover:text-indigo-400 transition-colors">Home 2</Link></li>
+          <li><Link href="/home1" className="hover:text-indigo-400 transition-colors">Home</Link></li>
           <li><Link href="/about" className="hover:text-indigo-400 transition-colors">About Us</Link></li>
-          
           <li><Link href="/services" className="hover:text-indigo-400 transition-colors">Services</Link></li>
+          <li><Link href="/blog" className="hover:text-indigo-400 transition-colors">Blog</Link></li>
           <li><Link href="/contact" className="hover:text-indigo-400 transition-colors">Contact Us</Link></li>
           
         </ul>
@@ -114,7 +113,7 @@ export default function Footer() {
         </div>
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-10 pt-4 flex flex-col md:flex-row md:justify-between items-center text-sm text-white/60">
-          <div>© 2025 ShopHub E-commerce. All rights reserved.</div>
+          <div>© 2025 Stackly E-commerce. All rights reserved.</div>
           <div className="flex space-x-6 mt-2 md:mt-0">
             <a href="#" className="hover:text-indigo-400 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-indigo-400 transition-colors">Terms of Service</a>

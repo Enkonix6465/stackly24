@@ -68,7 +68,7 @@ export default function Contact() {
                   Multiple Ways to Connect
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Choose the method that works best for you. We're available through various channels.
+                  Choose the method that works best for you.
                 </p>
               </div>
 
@@ -91,7 +91,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Email Support</h3>
-                  <p className="text-lg font-medium text-indigo-600 dark:text-indigo-400">support@shophub.com</p>
+                  <p className="text-lg font-medium text-indigo-600 dark:text-indigo-400">support@Stackly.com</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">Response within 24 hours</p>
                 </div>
 
