@@ -97,10 +97,10 @@
       "mobile": "12345667899",
       "password": "user",
       "createdAt": "2025-08-25T04:58:20.905Z",
-      "updatedAt": "2025-08-25T04:58:38.313Z",
-      "loginTime": "2025-08-25T04:58:38.312Z",
+      "updatedAt": "2025-08-25T08:37:34.919Z",
+      "loginTime": "2025-08-25T08:37:34.917Z",
       "logoutTime": "-",
-      "lastActive": "2025-08-25T04:58:38.312Z"
+      "lastActive": "2025-08-25T08:37:34.917Z"
     },
     {
       "role": "user",
@@ -168,15 +168,15 @@
   ],
   "currentUser": {
     "role": "user",
-    "username": "jayasri",
-    "email": "jayasri@gmail.com",
-    "mobile": "1234567893",
-    "password": "jayasri",
-    "createdAt": "2025-08-25T07:25:54.502Z",
-    "updatedAt": "2025-08-25T07:26:58.278Z",
-    "loginTime": "2025-08-25T07:26:58.278Z",
+    "username": "Surendra",
+    "email": "surendra@gmail.com",
+    "mobile": "12345667899",
+    "password": "user",
+    "createdAt": "2025-08-25T04:58:20.905Z",
+    "updatedAt": "2025-08-25T08:37:34.910Z",
+    "loginTime": "2025-08-25T08:37:34.910Z",
     "logoutTime": "-",
-    "lastActive": "2025-08-25T07:26:58.278Z"
+    "lastActive": "2025-08-25T08:37:34.910Z"
   },
-  "lastUpdated": "2025-08-25T07:26:58.285Z"
+  "lastUpdated": "2025-08-25T08:37:34.919Z"
 }

@@ -51,6 +51,11 @@ export default function Contact() {
                 <p className="text-xl text-indigo-100 max-w-3xl mx-auto leading-relaxed">
                   Ready to transform your e-commerce business? Our team of experts is here to help you succeed.
                 </p>
+                <div className="mt-8 flex justify-center">
+                  <a href="#contact-form" className="bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors duration-300 shadow-lg">
+                    Contact
+                  </a>
+                </div>
               </div>
             </div>
           </VideoBackground>
@@ -106,7 +111,7 @@ export default function Contact() {
 
           {/* Contact Form Section - Indigo Background */}
           <section className="py-20 bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="contact-form" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                   Send Us a Message
