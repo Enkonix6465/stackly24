@@ -25,7 +25,8 @@ import {
   Shield,
   UserCheck
 } from 'lucide-react';
-import { adminRequestAPI, AdminRequest } from '@/lib/apiClient';
+import { adminRequestAPI } from '@/lib/apiClient';
+import { AdminRequest } from '@/lib/dataService';
 
 interface User {
   role: string;
