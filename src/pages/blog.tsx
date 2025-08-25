@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import VideoBackground from '../components/VideoBackground';
 import Link from 'next/link';
 
-// Dummy data for the blog page
+//  data for the blog page
 const featuredPosts = [
   {
     id: 1,
