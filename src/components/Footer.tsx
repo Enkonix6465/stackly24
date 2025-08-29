@@ -1,12 +1,17 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Footer() {
+  const { t, isRTL } = useLanguage();
+
   return (
     <footer className="bg-black text-white pt-10 pb-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:justify-between gap-10">
+        <div className={`flex flex-col md:flex-row gap-10 ${
+          isRTL ? 'md:flex-row-reverse' : 'md:justify-between'
+        }`}>
           {/* Brand & Social */}
           <div className="md:w-1/3">
             <div className="flex items-center mb-4">
@@ -14,7 +19,7 @@ export default function Footer() {
               <Link href="/home1" className="flex items-center">
                 <Image
                   src="/logo-stackly.png"
-                  alt="E-Commerce Logo"
+                  alt={t('common.ecommerceLogo')}
                   className="w-28 h-8"
                   height={32}
                   width={112}
@@ -23,9 +28,9 @@ export default function Footer() {
             </div>
             <h2 className="text-xl font-bold text-indigo-400 mb-2">E-commerce</h2>
             <p className="mb-4 text-white/80">
-              Leading the future with cutting-edge e-commerce solutions and services.
+              {t('footer.description')}
             </p>
-            <div className="flex space-x-3">
+            <div className={`flex space-x-3 ${isRTL ? 'space-x-reverse' : ''}`}>
               <a href="https://www.linkedin.com/" className="bg-white hover:bg-indigo-500 text-black hover:text-white p-2 rounded-full transition">
                 {/* LinkedIn */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -55,66 +60,66 @@ export default function Footer() {
           </div>
           {/* Quick Links */}
           <div className="md:w-1/6">
-            <h3 className="text-lg font-bold text-indigo-400 mb-3">Quick Links</h3>
-                    <ul className="space-y-2">
-          <li><Link href="/home1" className="hover:text-indigo-400 transition-colors">Home</Link></li>
-          <li><Link href="/about" className="hover:text-indigo-400 transition-colors">About Us</Link></li>
-          <li><Link href="/services" className="hover:text-indigo-400 transition-colors">Services</Link></li>
-          <li><Link href="/blog" className="hover:text-indigo-400 transition-colors">Blog</Link></li>
-          <li><Link href="/contact" className="hover:text-indigo-400 transition-colors">Contact Us</Link></li>
-          
-        </ul>
-      </div>
-      {/* Blog & Resources */}
-      <div className="md:w-1/4">
-        <h3 className="text-lg font-bold text-indigo-400 mb-3">Blog & Resources</h3>
-        <ul className="space-y-2">
-          <li><Link href="/blog" className="hover:text-indigo-400 transition-colors">All Articles</Link></li>
-          <li><Link href="/blog/future-ecommerce-ai-powered-shopping" className="hover:text-indigo-400 transition-colors">AI in E-commerce</Link></li>
-          <li><Link href="/blog/essential-strategies-boosting-conversion-rate" className="hover:text-indigo-400 transition-colors">Conversion Strategies</Link></li>
-          <li><Link href="/blog/building-customer-trust-ecommerce-success" className="hover:text-indigo-400 transition-colors">Building Trust</Link></li>
-        </ul>
-      </div>
-      {/* Our Services */}
-      <div className="md:w-1/4">
-        <h3 className="text-lg font-bold text-indigo-400 mb-3">Our Services</h3>
-        <ul className="space-y-2">
-          <li><Link href="/services/product-listing" className="hover:text-indigo-400 transition-colors">Product Listing</Link></li>
-          <li><Link href="/services/order-management" className="hover:text-indigo-400 transition-colors">Order Management</Link></li>
-          <li><Link href="/services/payment-gateway" className="hover:text-indigo-400 transition-colors">Payment Gateway</Link></li>
-          <li><Link href="/services/customer-support" className="hover:text-indigo-400 transition-colors">Customer Support</Link></li>
-          <li><Link href="/services/shipping-delivery" className="hover:text-indigo-400 transition-colors">Shipping & Delivery</Link></li>
-          <li><Link href="/services/analytics-reports" className="hover:text-indigo-400 transition-colors">Analytics & Reports</Link></li>
-        </ul>
-      </div>
+            <h3 className="text-lg font-bold text-indigo-400 mb-3">{t('footer.quickLinks')}</h3>
+            <ul className="space-y-2">
+              <li><Link href="/home1" className="hover:text-indigo-400 transition-colors">{t('nav.home')}</Link></li>
+              <li><Link href="/about" className="hover:text-indigo-400 transition-colors">{t('nav.about')}</Link></li>
+              <li><Link href="/services" className="hover:text-indigo-400 transition-colors">{t('nav.services')}</Link></li>
+              <li><Link href="/blog" className="hover:text-indigo-400 transition-colors">{t('nav.blog')}</Link></li>
+              <li><Link href="/contact" className="hover:text-indigo-400 transition-colors">{t('nav.contact')}</Link></li>
+            </ul>
+          </div>
+          {/* Blog & Resources */}
+          <div className="md:w-1/4">
+            <h3 className="text-lg font-bold text-indigo-400 mb-3">{t('nav.blog')} & Resources</h3>
+            <ul className="space-y-2">
+              <li><Link href="/blog" className="hover:text-indigo-400 transition-colors">All Articles</Link></li>
+              <li><Link href="/blog/future-ecommerce-ai-powered-shopping" className="hover:text-indigo-400 transition-colors">AI in E-commerce</Link></li>
+              <li><Link href="/blog/essential-strategies-boosting-conversion-rate" className="hover:text-indigo-400 transition-colors">Conversion Strategies</Link></li>
+              <li><Link href="/blog/building-customer-trust-ecommerce-success" className="hover:text-indigo-400 transition-colors">Building Trust</Link></li>
+            </ul>
+          </div>
+          {/* Our Services */}
+          <div className="md:w-1/4">
+            <h3 className="text-lg font-bold text-indigo-400 mb-3">{t('footer.services')}</h3>
+            <ul className="space-y-2">
+              <li><Link href="/services/product-listing" className="hover:text-indigo-400 transition-colors">{t('nav.productListing')}</Link></li>
+              <li><Link href="/services/order-management" className="hover:text-indigo-400 transition-colors">{t('nav.orderManagement')}</Link></li>
+              <li><Link href="/services/payment-gateway" className="hover:text-indigo-400 transition-colors">{t('nav.paymentGateway')}</Link></li>
+              <li><Link href="/services/customer-support" className="hover:text-indigo-400 transition-colors">{t('nav.customerSupport')}</Link></li>
+              <li><Link href="/services/shipping-delivery" className="hover:text-indigo-400 transition-colors">{t('nav.shippingDelivery')}</Link></li>
+              <li><Link href="/services/analytics-reports" className="hover:text-indigo-400 transition-colors">{t('nav.analyticsReports')}</Link></li>
+            </ul>
+          </div>
           {/* Get In Touch */}
           <div className="md:w-1/4">
-            <h3 className="text-lg font-bold text-indigo-400 mb-3">Get In Touch</h3>
+            <h3 className="text-lg font-bold text-indigo-400 mb-3">{t('contact.subtitle')}</h3>
             <ul className="space-y-2 text-white/80">
-              <li className="flex items-center">
-                <span className="mr-2">📞</span>
+              <li className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <span className={isRTL ? 'ml-2' : 'mr-2'}>📞</span>
                 <span>+91 9000000000</span>
               </li>
-              <li className="flex items-center">
-                <span className="mr-2">✉️</span>
+              <li className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <span className={isRTL ? 'ml-2' : 'mr-2'}>✉️</span>
                 <span>support@stackly.com</span>
               </li>
-              <li className="flex items-center">
-                <span className="mr-2">📍</span>
+              <li className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <span className={isRTL ? 'ml-2' : 'mr-2'}>📍</span>
                 <span>India</span>
               </li>
-              <li className="flex items-center">
-                <span className="mr-2">⏰</span>
+              <li className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <span className={isRTL ? 'ml-2' : 'mr-2'}>⏰</span>
                 <span>Mon - Fri: 9am - 6pm</span>
               </li>
             </ul>
-            
           </div>
         </div>
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 mt-10 pt-4 flex flex-col md:flex-row md:justify-between items-center text-sm text-white/60">
-          <div>© 2025 Stackly E-commerce. All rights reserved.</div>
-          <div className="flex space-x-6 mt-2 md:mt-0">
+        <div className={`border-t border-white/10 mt-10 pt-4 flex flex-col md:flex-row items-center text-sm text-white/60 ${
+          isRTL ? 'md:flex-row-reverse md:justify-between' : 'md:justify-between'
+        }`}>
+          <div>{t('footer.copyright')}</div>
+          <div className={`flex space-x-6 mt-2 md:mt-0 ${isRTL ? 'space-x-reverse' : ''}`}>
             <a href="#" className="hover:text-indigo-400 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-indigo-400 transition-colors">Terms of Service</a>
             <a href="#" className="hover:text-indigo-400 transition-colors">Cookie Policy</a>

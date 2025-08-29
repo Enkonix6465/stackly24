@@ -97,10 +97,10 @@
       "mobile": "12345667899",
       "password": "user",
       "createdAt": "2025-08-25T04:58:20.905Z",
-      "updatedAt": "2025-08-25T08:37:34.919Z",
-      "loginTime": "2025-08-25T08:37:34.917Z",
+      "updatedAt": "2025-08-28T03:33:46.093Z",
+      "loginTime": "2025-08-28T03:33:46.093Z",
       "logoutTime": "-",
-      "lastActive": "2025-08-25T08:37:34.917Z"
+      "lastActive": "2025-08-28T03:33:46.093Z"
     },
     {
       "role": "user",
@@ -113,6 +113,18 @@
       "loginTime": "2025-08-25T07:26:58.284Z",
       "logoutTime": "-",
       "lastActive": "2025-08-25T07:26:58.284Z"
+    },
+    {
+      "role": "user",
+      "username": "Jayasri",
+      "email": "jayasrim226@gmail.com",
+      "mobile": "6305250296",
+      "password": "adminn",
+      "createdAt": "2025-08-28T03:35:00.728Z",
+      "updatedAt": "2025-08-29T05:59:14.770Z",
+      "loginTime": "2025-08-29T05:59:14.761Z",
+      "logoutTime": "-",
+      "lastActive": "2025-08-29T05:59:14.762Z"
     }
   ],
   "adminRequests": [
@@ -168,15 +180,15 @@
   ],
   "currentUser": {
     "role": "user",
-    "username": "Surendra",
-    "email": "surendra@gmail.com",
-    "mobile": "12345667899",
-    "password": "user",
-    "createdAt": "2025-08-25T04:58:20.905Z",
-    "updatedAt": "2025-08-25T08:37:34.910Z",
-    "loginTime": "2025-08-25T08:37:34.910Z",
+    "username": "Jayasri",
+    "email": "jayasrim226@gmail.com",
+    "mobile": "6305250296",
+    "password": "adminn",
+    "createdAt": "2025-08-28T03:35:00.728Z",
+    "updatedAt": "2025-08-29T05:59:14.727Z",
+    "loginTime": "2025-08-29T05:59:14.727Z",
     "logoutTime": "-",
-    "lastActive": "2025-08-25T08:37:34.910Z"
+    "lastActive": "2025-08-29T05:59:14.727Z"
   },
-  "lastUpdated": "2025-08-25T08:37:34.919Z"
+  "lastUpdated": "2025-08-29T05:59:14.770Z"
 }

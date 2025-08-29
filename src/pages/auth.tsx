@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -178,14 +179,20 @@ export default function Auth() {
                 >
                   {loading ? 'Signing In...' : 'Sign In'}
                 </Button>
-                <div className="text-center">
+                <div className="text-center space-y-2">
                   <button
                     type="button"
                     onClick={() => setIsLogin(false)}
-                    className="text-sm text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
+                    className="text-sm text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 block"
                   >
                     Don't have an account? Sign up
                   </button>
+                  <Link
+                    href="/forgot-password"
+                    className="text-sm text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 block"
+                  >
+                    Reset your password?
+                  </Link>
                 </div>
               </form>
             ) : (

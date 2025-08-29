@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import VideoBackground from '../components/VideoBackground';
 import Link from 'next/link';
+import { useLanguage } from '../components/LanguageProvider';
 
 //  data for the about page
 const teamMembers = [
@@ -107,11 +108,15 @@ const testimonials = [
 ];
 
 export default function About() {
+  const { t, isRTL } = useLanguage();
+  
+
+
   return (
     <>
       <Head>
-        <title>About Us - ShopHub | Our Story & Mission</title>
-        <meta name="description" content="Learn about ShopHub's journey, mission, and the team behind the leading e-commerce platform" />
+        <title>About Us - Stackly</title>
+        <meta name="description" content="Learn about Stackly's mission, values, and commitment to e-commerce excellence" />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
@@ -120,25 +125,18 @@ export default function About() {
         {/* Main content with top margin for fixed header */}
         <div className="pt-16">
           {/* Hero Section */}
-          <VideoBackground videoSrc="/vedios/vedio3.mp4" className="text-white">
+          <VideoBackground videoSrc="/vedios/vedio2.mp4" className="text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 min-h-screen flex items-center justify-center">
               <div className="text-center">
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-                  About 
-                  <span className="block text-indigo-200">ShopHub</span>
+                  {t('about.title')}
                 </h1>
                 <p className="text-xl md:text-2xl text-indigo-100 mb-8 max-w-3xl mx-auto">
-                  We're on a mission to revolutionize online shopping by creating seamless, 
-                  innovative experiences that connect people with the products they love.
+                  {t('about.subtitle')}
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/contact" className="bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors duration-300 shadow-lg text-center">
-                    Reach Out
-                  </Link>
-                  <Link href="/services" className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-indigo-900 transition-all duration-300 text-center">
-                    Know
-                  </Link>
-                </div>
+                <p className="text-lg text-indigo-200 max-w-2xl mx-auto">
+                  {t('about.description')}
+                </p>
               </div>
             </div>
             <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white dark:from-gray-900 to-transparent"></div>
@@ -147,159 +145,68 @@ export default function About() {
           {/* Mission & Vision Section */}
           <section className="py-20 bg-gray-50 dark:bg-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid md:grid-cols-2 gap-16 items-center">
-                <div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                    Our Mission & Vision
+              <div className={`grid md:grid-cols-2 gap-12 items-center ${isRTL ? 'md:grid-cols-reverse' : ''}`}>
+                {/* Mission */}
+                <div className={`${isRTL ? 'md:text-right' : ''}`}>
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 rounded-full mb-6">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                  </div>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                    {t('about.mission')}
                   </h2>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-3">Mission</h3>
-                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                        To democratize e-commerce by providing businesses of all sizes with the tools, 
-                        technology, and support they need to succeed in the digital marketplace.
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-3">Vision</h3>
-                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                        To become the world's most trusted and innovative e-commerce platform, 
-                        empowering millions of businesses and delighting billions of customers worldwide.
-                      </p>
-                    </div>
-                  </div>
+                  <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {t('about.missionText')}
+                  </p>
                 </div>
-                <div className="relative">
-                  <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-600">
-                    <div className="text-center">
-                      <div className="w-20 h-20 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-6">
-                         <svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 128 128" className="text-indigo-600">
-                           <ellipse cx={64} cy={116.87} fill="#424242" rx={12.09} ry={7.13}></ellipse>
-                           <path fill="#ffd600" d="M64 4C42.92 4 25.82 19.67 25.82 38.99c0 5.04 1.52 10.43 3.75 15.18c3.13 6.68 6.54 11.62 7.54 13.44c2.78 5.06 2.38 10.39 3.15 13.73c1.45 6.24 5.79 8.5 23.73 8.5s21.8-2.15 23.41-7.9c1.1-3.91.03-8.18 2.8-13.23c1-1.82 5.07-7.85 8.21-14.54c2.23-4.75 3.75-10.14 3.75-15.18C102.18 19.67 85.08 4 64 4"></path>
-                           <ellipse cx={64} cy={86.13} fill="#b26500" rx={21.94} ry={4.46}></ellipse>
-                           <ellipse cx={64} cy={86.13} fill="#b26500" rx={21.94} ry={4.46}></ellipse>
-                           <ellipse cx={64} cy={86.13} fill="#ffa000" rx={15.99} ry={2.06}></ellipse>
-                           <g fill="none" strokeMiterlimit={10} strokeWidth={2}>
-                             <path stroke="#b26500" d="M53.3 56.77c-.62 1.56-2.23 4.77-1.39 6.21c1.95 3.35 6.6 4.55 6.6 7.63c0 4.7-3.42 19.93-3.42 19.93m18.94-34.33s2.24 4.8 1.29 6.95c-.71 1.6-4.98 4.18-5.53 4.61c-2.55 2 .84 22.78.84 22.78"></path>
-                             <path stroke="#fff" d="M53.3 56.77c3.44-6.8 5.21-22.32.84-21.53c-7.37 1.33 1.71 26.83 6.18 23.9s10.01-23.85 3.21-23.93s.46 26.66 5.08 23.69c3.65-2.35 12.56-23.66 5.24-23.66c-6.23 0 .19 20.97.19 20.97"></path>
-                           </g>
-                           <path fill="#82aec0" d="M85.89 87.06S80.13 89.84 64 89.84s-21.89-2.78-21.89-2.78s-.36 5.14.83 7.47c1.43 2.8 2.53 3.77 2.53 3.77l.6 2.85l-.24.75c-.31.98-.09 2.06.6 2.83l.52.58l.58 2.74l-.2.55c-.38 1.05-.12 2.22.66 3.02l.38.39l.47 2.24s2.38 5.08 15.16 5.08s15.16-5.08 15.16-5.08l.04-.19l.26-.26c.52-.51.69-1.27.44-1.95l-.15-.39l.62-2.96l1.09-1.15c.54-.57.66-1.41.31-2.11l-.5-.99l.63-2.97l.4-.31c.59-.65.6-1.63.34-2.3c-.2-.53-.04-1.13.37-1.52c.63-.6 1.44-1.51 2.04-2.64c1.23-2.29.84-7.45.84-7.45"></path>
-                           <path fill="#2f7889" d="m45.47 98.3l.54 2.87c5.82-.03 13.59.26 28.5-2.11c2.69-.61 5.92-1.82 2.35-1.32c0-.01-13.69 1.3-31.39.56m2 9.77c6.44-.11 19.6-.75 33.74-3.82l.63-2.97c-14.79 3.36-28.7 3.96-34.95 4.04zm32.84.42c-13.09 2.84-25.34 3.57-31.97 3.73l.43 2.04s.21 6.33 15.16 6.33s15.16-6.33 15.16-6.33s-6.38 1.82-14.23.93a.63.63 0 0 1-.01-1.26c4.69-.62 10.29-1.54 14.84-2.48z"></path>
-                           <path fill="none" stroke="#82aec0" strokeLinecap="round" strokeMiterlimit={10} strokeWidth={3.997} d="M42.18 87.06s6.46 2.78 21.76 2.78s21.88-2.78 21.88-2.78"></path>
-                           <path fill="#ffff8d" d="M49.88 10.32c3.91-.96 8-.48 10.8 2.92c.79.96 1.4 2.1 1.54 3.34c.28 2.39-1.2 4.65-2.96 6.31c-5.02 4.74-12.15 7.04-15.39 13.58c-.76 1.53-1.36 3.18-2.52 4.43s-3.09 2.01-4.6 1.21c-.8-.42-1.35-1.21-1.8-2c-2.84-5.06-2.63-11.51-.13-16.75c2.75-5.74 8.78-11.5 15.06-13.04"></path>
-                           <path fill="#ffd600" d="M46.45 91.93c-.88-.4-.53-1.72.43-1.65c3.22.25 8.7.56 15.95.56c7.64 0 14.36-.57 18.28-.99c.97-.1 1.34 1.23.45 1.64c-3.02 1.42-8.55 3.04-18.03 3.04c-9.25 0-14.35-1.37-17.08-2.6"></path>
-                           <path fill="#94d1e0" d="M51.94 102.03c-.67.24-1.36.57-1.7 1.19c-.12.23-.19.49-.14.75c.08.38.43.65.78.82c.7.34 1.49.43 2.26.44c1.59.02 3.17-.28 4.74-.58c.47-.09.95-.18 1.37-.41s.78-.62.85-1.09c.1-.63-.35-1.24-.9-1.54c-1.9-1.05-5.34-.27-7.26.42m1.49 6.59c-.67.24-1.36.57-1.7 1.19c-.12.23-.19.49-.14.75c.08.38.43.65.78.82c.7.34 1.49.43 2.26.44c1.59.02 3.17-.28 4.74-.58c.47-.09.95-.18 1.37-.41s.78-.62.85-1.09c.1-.63-.35-1.24-.9-1.54c-1.9-1.04-5.35-.26-7.26.42"></path>
-                           <path fill="#ffff8d" d="M50.01 84.2c.91.09 1.87.01 2.64-.48s1.26-1.49.95-2.35c-.16-.45-.51-.81-.85-1.15c-.75-.74-1.5-1.48-2.24-2.22c-.83-.83-1.66-1.65-2.56-2.4c-1.39-1.16-3.26-2.25-5.09-1.4c-1.56.72-1.93 2.14-1.24 3.63c1.47 3.13 4.89 6.01 8.39 6.37"></path>
-                         </svg>
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Core Values</h3>
-                      <div className="grid grid-cols-2 gap-4">
-                        {values.map((value, index) => (
-                          <div key={index} className="text-center">
-                              <div className="text-2xl mb-2 flex justify-center">{value.icon}</div>
-                            <h4 className="font-semibold text-gray-900 dark:text-white text-sm">{value.title}</h4>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                
+                {/* Vision */}
+                <div className={`${isRTL ? 'md:text-left' : ''}`}>
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 rounded-full mb-6">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
                   </div>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                    {t('about.vision')}
+                  </h2>
+                  <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {t('about.visionText')}
+                  </p>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Team Section */}
+          {/* Values Section */}
           <section className="py-20 bg-white dark:bg-gray-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Meet Our Leadership Team
+                  {t('about.values')}
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  The brilliant minds behind ShopHub's success story
+                  The principles that guide everything we do
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {teamMembers.map((member) => (
-                  <div key={member.id} className="group">
-                    <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
-                      <div className="relative overflow-hidden">
-                        <img 
-                          src={member.image} 
-                          alt={member.name}
-                          className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ${isRTL ? 'rtl' : ''}`}>
+                {values.map((value, index) => (
+                  <div key={index} className="text-center group">
+                    <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
+                      <div className="text-4xl mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                        {value.icon}
                       </div>
-                      <div className="p-6 text-center">
-                        <h3 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                          {member.name}
-                        </h3>
-                        <p className="text-indigo-600 dark:text-indigo-400 font-medium mb-3">{member.role}</p>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{member.bio}</p>
-                        <div className="flex justify-center space-x-3">
-                           <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.5 10.268h-3v-4.604c0-1.099-.021-2.513-1.532-2.513-1.532 0-1.767 1.197-1.767 2.434v4.683h-3v-9h2.885v1.233h.041c.402-.762 1.384-1.566 2.849-1.566 3.046 0 3.607 2.006 3.607 4.617v4.716z"/>
-                            </svg>
-                          </a>
-                           <a href="https://x.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
-                          </a>
-                           <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                        {value.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                        {value.description}
+                      </p>
                     </div>
                   </div>
                 ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Journey Timeline Section */}
-          <section className="py-20 bg-gray-50 dark:bg-gray-800">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Our Journey
-                </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  From startup to market leader - here's our story
-                </p>
-              </div>
-              <div className="relative">
-                {/* Timeline Line */}
-                <div className="absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-indigo-200 dark:bg-indigo-800"></div>
-                
-                <div className="space-y-12">
-                  {milestones.map((milestone, index) => (
-                    <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                      {/* Timeline Dot */}
-                      <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-indigo-600 rounded-full border-4 border-white dark:border-gray-800 z-10"></div>
-                      
-                      {/* Content */}
-                      <div className={`w-5/12 ${index % 2 === 0 ? 'md:pr-8 text-right' : 'md:pl-8 text-left'}`}>
-                        <div className="bg-white dark:bg-gray-700 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-600">
-                          <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">
-                            {milestone.year}
-                          </div>
-                          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                            {milestone.title}
-                          </h3>
-                          <p className="text-gray-600 dark:text-gray-300">
-                            {milestone.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           </section>
@@ -315,13 +222,11 @@ export default function About() {
                   Numbers that tell our success story
                 </p>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+              <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 ${isRTL ? 'rtl' : ''}`}>
                 {achievements.map((achievement, index) => (
                   <div key={index} className="text-center">
-                    <div className="flex justify-center items-center mb-3">
-                      <div className="w-16 h-16 flex items-center justify-center">
-                        {achievement.icon}
-                      </div>
+                    <div className="text-4xl mb-3 flex justify-center">
+                      {achievement.icon}
                     </div>
                     <div className="text-3xl md:text-4xl font-bold text-indigo-200 mb-2">
                       {achievement.number}
@@ -335,108 +240,121 @@ export default function About() {
             </div>
           </section>
 
-          {/* Customer Testimonials Section */}
+          {/* Team Section */}
+          <section className="py-20 bg-gray-50 dark:bg-gray-800">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                  Meet Our Team
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                  The passionate individuals behind our success
+                </p>
+              </div>
+              <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ${isRTL ? 'rtl' : ''}`}>
+                {teamMembers.map((member) => (
+                  <div key={member.id} className="group">
+                    <div className="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-600">
+                      <div className="relative overflow-hidden">
+                        <img 
+                          src={member.image} 
+                          alt={member.name}
+                          className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <h3 className="font-semibold text-gray-900 dark:text-white text-lg mb-2">
+                          {member.name}
+                        </h3>
+                        <p className="text-indigo-600 dark:text-indigo-400 mb-3">
+                          {member.role}
+                        </p>
+                        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                          {member.bio}
+                        </p>
+                        <div className={`flex space-x-3 ${isRTL ? 'space-x-reverse' : ''}`}>
+                          <a href={member.social.linkedin} className="text-gray-400 hover:text-indigo-600 transition-colors">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.5 10.268h-3v-4.604c0-1.099-.021-2.513-1.532-2.513-1.532 0-1.767 1.197-1.767 2.434v4.683h-3v-9h2.885v1.233h.041c.402-.762 1.384-1.566 2.849-1.566 3.046 0 3.607 2.006 3.607 4.617v4.716z"/>
+                            </svg>
+                          </a>
+                          <a href={member.social.twitter} className="text-gray-400 hover:text-indigo-600 transition-colors">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.916 4.916 0 0 0-8.38 4.482c-4.083-.205-7.697-2.162-10.125-5.134a4.822 4.822 0 0 0-.664 2.475c0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417a9.867 9.867 0 0 1-6.102 2.104c-.396 0-.787-.023-1.175-.069a13.945 13.945 0 0 0 7.548 2.212c9.058 0 14.009-7.513 14.009-14.009 0-.213-.005-.425-.014-.636a10.012 10.012 0 0 0 2.457-2.548z"/>
+                            </svg>
+                          </a>
+                          <a href={`mailto:${member.social.email}`} className="text-gray-400 hover:text-indigo-600 transition-colors">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Milestones Section */}
           <section className="py-20 bg-white dark:bg-gray-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Ready to Transform Your Business?
+                  Our Journey
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Join thousands of successful businesses that trust ShopHub for their e-commerce success
+                  Key milestones in our growth story
                 </p>
               </div>
-              
-              {/* CTA Cards Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                {/* Start Your Store */}
-                <div className="group relative overflow-hidden bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20 rounded-2xl p-8 border border-indigo-200 dark:border-indigo-700 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-200 dark:bg-indigo-800 rounded-full -translate-y-16 translate-x-16 opacity-20 group-hover:scale-110 transition-transform duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                      </svg>
+              <div className="relative">
+                {/* Timeline line */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-indigo-200 dark:bg-indigo-800 h-full"></div>
+                
+                <div className="space-y-12">
+                  {milestones.map((milestone, index) => (
+                    <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                      {/* Timeline dot */}
+                      <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-indigo-600 rounded-full border-4 border-white dark:border-gray-900"></div>
+                      
+                      {/* Content */}
+                      <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left'}`}>
+                        <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+                          <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">
+                            {milestone.year}
+                          </div>
+                          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                            {milestone.title}
+                          </h3>
+                          <p className="text-gray-600 dark:text-gray-300">
+                            {milestone.description}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Start Your Store</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                      Launch your online store in minutes with our intuitive platform and powerful tools.
-                    </p>
-                    <Link href="/contact" className="w-full bg-indigo-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-indigo-700 transition-colors duration-300 group-hover:shadow-lg text-center block">
-                      Get Started Free
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Scale Your Business */}
-                <div className="group relative overflow-hidden bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/20 dark:to-emerald-800/20 rounded-2xl p-8 border border-emerald-200 dark:border-emerald-700 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-200 dark:bg-emerald-800 rounded-full -translate-y-16 translate-x-16 opacity-20 group-hover:scale-110 transition-transform duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                      </svg>
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Scale Your Business</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                      Grow your business with advanced analytics, marketing tools, and global reach.
-                    </p>
-                    <Link href="/services" className="w-full bg-emerald-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-emerald-700 transition-colors duration-300 group-hover:shadow-lg text-center block">
-                      Explore Services
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Get Expert Support */}
-                <div className="group relative overflow-hidden bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-2xl p-8 border border-purple-200 dark:border-purple-700 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-purple-200 dark:bg-purple-800 rounded-full -translate-y-16 translate-x-16 opacity-20 group-hover:scale-110 transition-transform duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 100 19.5 9.75 9.75 0 000-19.5z" />
-                      </svg>
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Get Expert Support</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                      Our dedicated team is here to help you succeed every step of the way.
-                    </p>
-                    <Link href="/contact" className="w-full bg-purple-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-purple-700 transition-colors duration-300 group-hover:shadow-lg text-center block">
-                      Contact Support
-                    </Link>
-                  </div>
+                  ))}
                 </div>
               </div>
+            </div>
+          </section>
 
-              {/* Bottom CTA Section */}
-              <div className="text-center">
-                <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 rounded-3xl p-12 text-white relative overflow-hidden">
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0" style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                    }}></div>
-                  </div>
-                  
-                  <div className="relative z-10">
-                    <h3 className="text-3xl md:text-4xl font-bold mb-4">
-                      Let's Build Something Amazing Together
-                    </h3>
-                    <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
-                      Ready to take your business to the next level? Join the ShopHub family today and discover what's possible.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <Link href="/contact" className="bg-white text-indigo-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-indigo-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-center">
-                        Start Your Free Trial
-                      </Link>
-                      <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-indigo-600 transition-all duration-300 text-center">
-                        Schedule a Demo
-                      </Link>
-                    </div>
-                    <p className="text-sm text-indigo-200 mt-6">
-                      No credit card required • 14-day free trial • Cancel anytime
-                    </p>
-                  </div>
-                </div>
+          {/* CTA Section */}
+          <section className="py-20 bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 text-white">
+            <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Ready to Transform Your Business?
+              </h2>
+              <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
+                Join thousands of successful businesses that trust us with their e-commerce success
+              </p>
+              <div className={`flex flex-col sm:flex-row gap-4 justify-center ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
+                <Link href="/contact" className="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors duration-300 shadow-lg">
+                  Get Started Today
+                </Link>
+                <Link href="/services" className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-indigo-600 transition-all duration-300">
+                  Explore Our Services
+                </Link>
               </div>
             </div>
           </section>

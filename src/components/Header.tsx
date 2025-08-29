@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { ModeToggle } from "./theme/ModeToggle";
+import { LanguageSelector } from "./LanguageSelector";
+import { useLanguage } from "./LanguageProvider";
 import Image from "next/image";
 import Link from "next/link";
 
 const services = [
-  { name: "Product Listing", href: "/services/product-listing" },
-  { name: "Order Management", href: "/services/order-management" },
-  { name: "Payment Gateway", href: "/services/payment-gateway" },
-  { name: "Customer Support", href: "/services/customer-support" },
-  { name: "Shipping & Delivery", href: "/services/shipping-delivery" },
-  { name: "Analytics & Reports", href: "/services/analytics-reports" },
+  { name: "nav.productListing", href: "/services/product-listing" },
+  { name: "nav.orderManagement", href: "/services/order-management" },
+  { name: "nav.paymentGateway", href: "/services/payment-gateway" },
+  { name: "nav.customerSupport", href: "/services/customer-support" },
+  { name: "nav.shippingDelivery", href: "/services/shipping-delivery" },
+  { name: "nav.analyticsReports", href: "/services/analytics-reports" },
 ];
 
 export default function Header() {
+  const { t, isRTL } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [homeDropdown, setHomeDropdown] = useState(false);
   const [servicesDropdown, setServicesDropdown] = useState(false);
@@ -56,13 +59,13 @@ export default function Header() {
     <header className={``}>
       <nav className="bg-white dark:bg-gray-900 shadow-md fixed w-full z-20 top-0 left-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
+          <div className="flex justify-between h-16 header-nav-container">
             {/* Logo */}
-            <div className="flex-shrink-0 flex items-center">
+            <div className="flex-shrink-0 flex items-center logo-container">
               <Link href="/home1" className="flex items-center">
                 <Image
                   src="/logo-stackly.png"
-                  alt="E-Commerce Logo"
+                  alt={t('common.ecommerceLogo')}
                   className="w-28 h-8"
                   height={32}
                   width={32}
@@ -71,7 +74,7 @@ export default function Header() {
               </Link>
             </div>
             {/* Desktop Menu */}
-            <div className="hidden md:flex md:items-center space-x-4">
+            <div className="hidden md:flex md:items-center space-x-4 desktop-nav">
               {/* Home Dropdown */}
               <div
                 className="relative"
@@ -80,12 +83,14 @@ export default function Header() {
               >
                 <Link href="/home1">
                   <button className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
-                    Home
+                    {t('nav.home')}
                   </button>
                 </Link>
                 {homeDropdown && (
                   <div 
-                    className="absolute left-0 mt-2 w-32 bg-white dark:bg-gray-800 rounded-md shadow-lg z-30"
+                    className={`absolute mt-2 w-32 bg-white dark:bg-gray-800 rounded-md shadow-lg z-30 ${
+                      isRTL ? 'right-0' : 'left-0'
+                    }`}
                     onMouseEnter={handleHomeMouseEnter}
                     onMouseLeave={handleHomeMouseLeave}
                   >
@@ -93,13 +98,13 @@ export default function Header() {
                       href="/home1"
                       className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      Home1
+                      {t('nav.home1')}
                     </Link>
                     <Link
                       href="/home2"
                       className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      Home2
+                      {t('nav.home2')}
                     </Link>
                   </div>
                 )}
@@ -108,7 +113,7 @@ export default function Header() {
                 href="/about"
                 className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
               >
-                About Us
+                {t('nav.about')}
               </Link>
               {/* Services Dropdown */}
               <div
@@ -118,12 +123,14 @@ export default function Header() {
               >
                 <Link href="/services">
                   <button className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
-                    Services
+                    {t('nav.services')}
                   </button>
                 </Link>
                 {servicesDropdown && (
                   <div 
-                    className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-30"
+                    className={`absolute mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-30 ${
+                      isRTL ? 'right-0' : 'left-0'
+                    }`}
                     onMouseEnter={handleServicesMouseEnter}
                     onMouseLeave={handleServicesMouseLeave}
                   >
@@ -131,7 +138,7 @@ export default function Header() {
                       href="/services"
                       className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 border-b border-gray-200 dark:border-gray-700"
                     >
-                      All Services
+                      {t('nav.allServices')}
                     </Link>
                     {services.map((service) => (
                       <Link
@@ -139,7 +146,7 @@ export default function Header() {
                         href={service.href}
                         className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
-                        {service.name}
+                        {t(service.name)}
                       </Link>
                     ))}
                   </div>
@@ -149,14 +156,16 @@ export default function Header() {
                 href="/blog"
                 className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
               >
-                Blog
+                {t('nav.blog')}
               </Link>
               <Link
                 href="/contact"
                 className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
               >
-                Contact Us
+                {t('nav.contact')}
               </Link>
+              {/* Language Selector */}
+              <LanguageSelector />
               {/* User Menu */}
               {currentUser ? (
                 <div className="flex items-center space-x-3">
@@ -165,7 +174,7 @@ export default function Header() {
                       href="/dashboard"
                       className="px-3 py-2 rounded-md text-sm font-medium text-purple-700 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20"
                     >
-                      Dashboard
+                      {t('nav.dashboard')}
                     </Link>
                   )}
                   {/* User Avatar */}
@@ -176,16 +185,18 @@ export default function Header() {
                       </span>
                     </div>
                     {/* Dropdown Menu */}
-                    <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div className={`absolute mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ${
+                      isRTL ? 'left-0' : 'right-0'
+                    }`}>
                       <div className="py-2">
                         <div className="px-4 py-2 text-sm text-gray-700 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700">
-                          Welcome, {currentUser.username}
+                          {t('nav.welcome')}, {currentUser.username}
                         </div>
                         <button
                           onClick={handleLogout}
                           className="w-full text-left px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
                         >
-                          Logout
+                          {t('nav.logout')}
                         </button>
                       </div>
                     </div>
@@ -196,18 +207,19 @@ export default function Header() {
                   href="/auth"
                   className="px-4 py-2 rounded-md text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition-colors"
                 >
-                  Login
+                  {t('nav.login')}
                 </Link>
               )}
               {/* Dark Mode Toggle */}
               <ModeToggle />
             </div>
             {/* Mobile menu button */}
-            <div className="flex items-center md:hidden">
+            <div className="flex items-center md:hidden space-x-2">
+              <LanguageSelector />
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none"
-                aria-label="Main menu"
+                aria-label={t('common.mainMenu')}
               >
                 <svg
                   className="h-6 w-6"
@@ -245,7 +257,7 @@ export default function Header() {
               <div className="flex items-center">
                 <Link href="/home1" className="flex-1">
                   <button className="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
-                    Home
+                    {t('nav.home')}
                   </button>
                 </Link>
                 <button
@@ -263,13 +275,13 @@ export default function Header() {
                     href="/home1"
                     className="block px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    Home1
+                    {t('nav.home1')}
                   </Link>
                   <Link
                     href="/home2"
                     className="block px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    Home2
+                    {t('nav.home2')}
                   </Link>
                 </div>
               )}
@@ -278,14 +290,14 @@ export default function Header() {
               href="/about"
               className="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
             >
-              About Us
+              {t('nav.about')}
             </Link>
             {/* Services Dropdown */}
             <div>
               <div className="flex items-center">
                 <Link href="/services" className="flex-1">
                   <button className="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
-                    Services
+                    {t('nav.services')}
                   </button>
                 </Link>
                 <button
@@ -303,7 +315,7 @@ export default function Header() {
                     href="/services"
                     className="block px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 border-b border-gray-200 dark:border-gray-700"
                   >
-                    All Services
+                    {t('nav.allServices')}
                   </Link>
                   {services.map((service) => (
                     <Link
@@ -311,7 +323,7 @@ export default function Header() {
                       href={service.href}
                       className="block px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      {service.name}
+                      {t(service.name)}
                     </Link>
                   ))}
                 </div>
@@ -321,13 +333,13 @@ export default function Header() {
               href="/blog"
               className="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
             >
-              Blog
+              {t('nav.blog')}
             </Link>
             <Link
               href="/contact"
               className="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
             >
-              Contact Us
+              {t('nav.contact')}
             </Link>
             {/* User Menu Mobile */}
             {currentUser ? (
@@ -340,22 +352,22 @@ export default function Header() {
                     </span>
                   </div>
                   <div className="text-sm text-gray-700 dark:text-gray-200">
-                    Welcome, {currentUser.username}
+                    {t('nav.welcome')}, {currentUser.username}
                   </div>
                 </div>
                 {currentUser.role === 'admin' && (
                   <Link
                     href="/dashboard"
-                    className="block px-3 py-2 rounded-md text-sm font-medium text-purple-700 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20"
+                    className="block px-3 py-2 rounded-md text-sm font-medium text-purple-700 dark:text-purple-400 hover:bg-purple-900/20"
                   >
-                    Dashboard
+                    {t('nav.dashboard')}
                   </Link>
                 )}
                 <button
                   onClick={handleLogout}
                   className="block w-full text-left px-3 py-2 rounded-md text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
                 >
-                  Logout
+                  {t('nav.logout')}
                 </button>
               </>
             ) : (
@@ -363,7 +375,7 @@ export default function Header() {
                 href="/auth"
                 className="block px-3 py-2 rounded-md text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition-colors"
               >
-                Login
+                {t('nav.login')}
               </Link>
             )}
           </div>

@@ -4,8 +4,10 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import VideoBackground from '../components/VideoBackground';
 import Link from 'next/link';
+import { useLanguage } from '../components/LanguageProvider';
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -292,7 +294,7 @@ export default function Contact() {
                     <div className="h-96 relative">
                       {/* Google Maps iframe */}
                       <iframe
-                        title="Google Map"
+                        title={t('common.googleMap')}
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.953736315904!3d-37.8162797420217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f1f1f1f1%3A0x5045675218ce6e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sin!4v1620211234567!5m2!1sen!2sin"
                         width="100%"
                         height="100%"

@@ -318,7 +318,7 @@ export default function PaymentGateway() {
             <div className="absolute inset-0 z-0">
               <img 
                 src="/images/CTA.jpg" 
-                alt="CTA Background" 
+                alt={t('common.ctaBackground')} 
                 className="w-full h-full object-cover"
               />
             </div>

@@ -270,6 +270,20 @@ export const updateUserActivity = (email: string, activity: 'login' | 'logout'):
   }
 };
 
+export const resetUserPassword = (email: string, newPassword: string): boolean => {
+  const user = getUserByEmail(email);
+  if (!user) return false;
+
+  const updatedUser = {
+    ...user,
+    password: newPassword,
+    updatedAt: new Date().toISOString()
+  };
+  
+  saveUser(updatedUser);
+  return true;
+};
+
 // Helper function to generate unique ID
 const generateId = (): string => {
   return Date.now().toString(36) + Math.random().toString(36).substr(2);

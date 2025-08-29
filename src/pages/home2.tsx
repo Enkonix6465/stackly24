@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import VideoBackground from '../components/VideoBackground';
 import Link from 'next/link';
+import { useLanguage } from '../components/LanguageProvider';
 
 //  data for the home2 page
 const heroFeatures = [
@@ -92,6 +93,7 @@ const faqs = [
 
 export default function Home2() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const { t, currentLanguage } = useLanguage();
 
   return (
     <>
@@ -110,34 +112,49 @@ export default function Home2() {
               <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
                 <div>
                   <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-                    Modern E-commerce
-                    <span className="block text-indigo-200">Platform</span>
+                    {t('home2.hero.title')}
+                    <span className="block text-indigo-200">{t('home2.hero.subtitle')}</span>
                   </h1>
                   <p className="text-xl md:text-2xl text-indigo-100 mb-8 leading-relaxed">
-                    Transform your business with our cutting-edge e-commerce solution. 
-                    Built for speed, security, and scalability.
+                    {t('home2.hero.description')}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 mb-12">
                     <Link href="/contact" className="bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors duration-300 shadow-lg text-center">
-                      Get Started Free
+                      {t('home2.hero.getStarted')}
                     </Link>
                     <Link href="/about" className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-indigo-900 transition-all duration-300 text-center">
-                      Explore
+                      {t('home2.hero.explore')}
                     </Link>
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    {heroFeatures.map((feature, index) => (
-                      <div key={index} className="text-center">
-                        <div className="flex justify-center items-center mb-2">
-                          <div className="w-16 h-16 flex items-center justify-center">
-                            {feature.icon}
-                          </div>
+                    <div className="text-center">
+                      <div className="flex justify-center items-center mb-2">
+                        <div className="w-16 h-16 flex items-center justify-center">
+                          {heroFeatures[0].icon}
                         </div>
-                        <h3 className="font-semibold text-indigo-200 mb-1">{feature.title}</h3>
-                        <p className="text-sm text-indigo-100">{feature.description}</p>
                       </div>
-                    ))}
+                      <h3 className="font-semibold text-indigo-200 mb-1">{t('home2.hero.features.lightningFast')}</h3>
+                      <p className="text-sm text-indigo-100">{t('home2.hero.features.lightningFastDesc')}</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="flex justify-center items-center mb-2">
+                        <div className="w-16 h-16 flex items-center justify-center">
+                          {heroFeatures[1].icon}
+                        </div>
+                      </div>
+                      <h3 className="font-semibold text-indigo-200 mb-1">{t('home2.hero.features.secureReliable')}</h3>
+                      <p className="text-sm text-indigo-100">{t('home2.hero.features.secureReliableDesc')}</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="flex justify-center items-center mb-2">
+                        <div className="w-16 h-16 flex items-center justify-center">
+                          {heroFeatures[2].icon}
+                        </div>
+                      </div>
+                      <h3 className="font-semibold text-indigo-200 mb-1">{t('home2.hero.features.mobileFirst')}</h3>
+                      <p className="text-sm text-indigo-100">{t('home2.hero.features.mobileFirstDesc')}</p>
+                    </div>
                   </div>
                 </div>
                 
@@ -165,20 +182,20 @@ export default function Home2() {
                            <path fill="#757575" d="M17.22 119.02c.65.75 1.69 1.1 2.68.98c.98-.12 1.88-.7 2.47-1.5c.34-.47.58-1.01.97-1.44s1.01-.73 1.55-.51c.76.3.86 1.36.6 2.13a6.08 6.08 0 0 1-3.09 3.56c-.99.49-2.37.69-3.47.58c-2.11-.22-4.38-2.13-5.12-4.09c-.4-1.05-.75-3.16 1.34-2.68c.97.23 1.29 2.07 2.07 2.97"></path>
                          </svg>
                        </div>
-                      <h3 className="text-2xl font-bold mb-4">Start Your Journey</h3>
-                      <p className="text-indigo-100 mb-6">Join thousands of successful businesses using ShopHub</p>
+                      <h3 className="text-2xl font-bold mb-4">{t('home2.hero.startJourney')}</h3>
+                      <p className="text-indigo-100 mb-6">{t('home2.hero.joinThousands')}</p>
                       <div className="space-y-3 text-left">
                         <div className="flex items-center">
                           <div className="w-2 h-2 bg-indigo-300 rounded-full mr-3"></div>
-                          <span className="text-sm">No setup fees</span>
+                          <span className="text-sm">{t('home2.hero.noSetupFees')}</span>
                         </div>
                         <div className="flex items-center">
                           <div className="w-2 h-2 bg-indigo-300 rounded-full mr-3"></div>
-                          <span className="text-sm">14-day free trial</span>
+                          <span className="text-sm">{t('home2.hero.freeTrial')}</span>
                         </div>
                         <div className="flex items-center">
                           <div className="w-2 h-2 bg-indigo-300 rounded-full mr-3"></div>
-                          <span className="text-sm">Cancel anytime</span>
+                          <span className="text-sm">{t('home2.hero.cancelAnytime')}</span>
                         </div>
                       </div>
                     </div>
@@ -194,34 +211,132 @@ export default function Home2() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Everything You Need to Succeed
+                  {t('home2.services.title')}
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Comprehensive e-commerce solutions designed to grow your business
+                  {t('home2.services.subtitle')}
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {services.map((service, index) => (
-                  <div key={index} className="group">
-                    <div className="bg-white dark:bg-gray-700 rounded-xl p-6 h-full shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-600">
-                      <div className="text-4xl mb-4">{service.icon}</div>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">{service.description}</p>
-                      <ul className="space-y-2">
-                        {service.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                            <svg className="w-4 h-4 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                <div className="group">
+                  <div className="bg-white dark:bg-gray-700 rounded-xl p-6 h-full shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-600">
+                    <div className="text-4xl mb-4">{services[0].icon}</div>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                      {t('home2.services.ecommerce.title')}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">{t('home2.services.ecommerce.description')}</p>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <svg className="w-4 h-4 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {t('home2.services.ecommerce.feature1')}
+                      </li>
+                      <li className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <svg className="w-4 h-4 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {t('home2.services.ecommerce.feature2')}
+                      </li>
+                      <li className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <svg className="w-4 h-4 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {t('home2.services.ecommerce.feature3')}
+                      </li>
+                    </ul>
                   </div>
-                ))}
+                </div>
+                
+                <div className="group">
+                  <div className="bg-white dark:bg-gray-700 rounded-xl p-6 h-full shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-600">
+                    <div className="text-4xl mb-4">{services[1].icon}</div>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                      {t('home2.services.analytics.title')}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">{t('home2.services.analytics.description')}</p>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <svg className="w-4 h-4 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {t('home2.services.analytics.feature1')}
+                      </li>
+                      <li className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <svg className="w-4 h-4 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {t('home2.services.analytics.feature2')}
+                      </li>
+                      <li className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <svg className="w-4 h-4 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {t('home2.services.analytics.feature3')}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="group">
+                  <div className="bg-white dark:bg-gray-700 rounded-xl p-6 h-full shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-600">
+                    <div className="text-4xl mb-4">{services[2].icon}</div>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                      {t('home2.services.logistics.title')}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">{t('home2.services.logistics.description')}</p>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <svg className="w-4 h-4 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {t('home2.services.logistics.feature1')}
+                      </li>
+                      <li className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <svg className="w-4 h-4 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {t('home2.services.logistics.feature2')}
+                      </li>
+                      <li className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <svg className="w-4 h-4 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {t('home2.services.logistics.feature3')}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="group">
+                  <div className="bg-white dark:bg-gray-700 rounded-xl p-6 h-full shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-600">
+                    <div className="text-4xl mb-4">{services[3].icon}</div>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                      {t('home2.services.payment.title')}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">{t('home2.services.payment.description')}</p>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <svg className="w-4 h-4 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {t('home2.services.payment.feature1')}
+                      </li>
+                      <li className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <svg className="w-4 h-4 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {t('home2.services.payment.feature2')}
+                      </li>
+                      <li className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <svg className="w-4 h-4 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {t('home2.services.payment.feature3')}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -231,34 +346,72 @@ export default function Home2() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Trusted by Industry Leaders
+                  {t('home2.testimonials.title')}
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  See what our customers say about their experience with ShopHub
+                  {t('home2.testimonials.subtitle')}
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {testimonials.map((testimonial, index) => (
-                  <div key={index} className="group">
-                    <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-100 dark:border-gray-700 h-full">
-                      <div className="flex items-center mb-6">
-                        <img src={testimonial.avatar} alt={testimonial.name} className="w-16 h-16 rounded-full object-cover mr-4" />
-                        <div>
-                          <h4 className="font-semibold text-gray-900 dark:text-white">{testimonial.name}</h4>
-                          <p className="text-sm text-indigo-600 dark:text-indigo-400">{testimonial.role}</p>
-                        </div>
-                      </div>
-                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">"{testimonial.content}"</p>
-                      <div className="flex text-yellow-400">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
+                <div className="group">
+                  <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-100 dark:border-gray-700 h-full">
+                    <div className="flex items-center mb-6">
+                      <img src={testimonials[0].avatar} alt={t('home2.testimonials.alexandra.name')} className="w-16 h-16 rounded-full object-cover mr-4" />
+                      <div>
+                        <h4 className="font-semibold text-gray-900 dark:text-white">{t('home2.testimonials.alexandra.name')}</h4>
+                        <p className="text-sm text-indigo-600 dark:text-indigo-400">{t('home2.testimonials.alexandra.role')}</p>
                       </div>
                     </div>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">"{t('home2.testimonials.alexandra.content')}"</p>
+                    <div className="flex text-yellow-400">
+                      {[...Array(testimonials[0].rating)].map((_, i) => (
+                        <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
                   </div>
-                ))}
+                </div>
+                
+                <div className="group">
+                  <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-100 dark:border-gray-700 h-full">
+                    <div className="flex items-center mb-6">
+                      <img src={testimonials[1].avatar} alt={t('home2.testimonials.marcus.name')} className="w-16 h-16 rounded-full object-cover mr-4" />
+                      <div>
+                        <h4 className="font-semibold text-gray-900 dark:text-white">{t('home2.testimonials.marcus.name')}</h4>
+                        <p className="text-sm text-indigo-600 dark:text-indigo-400">{t('home2.testimonials.marcus.role')}</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">"{t('home2.testimonials.marcus.content')}"</p>
+                    <div className="flex text-yellow-400">
+                      {[...Array(testimonials[1].rating)].map((_, i) => (
+                        <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="group">
+                  <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-100 dark:border-gray-700 h-full">
+                    <div className="flex items-center mb-6">
+                      <img src={testimonials[2].avatar} alt={t('home2.testimonials.sarah.name')} className="w-16 h-16 rounded-full object-cover mr-4" />
+                      <div>
+                        <h4 className="font-semibold text-gray-900 dark:text-white">{t('home2.testimonials.sarah.name')}</h4>
+                        <p className="text-sm text-indigo-600 dark:text-indigo-400">{t('home2.testimonials.sarah.role')}</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">"{t('home2.testimonials.sarah.content')}"</p>
+                    <div className="flex text-yellow-400">
+                      {[...Array(testimonials[2].rating)].map((_, i) => (
+                        <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -268,49 +421,153 @@ export default function Home2() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Simple, Transparent Pricing
+                  {t('home2.pricing.title')}
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Choose the plan that fits your business needs. All plans include our core features.
+                  {t('home2.pricing.subtitle')}
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {pricingPlans.map((plan, index) => (
-                  <div key={index} className={`relative ${plan.popular ? 'transform scale-105' : ''}`}>
-                    {plan.popular && (
-                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-indigo-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                        Most Popular
+                <div className="relative">
+                  <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg border-2 border-gray-100 dark:border-gray-600 h-full">
+                    <div className="text-center mb-8">
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('home2.pricing.starter.name')}</h3>
+                      <div className="flex items-baseline justify-center mb-2">
+                        <span className="text-4xl font-bold text-indigo-600 dark:text-indigo-400">{t('home2.pricing.starter.price')}</span>
+                        <span className="text-gray-500 dark:text-gray-400 ml-1">{t('home2.pricing.starter.period')}</span>
                       </div>
-                    )}
-                    <div className={`bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg border-2 ${plan.popular ? 'border-indigo-600' : 'border-gray-100 dark:border-gray-600'} h-full`}>
-                      <div className="text-center mb-8">
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{plan.name}</h3>
-                        <div className="flex items-baseline justify-center mb-2">
-                          <span className="text-4xl font-bold text-indigo-600 dark:text-indigo-400">{plan.price}</span>
-                          <span className="text-gray-500 dark:text-gray-400 ml-1">{plan.period}</span>
-                        </div>
-                        <p className="text-gray-600 dark:text-gray-300">{plan.description}</p>
-                      </div>
-                      <ul className="space-y-4 mb-8">
-                        {plan.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center">
-                            <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                            <span className="text-gray-700 dark:text-gray-300">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <button className={`w-full py-3 px-6 rounded-xl font-semibold transition-colors duration-300 ${
-                        plan.popular 
-                          ? 'bg-indigo-600 text-white hover:bg-indigo-700' 
-                          : 'bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-500'
-                      }`}>
-                        {plan.popular ? 'Get Started' : 'Choose Plan'}
-                      </button>
+                      <p className="text-gray-600 dark:text-gray-300">{t('home2.pricing.starter.description')}</p>
                     </div>
+                    <ul className="space-y-4 mb-8">
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{t('home2.pricing.features.upTo100')}</span>
+                      </li>
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{t('home2.pricing.features.basicAnalytics')}</span>
+                      </li>
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{t('home2.pricing.features.emailSupport')}</span>
+                      </li>
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{t('home2.pricing.features.mobileApp')}</span>
+                      </li>
+                    </ul>
+                    <button className="w-full py-3 px-6 rounded-xl font-semibold transition-colors duration-300 bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-500">
+                      {t('home2.pricing.choosePlan')}
+                    </button>
                   </div>
-                ))}
+                </div>
+                
+                <div className="relative transform scale-105">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-indigo-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                    {t('home2.pricing.mostPopular')}
+                  </div>
+                  <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg border-2 border-indigo-600 h-full">
+                    <div className="text-center mb-8">
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('home2.pricing.professional.name')}</h3>
+                      <div className="flex items-baseline justify-center mb-2">
+                        <span className="text-4xl font-bold text-indigo-600 dark:text-indigo-400">{t('home2.pricing.professional.price')}</span>
+                        <span className="text-gray-500 dark:text-gray-400 ml-1">{t('home2.pricing.professional.period')}</span>
+                      </div>
+                      <p className="text-gray-600 dark:text-gray-300">{t('home2.pricing.professional.description')}</p>
+                    </div>
+                    <ul className="space-y-4 mb-8">
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{t('home2.pricing.features.upTo1000')}</span>
+                      </li>
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{t('home2.pricing.features.advancedAnalytics')}</span>
+                      </li>
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{t('home2.pricing.features.prioritySupport')}</span>
+                      </li>
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{t('home2.pricing.features.apiAccess')}</span>
+                      </li>
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{t('home2.pricing.features.customDomain')}</span>
+                      </li>
+                    </ul>
+                    <button className="w-full py-3 px-6 rounded-xl font-semibold transition-colors duration-300 bg-indigo-600 text-white hover:bg-indigo-700">
+                      {t('home2.pricing.getStarted')}
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="relative">
+                  <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg border-2 border-gray-100 dark:border-gray-600 h-full">
+                    <div className="text-center mb-8">
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('home2.pricing.enterprise.name')}</h3>
+                      <div className="flex items-baseline justify-center mb-2">
+                        <span className="text-4xl font-bold text-indigo-600 dark:text-indigo-400">{t('home2.pricing.enterprise.price')}</span>
+                        <span className="text-gray-500 dark:text-gray-400 ml-1">{t('home2.pricing.enterprise.period')}</span>
+                      </div>
+                      <p className="text-gray-600 dark:text-gray-300">{t('home2.pricing.enterprise.description')}</p>
+                    </div>
+                    <ul className="space-y-4 mb-8">
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{t('home2.pricing.features.unlimited')}</span>
+                      </li>
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{t('home2.pricing.features.customAnalytics')}</span>
+                      </li>
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{t('home2.pricing.features.support247')}</span>
+                      </li>
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{t('home2.pricing.features.whiteLabel')}</span>
+                      </li>
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{t('home2.pricing.features.advancedIntegrations')}</span>
+                      </li>
+                    </ul>
+                    <button className="w-full py-3 px-6 rounded-xl font-semibold transition-colors duration-300 bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-500">
+                      {t('home2.pricing.choosePlan')}
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -319,8 +576,8 @@ export default function Home2() {
           <section className="py-20 bg-indigo-900 text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">Shop by the Numbers</h2>
-                <p className="text-xl text-indigo-200 max-w-3xl mx-auto">Trusted by businesses worldwide with proven results</p>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('home2.stats.title')}</h2>
+                <p className="text-xl text-indigo-200 max-w-3xl mx-auto">{t('home2.stats.subtitle')}</p>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {stats.map((stat, index) => (
@@ -329,7 +586,12 @@ export default function Home2() {
                       <div className="text-4xl mx-auto text-center">{stat.icon}</div>
                     </div>
                     <div className="text-4xl md:text-5xl font-bold text-indigo-200 mb-2">{stat.number}</div>
-                    <div className="text-indigo-100 font-medium">{stat.label}</div>
+                    <div className="text-indigo-100 font-medium">
+                      {stat.number === "10M+" && t('home2.stats.productsSold')}
+                      {stat.number === "500K+" && t('home2.stats.happyCustomers')}
+                      {stat.number === "150+" && t('home2.stats.countriesServed')}
+                      {stat.number === "99.9%" && t('home2.stats.uptimeGuarantee')}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -353,11 +615,10 @@ export default function Home2() {
                   </svg>
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                  Ready to Transform Your Business?
+                  {t('home2.cta.title')}
                 </h2>
                 <p className="text-xl text-indigo-100 max-w-3xl mx-auto mb-8">
-                  Join thousands of successful businesses that trust ShopHub for their e-commerce success. 
-                  Start your journey today and discover what's possible.
+                  {t('home2.cta.subtitle')}
                 </p>
               </div>
 
@@ -371,8 +632,8 @@ export default function Home2() {
                        </svg>
                      </div>
                      <div>
-                       <h3 className="font-semibold text-lg mb-1">Instant Setup</h3>
-                       <p className="text-indigo-100">Get your store up and running in minutes, not days</p>
+                       <h3 className="font-semibold text-lg mb-1">{t('home2.cta.benefits.instantSetup.title')}</h3>
+                       <p className="text-indigo-100">{t('home2.cta.benefits.instantSetup.description')}</p>
                      </div>
                    </div>
                    
@@ -383,8 +644,8 @@ export default function Home2() {
                        </svg>
                      </div>
                      <div>
-                       <h3 className="font-semibold text-lg mb-1">24/7 Support</h3>
-                       <p className="text-indigo-100">Our expert team is here to help you succeed</p>
+                       <h3 className="font-semibold text-lg mb-1">{t('home2.cta.benefits.support247.title')}</h3>
+                       <p className="text-indigo-100">{t('home2.cta.benefits.support247.description')}</p>
                      </div>
                    </div>
                    
@@ -395,8 +656,8 @@ export default function Home2() {
                        </svg>
                      </div>
                      <div>
-                       <h3 className="font-semibold text-lg mb-1">Scale with Confidence</h3>
-                       <p className="text-indigo-100">Built to handle growth from startup to enterprise</p>
+                       <h3 className="font-semibold text-lg mb-1">{t('home2.cta.benefits.scaleConfidence.title')}</h3>
+                       <p className="text-indigo-100">{t('home2.cta.benefits.scaleConfidence.description')}</p>
                      </div>
                    </div>
                  </div>
@@ -406,10 +667,10 @@ export default function Home2() {
               <div className="text-center mt-12">
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link href="/about" className="bg-white text-indigo-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-indigo-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                    Know More
+                    {t('home2.cta.knowMore')}
                   </Link>
                   <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-indigo-600 transition-all duration-300 text-center">
-                    Schedule a Demo
+                    {t('home2.cta.scheduleDemo')}
                   </Link>
                 </div>
                 

@@ -1,4 +1,5 @@
 import { ModeToggle } from "@/components/theme/ModeToggle";
+import Header from "@/components/Header";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -11,15 +12,16 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <>
-        <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4 pt-20">
           <div>
             <ModeToggle />
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-10 flex flex-col items-center max-w-md w-full">
             <Image
               src="/logo-stackly.png"
-              alt="E-Commerce Logo"
+              alt={t('common.ecommerceLogo')}
               className="  mb-4"
               height={200}
               width={200}
