@@ -30,8 +30,8 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Contact Us - ShopHub</title>
-        <meta name="description" content="Get in touch with ShopHub. We're here to help with your e-commerce needs." />
+        <title>{t('contact.title')} - ShopHub</title>
+        <meta name="description" content={t('contact.description')} />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
@@ -44,18 +44,18 @@ export default function Contact() {
               <div className="text-center">
                 <div className="inline-flex items-center px-4 py-2 bg-white/20 rounded-full text-sm font-medium mb-6">
                   <span className="mr-2">📞</span>
-                  Get In Touch
+                  {t('contact.hero.getInTouch')}
                 </div>
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                  Let's Build Something
-                  <span className="block text-indigo-200">Amazing Together</span>
+                  {t('contact.hero.title')}
+                  <span className="block text-indigo-200">{t('contact.hero.subtitle')}</span>
                 </h1>
                 <p className="text-xl text-indigo-100 max-w-3xl mx-auto leading-relaxed">
-                  Ready to transform your e-commerce business? Our team of experts is here to help you succeed.
+                  {t('contact.hero.description')}
                 </p>
                 <div className="mt-8 flex justify-center">
                   <a href="#contact-form" className="bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors duration-300 shadow-lg">
-                    Contact
+                    {t('contact.hero.cta')}
                   </a>
                 </div>
               </div>
@@ -67,10 +67,10 @@ export default function Contact() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Multiple Ways to Connect
+                  {t('contact.info.title')}
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Choose the method that works best for you.
+                  {t('contact.info.subtitle')}
                 </p>
               </div>
 
@@ -81,9 +81,9 @@ export default function Contact() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Phone Support</h3>
-                  <p className="text-lg font-medium text-indigo-600 dark:text-indigo-400">+1 (555) 123-4567</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Mon-Fri: 9AM-6PM EST</p>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('contact.info.phoneSupport.title')}</h3>
+                  <p className="text-lg font-medium text-indigo-600 dark:text-indigo-400">{t('contact.info.phoneSupport.number')}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{t('contact.info.phoneSupport.hours')}</p>
                 </div>
 
                 <div className="text-center group">
@@ -92,9 +92,9 @@ export default function Contact() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Email Support</h3>
-                  <p className="text-lg font-medium text-indigo-600 dark:text-indigo-400">support@Stackly.com</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Response within 24 hours</p>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('contact.info.emailSupport.title')}</h3>
+                  <p className="text-lg font-medium text-indigo-600 dark:text-indigo-400">{t('contact.info.emailSupport.email')}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{t('contact.info.emailSupport.response')}</p>
                 </div>
 
                 <div className="text-center group">
@@ -103,9 +103,9 @@ export default function Contact() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Live Chat</h3>
-                  <p className="text-lg font-medium text-indigo-600 dark:text-indigo-400">Available 24/7</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Click the chat widget below</p>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('contact.info.liveChat.title')}</h3>
+                  <p className="text-lg font-medium text-indigo-600 dark:text-indigo-400">{t('contact.info.liveChat.available')}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{t('contact.info.liveChat.click')}</p>
                 </div>
               </div>
             </div>
@@ -116,10 +116,10 @@ export default function Contact() {
             <div id="contact-form" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Send Us a Message
+                  {t('contact.form.title')}
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Have a specific question or project in mind? Fill out the form below.
+                  {t('contact.form.subtitle')}
                 </p>
               </div>
 
@@ -128,7 +128,7 @@ export default function Contact() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Full Name *
+                        {t('contact.form.nameLabel')}
                       </label>
                       <input
                         type="text"
@@ -138,12 +138,12 @@ export default function Contact() {
                         onChange={handleInputChange}
                         required
                         className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors duration-200"
-                        placeholder="Enter your full name"
+                        placeholder={t('contact.form.namePlaceholder')}
                       />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Email Address *
+                        {t('contact.form.emailLabel')}
                       </label>
                       <input
                         type="email"
@@ -153,14 +153,14 @@ export default function Contact() {
                         onChange={handleInputChange}
                         required
                         className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors duration-200"
-                        placeholder="Enter your email address"
+                        placeholder={t('contact.form.emailPlaceholder')}
                       />
                     </div>
                   </div>
 
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Subject *
+                      {t('contact.form.subjectLabel')}
                     </label>
                     <select
                       id="subject"
@@ -170,18 +170,18 @@ export default function Contact() {
                       required
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors duration-200"
                     >
-                      <option value="">Select a subject</option>
-                      <option value="general">General Inquiry</option>
-                      <option value="support">Technical Support</option>
-                      <option value="sales">Sales & Pricing</option>
-                      <option value="partnership">Partnership Opportunity</option>
-                      <option value="feedback">Feedback & Suggestions</option>
+                      <option value="">{t('contact.form.subjectPlaceholder')}</option>
+                      <option value="general">{t('contact.form.subjectGeneral')}</option>
+                      <option value="support">{t('contact.form.subjectSupport')}</option>
+                      <option value="sales">{t('contact.form.subjectSales')}</option>
+                      <option value="partnership">{t('contact.form.subjectPartnership')}</option>
+                      <option value="feedback">{t('contact.form.subjectFeedback')}</option>
                     </select>
                   </div>
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Message *
+                      {t('contact.form.messageLabel')}
                     </label>
                     <textarea
                       id="message"
@@ -191,7 +191,7 @@ export default function Contact() {
                       required
                       rows={6}
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors duration-200"
-                      placeholder="Tell us about your inquiry or project..."
+                      placeholder={t('contact.form.messagePlaceholder')}
                     />
                   </div>
 
@@ -203,7 +203,7 @@ export default function Contact() {
                       <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                       </svg>
-                      Send Message
+                      {t('contact.form.submit')}
                     </button>
                   </div>
                 </form>
@@ -216,10 +216,10 @@ export default function Contact() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Visit Our Offices
+                  {t('contact.offices.title')}
                 </h2>
                 <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                  We have offices in strategic locations to better serve our global clientele.
+                  {t('contact.offices.subtitle')}
                 </p>
               </div>
 
@@ -233,16 +233,19 @@ export default function Contact() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-3">New York Office</h3>
+                      <h3 className="text-xl font-semibold text-white mb-3">{t('contact.offices.newYork.title')}</h3>
                       <p className="text-gray-300 mb-4">
-                        123 Business Avenue<br />
-                        New York, NY 10001<br />
-                        United States
+                        {t('contact.offices.newYork.address').split('\n').map((line, index) => (
+                          <span key={index}>
+                            {line}
+                            {index < t('contact.offices.newYork.address').split('\n').length - 1 && <br />}
+                          </span>
+                        ))}
                       </p>
                       <div className="space-y-2 text-sm text-gray-400">
-                        <p>📞 +1 (555) 123-4567</p>
-                        <p>📧 nyc@shophub.com</p>
-                        <p>🕒 Mon-Fri: 9AM-6PM EST</p>
+                        <p>{t('contact.offices.newYork.phone')}</p>
+                        <p>{t('contact.offices.newYork.email')}</p>
+                        <p>{t('contact.offices.newYork.hours')}</p>
                       </div>
                     </div>
                   </div>
@@ -257,16 +260,19 @@ export default function Contact() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-3">London Office</h3>
+                      <h3 className="text-xl font-semibold text-white mb-3">{t('contact.offices.london.title')}</h3>
                       <p className="text-gray-300 mb-4">
-                        456 Innovation Street<br />
-                        London, EC1A 1BB<br />
-                        United Kingdom
+                        {t('contact.offices.london.address').split('\n').map((line, index) => (
+                          <span key={index}>
+                            {line}
+                            {index < t('contact.offices.london.address').split('\n').length - 1 && <br />}
+                          </span>
+                        ))}
                       </p>
                       <div className="space-y-2 text-sm text-gray-400">
-                        <p>📞 +44 20 1234 5678</p>
-                        <p>📧 london@shophub.com</p>
-                        <p>🕒 Mon-Fri: 9AM-6PM GMT</p>
+                        <p>{t('contact.offices.london.phone')}</p>
+                        <p>{t('contact.offices.london.email')}</p>
+                        <p>{t('contact.offices.london.hours')}</p>
                       </div>
                     </div>
                   </div>
@@ -280,10 +286,10 @@ export default function Contact() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Find Us on the Map
+                  {t('contact.map.title')}
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Explore our office locations and get directions to visit us in person.
+                  {t('contact.map.subtitle')}
                 </p>
               </div>
 
@@ -311,23 +317,23 @@ export default function Contact() {
                 <div className="space-y-6">
                   <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-6 border border-indigo-100 dark:border-indigo-800">
                     <h3 className="text-lg font-semibold text-indigo-900 dark:text-indigo-100 mb-4">
-                      Office Locations
+                      {t('contact.map.officeLocations')}
                     </h3>
                     <div className="space-y-3">
                       <div className="flex items-center space-x-3">
                         <div className="w-4 h-4 bg-red-500 rounded-full"></div>
-                        <span className="text-sm text-indigo-800 dark:text-indigo-200">New York</span>
+                        <span className="text-sm text-indigo-800 dark:text-indigo-200">{t('contact.map.newYork')}</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                        <span className="text-sm text-indigo-800 dark:text-indigo-200">London</span>
+                        <span className="text-sm text-indigo-800 dark:text-indigo-200">{t('contact.map.london')}</span>
                       </div>
                     </div>
                   </div>
 
                   <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                      Quick Actions
+                      {t('contact.map.quickActions')}
                     </h3>
                     <div className="space-y-3">
                       <button className="w-full text-left p-3 rounded-lg bg-white dark:bg-gray-700 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors border border-gray-200 dark:border-gray-600">
@@ -335,7 +341,7 @@ export default function Contact() {
                           <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           </svg>
-                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Get Directions</span>
+                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('contact.map.getDirections')}</span>
                         </div>
                       </button>
                       <button className="w-full text-left p-3 rounded-lg bg-white dark:bg-gray-700 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors border border-gray-200 dark:border-gray-600">
@@ -343,7 +349,7 @@ export default function Contact() {
                           <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
-                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Schedule Visit</span>
+                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('contact.map.scheduleVisit')}</span>
                         </div>
                       </button>
                       <button className="w-full text-left p-3 rounded-lg bg-white dark:bg-gray-700 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors border border-gray-200 dark:border-gray-600">
@@ -351,7 +357,7 @@ export default function Contact() {
                           <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                           </svg>
-                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Call Office</span>
+                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('contact.map.callOffice')}</span>
                         </div>
                       </button>
                     </div>
@@ -366,51 +372,47 @@ export default function Contact() {
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Frequently Asked Questions
+                  {t('contact.faq.title')}
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Find quick answers to common questions about our services and support.
+                  {t('contact.faq.subtitle')}
                 </p>
               </div>
 
               <div className="space-y-6">
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                    What services does ShopHub provide?
+                    {t('contact.faq.services.question')}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    ShopHub offers comprehensive e-commerce solutions including website development, 
-                    digital marketing, SEO optimization, payment integration, and ongoing support services.
+                    {t('contact.faq.services.answer')}
                   </p>
                 </div>
 
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                    How long does it take to complete a project?
+                    {t('contact.faq.timeline.question')}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Project timelines vary depending on complexity. Simple e-commerce sites typically take 4-6 weeks, 
-                    while complex custom solutions may take 8-12 weeks.
+                    {t('contact.faq.timeline.answer')}
                   </p>
                 </div>
 
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                    Do you provide ongoing support after launch?
+                    {t('contact.faq.support.question')}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Yes! We offer various support packages including maintenance, updates, security monitoring, 
-                    and 24/7 technical support to ensure your e-commerce platform runs smoothly.
+                    {t('contact.faq.support.answer')}
                   </p>
                 </div>
 
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                    What is your pricing structure?
+                    {t('contact.faq.pricing.question')}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Our pricing is transparent and project-based. We offer free consultations to understand your needs 
-                    and provide detailed quotes. We also have flexible payment plans available.
+                    {t('contact.faq.pricing.answer')}
                   </p>
                 </div>
               </div>
@@ -421,11 +423,10 @@ export default function Contact() {
           <section className="py-20 bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 text-white">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Ready to Get Started?
+                {t('contact.cta.title')}
               </h2>
               <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
-                Don't wait to transform your e-commerce business. Contact us today and let's discuss 
-                how we can help you achieve your goals and grow your online presence.
+                {t('contact.cta.subtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
@@ -435,7 +436,7 @@ export default function Contact() {
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
-                  Start a Conversation
+                  {t('contact.cta.startConversation')}
                 </Link>
                 <Link 
                   href="/services" 
@@ -444,7 +445,7 @@ export default function Contact() {
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  View Our Services
+                  {t('contact.cta.viewServices')}
                 </Link>
               </div>
             </div>
