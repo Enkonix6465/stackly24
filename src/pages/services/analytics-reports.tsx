@@ -4,8 +4,10 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import VideoBackground from '../../components/VideoBackground';
 import Link from 'next/link';
+import { useLanguage } from '../../components/LanguageProvider';
 
 export default function AnalyticsReports() {
+  const { t } = useLanguage();
   return (
     <>
       <Head>

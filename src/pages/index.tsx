@@ -2,8 +2,10 @@ import { ModeToggle } from "@/components/theme/ModeToggle";
 import Header from "@/components/Header";
 import Head from "next/head";
 import Image from "next/image";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function Home() {
+  const { t } = useLanguage();
   return (
     <>
       <Head>
