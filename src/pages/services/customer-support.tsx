@@ -11,8 +11,8 @@ export default function CustomerSupport() {
   return (
     <>
       <Head>
-        <title>Customer Support Services - ShopHub</title>
-        <meta name="description" content="Exceptional customer support services that enhance customer satisfaction and build lasting relationships. 24/7 support for your e-commerce business." />
+        <title>{t('services.customerSupport.hero.title')} - ShopHub</title>
+        <meta name="description" content={t('services.customerSupport.hero.description')} />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
@@ -25,28 +25,27 @@ export default function CustomerSupport() {
               <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <div className="inline-flex items-center px-4 py-2 bg-white/20 rounded-full text-sm font-medium mb-6">
                   <span className="mr-2">🎧</span>
-                  Customer Support Service
+                  {t('services.customerSupport.hero.badge')}
                 </div>
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
-                  Exceptional Customer
-                  <span className="block text-indigo-200">Support</span>
+                  {t('services.customerSupport.hero.title')}
+                  <span className="block text-indigo-200">{t('services.customerSupport.hero.subtitle')}</span>
                 </h1>
                 <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-                  Build lasting customer relationships with our comprehensive support solutions. 
-                  Provide 24/7 assistance across multiple channels to enhance customer satisfaction.
+                  {t('services.customerSupport.hero.description')}
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                   <Link 
                     href="/blog" 
                     className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors duration-200 transform hover:scale-105"
                   >
-                    Get Started
+                    {t('services.customerSupport.hero.getStarted')}
                   </Link>
                   <Link 
                     href="/contact" 
                     className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200 transform hover:scale-105"
                   >
-                    Contact Us
+                    {t('services.customerSupport.hero.contactUs')}
                   </Link>
                 </div>
               </div>
@@ -58,10 +57,10 @@ export default function CustomerSupport() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Multiple Support Channels
+                  {t('services.customerSupport.channels.title')}
                 </h2>
                 <p className="text-xl text-indigo-100 max-w-2xl mx-auto">
-                  Meet your customers where they are with our multi-channel support solutions.
+                  {t('services.customerSupport.channels.subtitle')}
                 </p>
               </div>
 
@@ -70,9 +69,9 @@ export default function CustomerSupport() {
                   <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/30 transition-colors duration-300">
                     <span className="text-3xl">💬</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">Live Chat</h3>
+                  <h3 className="text-xl font-semibold text-white mb-3">{t('services.customerSupport.channels.liveChat.title')}</h3>
                   <p className="text-indigo-100">
-                    Real-time chat support with instant responses and file sharing capabilities.
+                    {t('services.customerSupport.channels.liveChat.description')}
                   </p>
                 </div>
 
@@ -80,9 +79,9 @@ export default function CustomerSupport() {
                   <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/30 transition-colors duration-300">
                     <span className="text-3xl">📧</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">Email Support</h3>
+                  <h3 className="text-xl font-semibold text-white mb-3">{t('services.customerSupport.channels.email.title')}</h3>
                   <p className="text-indigo-100">
-                    Professional email support with ticket tracking and automated responses.
+                    {t('services.customerSupport.channels.email.description')}
                   </p>
                 </div>
 
@@ -90,9 +89,9 @@ export default function CustomerSupport() {
                   <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/30 transition-colors duration-300">
                     <span className="text-3xl">📞</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">Phone Support</h3>
+                  <h3 className="text-xl font-semibold text-white mb-3">{t('services.customerSupport.channels.phone.title')}</h3>
                   <p className="text-indigo-100">
-                    Voice support with call recording and quality monitoring systems.
+                    {t('services.customerSupport.channels.phone.description')}
                   </p>
                 </div>
 
@@ -100,9 +99,9 @@ export default function CustomerSupport() {
                   <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/30 transition-colors duration-300">
                     <span className="text-3xl">📱</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">Mobile App</h3>
+                  <h3 className="text-xl font-semibold text-white mb-3">{t('services.customerSupport.channels.mobile.title')}</h3>
                   <p className="text-indigo-100">
-                    Mobile-first support experience with push notifications and in-app chat.
+                    {t('services.customerSupport.channels.mobile.description')}
                   </p>
                 </div>
               </div>
@@ -114,10 +113,10 @@ export default function CustomerSupport() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Advanced Support Features
+                  {t('services.customerSupport.features.title')}
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Powerful tools and features that make customer support efficient and effective.
+                  {t('services.customerSupport.features.subtitle')}
                 </p>
               </div>
 
@@ -128,9 +127,9 @@ export default function CustomerSupport() {
                       <span className="text-xl">🤖</span>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">AI-Powered Chatbots</h3>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.customerSupport.features.aiChatbots.title')}</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        Intelligent chatbots that handle common queries and route complex issues to human agents.
+                        {t('services.customerSupport.features.aiChatbots.description')}
                       </p>
                     </div>
                   </div>
@@ -142,9 +141,9 @@ export default function CustomerSupport() {
                       <span className="text-xl">📊</span>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Analytics Dashboard</h3>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.customerSupport.features.analytics.title')}</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        Comprehensive insights into support performance, customer satisfaction, and response times.
+                        {t('services.customerSupport.features.analytics.description')}
                       </p>
                     </div>
                   </div>
@@ -156,9 +155,9 @@ export default function CustomerSupport() {
                       <span className="text-xl">🎯</span>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Smart Routing</h3>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.customerSupport.features.smartRouting.title')}</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        Intelligent ticket routing based on agent expertise and workload optimization.
+                        {t('services.customerSupport.features.smartRouting.description')}
                       </p>
                     </div>
                   </div>
@@ -170,9 +169,9 @@ export default function CustomerSupport() {
                       <span className="text-xl">📚</span>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Knowledge Base</h3>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.customerSupport.features.knowledgeBase.title')}</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        Self-service knowledge base with searchable articles and video tutorials.
+                        {t('services.customerSupport.features.knowledgeBase.description')}
                       </p>
                     </div>
                   </div>
@@ -186,29 +185,29 @@ export default function CustomerSupport() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Support That Delivers Results
+                  {t('services.customerSupport.stats.title')}
                 </h2>
                 <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                  Our customer support services consistently achieve exceptional results for businesses.
+                  {t('services.customerSupport.stats.subtitle')}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div className="text-center">
                   <div className="text-4xl md:text-5xl font-bold text-indigo-400 mb-2">98%</div>
-                  <div className="text-lg text-gray-300">Customer Satisfaction</div>
+                  <div className="text-lg text-gray-300">{t('services.customerSupport.stats.satisfaction.label')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl md:text-5xl font-bold text-indigo-400 mb-2">2min</div>
-                  <div className="text-lg text-gray-300">Average Response Time</div>
+                  <div className="text-lg text-gray-300">{t('services.customerSupport.stats.responseTime.label')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl md:text-5xl font-bold text-indigo-400 mb-2">24/7</div>
-                  <div className="text-lg text-gray-300">Support Availability</div>
+                  <div className="text-lg text-gray-300">{t('services.customerSupport.stats.availability.label')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl md:text-5xl font-bold text-indigo-400 mb-2">95%</div>
-                  <div className="text-lg text-gray-300">Issue Resolution Rate</div>
+                  <div className="text-lg text-gray-300">{t('services.customerSupport.stats.resolutionRate.label')}</div>
                 </div>
               </div>
             </div>
@@ -219,10 +218,10 @@ export default function CustomerSupport() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Expert Support Team
+                  {t('services.customerSupport.team.title')}
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Our certified support professionals are trained to handle any customer inquiry with expertise and care.
+                  {t('services.customerSupport.team.subtitle')}
                 </p>
               </div>
 
@@ -231,9 +230,9 @@ export default function CustomerSupport() {
                   <div className="w-20 h-20 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">🎓</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Certified Agents</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.customerSupport.team.certified.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Industry-certified support professionals with extensive training and experience.
+                    {t('services.customerSupport.team.certified.description')}
                   </p>
                 </div>
 
@@ -241,9 +240,9 @@ export default function CustomerSupport() {
                   <div className="w-20 h-20 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">🌍</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Multi-Language</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.customerSupport.team.multilanguage.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Support in multiple languages to serve your global customer base effectively.
+                    {t('services.customerSupport.team.multilanguage.description')}
                   </p>
                 </div>
 
@@ -251,9 +250,9 @@ export default function CustomerSupport() {
                   <div className="w-20 h-20 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">⚡</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Fast Resolution</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.customerSupport.team.fastResolution.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Quick problem identification and resolution with first-contact resolution focus.
+                    {t('services.customerSupport.team.fastResolution.description')}
                   </p>
                 </div>
               </div>
@@ -272,16 +271,16 @@ export default function CustomerSupport() {
             </div>
             <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Ready to Transform Your Customer Support?
+                {t('services.customerSupport.ctaPage.title')}
               </h2>
               <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-                Join the businesses that have elevated their customer experience with our support services.
+                {t('services.customerSupport.ctaPage.description')}
               </p>
               <Link 
                 href="/contact" 
                 className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors duration-200 transform hover:scale-105"
               >
-                Get Started Today
+                {t('services.customerSupport.ctaPage.cta')}
               </Link>
             </div>
           </section>

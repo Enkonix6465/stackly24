@@ -210,15 +210,20 @@ export default function Blog() {
                             {post.title}
                           </h3>
                           
-                          <Link 
-                            href={`/blog/${post.slug}`}
-                            className="inline-flex items-center text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors group-hover:underline"
+                          <button 
+                            onClick={() => {
+                              document.getElementById('featured')?.scrollIntoView({ 
+                                behavior: 'smooth',
+                                block: 'start'
+                              });
+                            }}
+                            className="inline-flex items-center text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors group-hover:underline cursor-pointer"
                           >
                             {t('blog.readArticle')}
                             <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
-                          </Link>
+                          </button>
                         </div>
                       </article>
                     ))}
@@ -314,18 +319,23 @@ export default function Blog() {
           </section>
 
           {/* CTA Section */}
-          <section className="py-20 bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 text-white relative overflow-hidden">
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute inset-0" style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              }}></div>
+          <section className="py-20 text-white relative overflow-hidden">
+            {/* Background Image */}
+            <div className="absolute inset-0">
+              <img 
+                src="/images/BCTA.jpg" 
+                alt="CTA Background" 
+                className="w-full h-full object-cover"
+              />
+              {/* Black Overlay */}
+              <div className="absolute inset-0 bg-black bg-opacity-60"></div>
             </div>
             
             <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 {t('blog.cta.title')}
               </h2>
-              <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
                 {t('blog.cta.subtitle')}
               </p>
               
@@ -338,7 +348,7 @@ export default function Blog() {
                 </button>
               </div>
               
-              <p className="text-indigo-200 mt-6 text-sm">
+              <p className="text-white mt-6 text-sm">
                 {t('blog.cta.questions')}
               </p>
             </div>

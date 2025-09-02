@@ -6,9 +6,12 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
+import { useLanguage } from '@/components/LanguageProvider';
+import { LanguageSelector } from '@/components/LanguageSelector';
 
 export default function ForgotPassword() {
   const router = useRouter();
+  const { t, currentLanguage, isRTL } = useLanguage();
   const [email, setEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -23,13 +26,13 @@ export default function ForgotPassword() {
     setMessage('');
 
     if (newPassword !== confirmPassword) {
-      setError('Passwords do not match');
+      setError(t('forgotPassword.passwordsDoNotMatch'));
       setLoading(false);
       return;
     }
 
     if (newPassword.length < 6) {
-      setError('Password must be at least 6 characters long');
+      setError(t('forgotPassword.passwordTooShort'));
       setLoading(false);
       return;
     }
@@ -50,16 +53,16 @@ export default function ForgotPassword() {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage('Password reset successfully! Redirecting to login...');
+        setMessage(t('forgotPassword.resetSuccess'));
         setTimeout(() => {
           router.push('/auth');
         }, 2000);
       } else {
-        setError(data.message || 'Failed to reset password');
+        setError(data.message || t('forgotPassword.resetFailed'));
       }
     } catch (error) {
       console.error('Reset password error:', error);
-      setError('Failed to reset password. Please try again.');
+      setError(t('forgotPassword.resetError'));
     } finally {
       setLoading(false);
     }
@@ -68,30 +71,34 @@ export default function ForgotPassword() {
   return (
     <>
       <Head>
-        <title>Reset Password - ShopEase</title>
-        <meta name="description" content="Reset your password for ShopEase" />
+        <title>{t('forgotPassword.pageTitle')}</title>
+        <meta name="description" content={t('forgotPassword.pageDescription')} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+        <div className="absolute top-4 right-4">
+          <LanguageSelector />
+        </div>
+        
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-              Reset Password
+              {t('forgotPassword.title')}
             </CardTitle>
             <CardDescription>
-              Enter your email and new password to reset your account
+              {t('forgotPassword.description')}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleResetPassword} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t('forgotPassword.emailLabel')}</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t('forgotPassword.emailPlaceholder')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -99,11 +106,11 @@ export default function ForgotPassword() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="newPassword">New Password</Label>
+                <Label htmlFor="newPassword">{t('forgotPassword.newPasswordLabel')}</Label>
                 <Input
                   id="newPassword"
                   type="password"
-                  placeholder="Enter new password (min 6 characters)"
+                  placeholder={t('forgotPassword.newPasswordPlaceholder')}
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   required
@@ -111,11 +118,11 @@ export default function ForgotPassword() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <Label htmlFor="confirmPassword">{t('forgotPassword.confirmPasswordLabel')}</Label>
                 <Input
                   id="confirmPassword"
                   type="password"
-                  placeholder="Confirm new password"
+                  placeholder={t('forgotPassword.confirmPasswordPlaceholder')}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
@@ -127,7 +134,7 @@ export default function ForgotPassword() {
                 className="w-full bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600"
                 disabled={loading}
               >
-                {loading ? 'Resetting...' : 'Reset Password'}
+                {loading ? t('forgotPassword.resetting') : t('forgotPassword.resetButton')}
               </Button>
 
               <div className="text-center">
@@ -135,7 +142,7 @@ export default function ForgotPassword() {
                   href="/auth"
                   className="text-sm text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
                 >
-                  Back to Login
+                  {t('forgotPassword.backToLogin')}
                 </Link>
               </div>
             </form>

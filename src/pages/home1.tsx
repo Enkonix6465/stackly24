@@ -134,7 +134,7 @@ const stats = [
 ];
 
 export default function Home1() {
-  const { t, isRTL } = useLanguage();
+  const { t } = useLanguage();
   const [showAllProducts, setShowAllProducts] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -215,7 +215,7 @@ export default function Home1() {
                 <p className="text-xl md:text-2xl text-indigo-100 mb-8 max-w-3xl mx-auto">
                   {t('hero.subtitle')}
                 </p>
-                <div className={`flex flex-col sm:flex-row gap-4 justify-center ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link href="/contact" className="bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors duration-300 shadow-lg text-center">
                     {t('hero.cta')}
                   </Link>
@@ -231,15 +231,15 @@ export default function Home1() {
           {/* Categories Section */}
           <section className="py-20 bg-gray-50 dark:bg-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className={`text-center mb-16 ${isRTL ? 'text-right' : 'text-left'}`}>
-                <h2 className={`text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                   {t('home1.categories.title')}
                 </h2>
-                <p className={`text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto ${isRTL ? 'text-right' : 'text-left'}`}>
+                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                   {t('home1.categories.subtitle')}
                 </p>
               </div>
-              <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 ${isRTL ? 'rtl' : ''}`}>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
                 {categories.map((category, index) => (
                   <div key={index} className="group cursor-pointer">
                     <div className="bg-white dark:bg-gray-700 rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 dark:border-gray-600">
@@ -256,15 +256,15 @@ export default function Home1() {
           {/* Featured Products Section */}
           <section className="py-20 bg-white dark:bg-gray-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className={`text-center mb-16 `}>
-                <h2 className={`text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 `}>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                   {t('home1.featuredProducts.title')}
                 </h2>
-                <p className={`text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto `}>
+                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                   {t('home1.featuredProducts.subtitle')}
                 </p>
               </div>
-              <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ${isRTL ? 'rtl' : ''}`}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {(showAllProducts ? allProducts : featuredProducts).map((product) => (
                   <div key={product.id} className="group">
                     <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
@@ -274,15 +274,15 @@ export default function Home1() {
                           alt={product.name}
                           className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                         />
-                        <div className={`absolute top-3  bg-indigo-600 text-white px-2 py-1 rounded-full text-xs font-semibold`}>
+                        <div className="absolute top-3 right-3 bg-indigo-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
                           -{Math.round(((parseFloat(product.originalPrice.replace('$', '')) - parseFloat(product.price.replace('$', ''))) / parseFloat(product.originalPrice.replace('$', ''))) * 100)}%
                         </div>
                       </div>
                       <div className="p-6">
-                        <h3 className={`font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors ${isRTL ? 'text-right' : 'text-left'}`}>
+                        <h3 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors text-left">
                           {t(product.name)}
                         </h3>
-                        <div className={`flex items-center mb-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <div className="flex items-center mb-3">
                           <div className="flex text-yellow-400">
                             {[...Array(5)].map((_, i) => (
                               <svg key={i} className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'fill-current' : 'fill-gray-300 dark:fill-gray-600'}`} viewBox="0 0 20 20">
@@ -290,12 +290,12 @@ export default function Home1() {
                               </svg>
                             ))}
                           </div>
-                          <span className={`text-sm text-gray-600 dark:text-gray-400 ${isRTL ? 'mr-2' : 'ml-2'}`}>({product.reviews})</span>
+                          <span className="text-sm text-gray-600 dark:text-gray-400 ml-2">({product.reviews})</span>
                         </div>
-                        <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
-                          <div >
+                        <div className="flex items-center justify-between">
+                          <div>
                             <span className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{product.price}</span>
-                            <span className={`text-sm text-gray-500 dark:text-gray-400 line-through ${isRTL ? 'mr-2' : 'ml-2'}`}>{product.originalPrice}</span>
+                            <span className="text-sm text-gray-500 dark:text-gray-400 line-through ml-2">{product.originalPrice}</span>
                           </div>
                           <div className="relative">
                             <button 
@@ -305,7 +305,7 @@ export default function Home1() {
                               {t('home1.featuredProducts.addToCart')}
                             </button>
                             {showCartMessage === product.id && (
-                              <div className={`absolute -top-12  transform ${isRTL ? 'translate-x-1/2' : '-translate-x-1/2'} bg-green-500 text-white px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap z-10`}>
+                              <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap z-10">
                                 {t('home1.cart.addedToCart')}
                               </div>
                             )}
@@ -331,47 +331,47 @@ export default function Home1() {
           {cart.length > 0 && (
             <section className="py-12 bg-gray-50 dark:bg-gray-800">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className={`text-center mb-8 ${isRTL ? 'text-right' : 'text-left'}`}>
-                  <h3 className={`text-2xl font-bold text-gray-900 dark:text-white mb-2 ${isRTL ? 'text-right' : 'text-left'}`}>
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     {t('home1.cart.title')} ({cart.reduce((total, item) => total + item.quantity, 0)} {t('home1.cart.items')})
                   </h3>
-                  <p className={`text-gray-600 dark:text-gray-300 ${isRTL ? 'text-right' : 'text-left'}`}>
+                  <p className="text-gray-600 dark:text-gray-300">
                     {t('home1.cart.total')}: ${cart.reduce((total, item) => total + (parseFloat(item.price.replace('$', '')) * item.quantity), 0).toFixed(2)}
                   </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {cart.map((item) => (
                     <div key={item.id} className="bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-600">
-                                      <div className={`flex items-center ${isRTL ? 'flex-row-reverse space-x-reverse' : 'space-x-3'}`}>
-                  <img 
-                    src={item.image} 
-                    alt={item.name}
-                    className="w-12 h-12 object-cover rounded-lg"
-                  />
-                  <div className={`flex-1 min-w-0 ${isRTL ? 'text-right' : 'text-left'}`}>
-                    <h4 className="text-sm font-medium text-gray-900 dark:text-white truncate">
-                      {item.name}
-                    </h4>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      {item.price} × {item.quantity}
-                    </p>
-                  </div>
-                  <button 
-                    onClick={() => setCart(prevCart => prevCart.filter(cartItem => cartItem.id !== item.id))}
-                    className="text-red-500 hover:text-red-700 transition-colors"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
+                      <div className="flex items-center space-x-3">
+                        <img 
+                          src={item.image} 
+                          alt={item.name}
+                          className="w-12 h-12 object-cover rounded-lg"
+                        />
+                        <div className="flex-1 min-w-0 text-left">
+                          <h4 className="text-sm font-medium text-gray-900 dark:text-white truncate">
+                            {item.name}
+                          </h4>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                            {item.price} × {item.quantity}
+                          </p>
+                        </div>
+                        <button 
+                          onClick={() => setCart(prevCart => prevCart.filter(cartItem => cartItem.id !== item.id))}
+                          className="text-red-500 hover:text-red-700 transition-colors"
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
-                <div className={`text-center mt-6 ${isRTL ? 'space-x-reverse' : ''}`}>
+                <div className="text-center mt-6">
                   <button 
                     onClick={() => setCart([])}
-                    className={`bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium ${isRTL ? 'ml-4' : 'mr-4'}`}
+                    className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium mr-4"
                   >
                     {t('home1.cart.clearCart')}
                   </button>
@@ -386,11 +386,11 @@ export default function Home1() {
           {/* Stats Section */}
           <section className="py-20 bg-indigo-900 text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className={`text-center mb-16 ${isRTL ? 'text-right' : 'text-left'}`}>
-                <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   {t('home1.stats.title')}
                 </h2>
-                <p className={`text-xl text-indigo-200 max-w-3xl mx-auto ${isRTL ? 'text-right' : 'text-left'}`}>
+                <p className="text-xl text-indigo-200 max-w-3xl mx-auto">
                   {t('home1.stats.subtitle')}
                 </p>
               </div>
@@ -412,15 +412,15 @@ export default function Home1() {
           {/* Testimonials Section - Flip Cards */}
           <section className="py-20 bg-gray-50 dark:bg-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className={`text-center mb-16 ${isRTL ? 'text-right' : 'text-left'}`}>
-                <h2 className={`text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                   {t('home1.testimonials.title')}
                 </h2>
-                <p className={`text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto ${isRTL ? 'text-right' : 'text-left'}`}>
+                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                   {t('home1.testimonials.subtitle')}
                 </p>
               </div>
-              <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ${isRTL ? 'rtl' : ''}`}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {testimonials.map((testimonial, index) => (
                   <div key={index} className="group perspective-1000">
                     <div className="relative w-full h-80 transition-all duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
@@ -435,7 +435,7 @@ export default function Home1() {
                         </div>
                         <h4 className="font-semibold text-gray-900 dark:text-white text-lg mb-2">{t(testimonial.name)}</h4>
                         <p className="text-sm text-indigo-600 dark:text-indigo-400 mb-3">{t(testimonial.role)}</p>
-                        <div className={`flex text-yellow-400 mb-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <div className="flex text-yellow-400 mb-3">
                           {[...Array(testimonial.rating)].map((_, i) => (
                             <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -477,54 +477,54 @@ export default function Home1() {
             </div>
             
             <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className={`text-center mb-16 ${isRTL ? 'text-right' : 'text-left'}`}>
+              <div className="text-center mb-16">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-6">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   {t('home1.newsletter.title')}
                 </h2>
-                <p className={`text-xl text-indigo-100 max-w-3xl mx-auto ${isRTL ? 'text-right' : 'text-left'}`}>
+                <p className="text-xl text-indigo-100 max-w-3xl mx-auto">
                   {t('home1.newsletter.subtitle')}
                 </p>
               </div>
 
-              <div className={`grid md:grid-cols-2 gap-12 items-center ${isRTL ? 'md:grid-cols-reverse' : ''}`}>
+              <div className="grid md:grid-cols-2 gap-12 items-center">
                 {/* Left Side - Benefits */}
                 <div className="space-y-6">
-                  <div className={`flex items-start ${isRTL ? 'flex-row-reverse space-x-reverse' : 'space-x-4'}`}>
+                  <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                       <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                     </div>
-                    <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
+                    <div className="text-left">
                       <h3 className="font-semibold text-lg mb-1">{t('home1.newsletter.exclusiveDeals')}</h3>
                       <p className="text-indigo-100">{t('home1.newsletter.exclusiveDealsDesc')}</p>
                     </div>
                   </div>
                   
-                  <div className={`flex items-start ${isRTL ? 'flex-row-reverse space-x-reverse' : 'space-x-4'}`}>
+                  <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                       <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                     </div>
-                    <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
+                    <div className="text-left">
                       <h3 className="font-semibold text-lg mb-1">{t('home1.newsletter.newProducts')}</h3>
                       <p className="text-indigo-100">{t('home1.newsletter.newProductsDesc')}</p>
                     </div>
                   </div>
                   
-                  <div className={`flex items-start ${isRTL ? 'flex-row-reverse space-x-reverse' : 'space-x-4'}`}>
+                  <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                       <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                     </div>
-                    <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
+                    <div className="text-left">
                       <h3 className="font-semibold text-lg mb-1">{t('home1.newsletter.shoppingTips')}</h3>
                       <p className="text-indigo-100">{t('home1.newsletter.shoppingTipsDesc')}</p>
                     </div>
@@ -535,7 +535,7 @@ export default function Home1() {
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                   <form onSubmit={handleSubscribe} className="space-y-6">
                     <div>
-                      <label htmlFor="email" className={`block text-sm font-medium text-indigo-100 mb-2 ${isRTL ? 'text-right' : 'text-left'}`}>
+                      <label htmlFor="email" className="block text-sm font-medium text-indigo-100 mb-2 text-left">
                         {t('home1.newsletter.emailLabel')}
                       </label>
                       <input 
@@ -544,7 +544,7 @@ export default function Home1() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder={t('home1.newsletter.emailPlaceholder')}
-                        className={`w-full px-6 py-4 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 bg-white/90 backdrop-blur-sm ${isRTL ? 'text-right' : 'text-left'}`}
+                        className="w-full px-6 py-4 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 bg-white/90 backdrop-blur-sm text-left"
                         required
                       />
                     </div>

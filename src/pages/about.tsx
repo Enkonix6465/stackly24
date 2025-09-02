@@ -6,7 +6,7 @@ import VideoBackground from '../components/VideoBackground';
 import Link from 'next/link';
 import { useLanguage } from '../components/LanguageProvider';
 export default function About() {
-  const { t, isRTL } = useLanguage();
+  const { t } = useLanguage();
 
 //  data for the about page
 const teamMembers = [
@@ -143,9 +143,9 @@ const testimonials = [
           {/* Mission & Vision Section */}
           <section className="py-20 bg-gray-50 dark:bg-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className={`grid md:grid-cols-2 gap-12 items-center ${isRTL ? 'md:grid-cols-reverse' : ''}`}>
+              <div className="grid md:grid-cols-2 gap-12 items-center">
                 {/* Mission */}
-                <div className={`${isRTL ? 'md:text-right' : ''}`}>
+                <div>
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 rounded-full mb-6">
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -160,7 +160,7 @@ const testimonials = [
                 </div>
                 
                 {/* Vision */}
-                <div className={`${isRTL ? 'md:text-left' : ''}`}>
+                <div>
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 rounded-full mb-6">
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -189,7 +189,7 @@ const testimonials = [
                   {t('about.valuesSubtitle')}
                 </p>
               </div>
-              <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ${isRTL ? 'rtl' : ''}`}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {values.map((value, index) => (
                   <div key={index} className="text-center group">
                     <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
@@ -220,7 +220,7 @@ const testimonials = [
                   {t('about.achievementsSubtitle')}
                 </p>
               </div>
-              <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 ${isRTL ? 'rtl' : ''}`}>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
                 {achievements.map((achievement, index) => (
                   <div key={index} className="text-center">
                     <div className="text-4xl mb-3 flex justify-center">
@@ -249,7 +249,7 @@ const testimonials = [
                   {t('about.teamSubtitle')}
                 </p>
               </div>
-              <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ${isRTL ? 'rtl' : ''}`}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {teamMembers.map((member) => (
                   <div key={member.id} className="group">
                     <div className="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-600">
@@ -270,7 +270,7 @@ const testimonials = [
                         <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                           {member.bio}
                         </p>
-                        <div className={`flex space-x-3 ${isRTL ? 'space-x-reverse' : ''}`}>
+                        <div className="flex space-x-3">
                           <a href={member.social.linkedin} className="text-gray-400 hover:text-indigo-600 transition-colors">
                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                               <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.5 10.268h-3v-4.604c0-1.099-.021-2.513-1.532-2.513-1.532 0-1.767 1.197-1.767 2.434v4.683h-3v-9h2.885v1.233h.041c.402-.762 1.384-1.566 2.849-1.566 3.046 0 3.607 2.006 3.607 4.617v4.716z"/>
@@ -338,20 +338,26 @@ const testimonials = [
           </section>
 
           {/* CTA Section */}
-          <section className="py-20 bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 text-white">
-            <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <section className="relative py-20 text-white overflow-hidden">
+            {/* Background Image with Black Overlay */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: 'url(/images/ACTA.jpg)' }}
+            >
+              <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+            </div>
+            
+            {/* Content */}
+            <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 {t('about.cta.title')}
               </h2>
-              <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
                 {t('about.cta.subtitle')}
               </p>
-              <div className={`flex flex-col sm:flex-row gap-4 justify-center ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
+              <div className="flex justify-center">
                 <Link href="/contact" className="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors duration-300 shadow-lg">
                   {t('about.cta.getStarted')}
-                </Link>
-                <Link href="/services" className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-indigo-600 transition-all duration-300">
-                  {t('about.cta.exploreServices')}
                 </Link>
               </div>
             </div>

@@ -9,6 +9,8 @@ import { Separator } from '@/components/ui/separator';
 import { Sidebar } from '@/components/ui/sidebar';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ModeToggle } from '@/components/theme/ModeToggle';
+import { LanguageSelector } from '@/components/LanguageSelector';
+import { useLanguage } from '@/components/LanguageProvider';
 import {
   LogOut,
   User,
@@ -44,6 +46,7 @@ interface User {
 }
 
 export default function SettingsPage() {
+  const { t, isRTL } = useLanguage();
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -57,7 +60,7 @@ export default function SettingsPage() {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
     if (!user || user.role !== 'admin') {
-      alert('Access denied. Admin privileges required.');
+      alert(t('dashboard.settings.messages.accessDenied'));
       window.location.href = '/auth';
       return;
     }
@@ -68,7 +71,7 @@ export default function SettingsPage() {
       mobile: user.mobile,
       password: user.password
     });
-  }, []);
+  }, [t]);
 
   const handleLogout = () => {
     localStorage.removeItem('currentUser');
@@ -114,19 +117,19 @@ export default function SettingsPage() {
       });
 
       if (response.ok) {
-        alert('Profile updated successfully!');
+        alert(t('dashboard.settings.messages.profileUpdated'));
         setIsEditing(false);
       } else {
         throw new Error('Failed to update profile');
       }
     } catch (error) {
       console.error('Error updating profile:', error);
-      alert('Failed to update profile. Please try again.');
+      alert(t('dashboard.settings.messages.updateFailed'));
     }
   };
 
   const formatDate = (dateString?: string) => {
-    if (!dateString) return 'Never';
+    if (!dateString) return t('dashboard.settings.accountStatus.never');
     return new Date(dateString).toLocaleString();
   };
 
@@ -141,13 +144,13 @@ export default function SettingsPage() {
   return (
     <>
       <Head>
-        <title>Settings - ShopEase Admin</title>
-        <meta name="description" content="Admin settings and profile management" />
+        <title>{t('dashboard.settings.pageTitle')}</title>
+        <meta name="description" content={t('dashboard.settings.pageDescription')} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen bg-background">
+      <div className={`min-h-screen bg-background ${isRTL ? 'rtl' : 'ltr'}`}>
         {/* Top Header */}
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="container flex h-14 items-center">
@@ -169,21 +172,22 @@ export default function SettingsPage() {
 
             <div className="mr-4 flex md:hidden">
               <h1 className="text-lg font-bold text-purple-700 dark:text-purple-400">
-                ShopEase Admin
+                {t('dashboard.settings.brandName')}
               </h1>
             </div>
 
             <div className="mr-4 hidden md:flex">
               <h1 className="text-xl font-bold text-purple-700 dark:text-purple-400">
-                ShopEase Admin
+                {t('dashboard.settings.brandName')}
               </h1>
             </div>
 
             <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
               <div className="flex items-center space-x-2">
                 <span className="hidden sm:inline text-sm text-muted-foreground">
-                  Welcome, {currentUser.username}
+                  {t('dashboard.settings.welcome')}, {currentUser.username}
                 </span>
+                <LanguageSelector />
                 <ModeToggle />
                 <Button
                   variant="outline"
@@ -192,7 +196,7 @@ export default function SettingsPage() {
                   className="flex items-center space-x-2"
                 >
                   <LogOut className="h-4 w-4" />
-                  <span className="hidden sm:inline">Logout</span>
+                  <span className="hidden sm:inline">{t('dashboard.settings.logout')}</span>
                 </Button>
               </div>
             </div>
@@ -212,9 +216,9 @@ export default function SettingsPage() {
             <div className="space-y-6">
               {/* Page Header */}
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Settings & Profile</h2>
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tight">{t('dashboard.settings.pageHeader.title')}</h2>
                 <p className="text-muted-foreground">
-                  Manage your admin profile and application settings.
+                  {t('dashboard.settings.pageHeader.description')}
                 </p>
               </div>
 
@@ -225,26 +229,26 @@ export default function SettingsPage() {
                     <div>
                       <CardTitle className="flex items-center space-x-2">
                         <User className="h-5 w-5" />
-                        <span>Admin Profile</span>
+                        <span>{t('dashboard.settings.profile.title')}</span>
                       </CardTitle>
                       <CardDescription>
-                        Your personal information and account details
+                        {t('dashboard.settings.profile.description')}
                       </CardDescription>
                     </div>
                     {!isEditing ? (
                       <Button onClick={handleEdit} className="flex items-center space-x-2">
                         <Edit className="h-4 w-4" />
-                        Edit Profile
+                        {t('dashboard.settings.profile.editProfile')}
                       </Button>
                     ) : (
                       <div className="flex space-x-2">
                         <Button onClick={handleSave} className="flex items-center space-x-2">
                           <Save className="h-4 w-4" />
-                          Save Changes
+                          {t('dashboard.settings.profile.saveChanges')}
                         </Button>
                         <Button variant="outline" onClick={handleCancel} className="flex items-center space-x-2">
                           <X className="h-4 w-4" />
-                          Cancel
+                          {t('dashboard.settings.profile.cancel')}
                         </Button>
                       </div>
                     )}
@@ -259,48 +263,48 @@ export default function SettingsPage() {
                     <div className="flex-1 space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label htmlFor="username">Username</Label>
+                          <Label htmlFor="username">{t('dashboard.settings.profile.username')}</Label>
                           {isEditing ? (
                             <Input
                               id="username"
                               value={editForm.username}
                               onChange={(e) => setEditForm(prev => ({ ...prev, username: e.target.value }))}
-                              placeholder="Enter username"
+                              placeholder={t('dashboard.settings.profile.usernamePlaceholder')}
                             />
                           ) : (
                             <div className="text-sm font-medium">{currentUser.username}</div>
                           )}
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="email">Email</Label>
+                          <Label htmlFor="email">{t('dashboard.settings.profile.email')}</Label>
                           {isEditing ? (
                             <Input
                               id="email"
                               type="email"
                               value={editForm.email}
                               onChange={(e) => setEditForm(prev => ({ ...prev, email: e.target.value }))}
-                              placeholder="Enter email"
+                              placeholder={t('dashboard.settings.profile.emailPlaceholder')}
                             />
                           ) : (
                             <div className="text-sm font-medium">{currentUser.email}</div>
                           )}
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="mobile">Mobile Number</Label>
+                          <Label htmlFor="mobile">{t('dashboard.settings.profile.mobile')}</Label>
                           {isEditing ? (
                             <Input
                               id="mobile"
                               type="tel"
                               value={editForm.mobile}
                               onChange={(e) => setEditForm(prev => ({ ...prev, mobile: e.target.value }))}
-                              placeholder="Enter mobile number"
+                              placeholder={t('dashboard.settings.profile.mobilePlaceholder')}
                             />
                           ) : (
                             <div className="text-sm font-medium">{currentUser.mobile}</div>
                           )}
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="password">Password</Label>
+                          <Label htmlFor="password">{t('dashboard.settings.profile.password')}</Label>
                           {isEditing ? (
                             <div className="relative">
                               <Input
@@ -308,7 +312,7 @@ export default function SettingsPage() {
                                 type={showPassword ? "text" : "password"}
                                 value={editForm.password}
                                 onChange={(e) => setEditForm(prev => ({ ...prev, password: e.target.value }))}
-                                placeholder="Enter password"
+                                placeholder={t('dashboard.settings.profile.passwordPlaceholder')}
                               />
                               <Button
                                 type="button"
@@ -321,7 +325,7 @@ export default function SettingsPage() {
                               </Button>
                             </div>
                           ) : (
-                            <div className="text-sm font-medium">••••••••</div>
+                            <div className="text-sm font-medium">{t('dashboard.settings.profile.passwordHidden')}</div>
                           )}
                         </div>
                       </div>
@@ -332,26 +336,26 @@ export default function SettingsPage() {
 
                   {/* Account Status */}
                   <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">Account Status</h3>
+                    <h3 className="text-lg font-semibold">{t('dashboard.settings.accountStatus.title')}</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                        <span className="text-sm font-medium">Role</span>
+                        <span className="text-sm font-medium">{t('dashboard.settings.accountStatus.role')}</span>
                         <Badge variant="default" className="bg-green-600">
                           {currentUser.role}
                         </Badge>
                       </div>
                       <div className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                        <span className="text-sm font-medium">Status</span>
+                        <span className="text-sm font-medium">{t('dashboard.settings.accountStatus.status')}</span>
                         <Badge variant="default" className="bg-blue-600">
-                          {currentUser.isApproved ? 'Approved' : 'Pending'}
+                          {currentUser.isApproved ? t('dashboard.settings.accountStatus.approved') : t('dashboard.settings.accountStatus.pending')}
                         </Badge>
                       </div>
                       <div className="flex items-center justify-between p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-                        <span className="text-sm font-medium">Approved By</span>
-                        <span className="text-sm">{currentUser.approvedBy || 'System'}</span>
+                        <span className="text-sm font-medium">{t('dashboard.settings.accountStatus.approvedBy')}</span>
+                        <span className="text-sm">{currentUser.approvedBy || t('dashboard.settings.accountStatus.system')}</span>
                       </div>
                       <div className="flex items-center justify-between p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-                        <span className="text-sm font-medium">Approval Date</span>
+                        <span className="text-sm font-medium">{t('dashboard.settings.accountStatus.approvalDate')}</span>
                         <span className="text-sm">{formatDate(currentUser.approvalDate)}</span>
                       </div>
                     </div>
@@ -361,33 +365,33 @@ export default function SettingsPage() {
 
                   {/* Activity Information */}
                   <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">Activity Information</h3>
+                    <h3 className="text-lg font-semibold">{t('dashboard.settings.activityInfo.title')}</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-900/20 rounded-lg">
                         <Calendar className="h-4 w-4 text-gray-500" />
                         <div>
-                          <div className="text-sm font-medium">Account Created</div>
+                          <div className="text-sm font-medium">{t('dashboard.settings.activityInfo.accountCreated')}</div>
                           <div className="text-sm text-gray-500">{formatDate(currentUser.createdAt)}</div>
                         </div>
                       </div>
                       <div className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-900/20 rounded-lg">
                         <Clock className="h-4 w-4 text-gray-500" />
                         <div>
-                          <div className="text-sm font-medium">Last Updated</div>
+                          <div className="text-sm font-medium">{t('dashboard.settings.activityInfo.lastUpdated')}</div>
                           <div className="text-sm text-gray-500">{formatDate(currentUser.updatedAt)}</div>
                         </div>
                       </div>
                       <div className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-900/20 rounded-lg">
                         <Clock className="h-4 w-4 text-gray-500" />
                         <div>
-                          <div className="text-sm font-medium">Last Login</div>
+                          <div className="text-sm font-medium">{t('dashboard.settings.activityInfo.lastLogin')}</div>
                           <div className="text-sm text-gray-500">{formatDate(currentUser.loginTime)}</div>
                         </div>
                       </div>
                       <div className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-900/20 rounded-lg">
                         <Clock className="h-4 w-4 text-gray-500" />
                         <div>
-                          <div className="text-sm font-medium">Last Active</div>
+                          <div className="text-sm font-medium">{t('dashboard.settings.activityInfo.lastActive')}</div>
                           <div className="text-sm text-gray-500">{formatDate(currentUser.lastActive)}</div>
                         </div>
                       </div>
@@ -401,35 +405,35 @@ export default function SettingsPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
                     <SettingsIcon className="h-5 w-5" />
-                    <span>Application Settings</span>
+                    <span>{t('dashboard.settings.appSettings.title')}</span>
                   </CardTitle>
                   <CardDescription>
-                    Configure application preferences and system settings
+                    {t('dashboard.settings.appSettings.description')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-900/20 rounded-lg">
                     <div>
-                      <div className="text-sm font-medium">Dark Mode</div>
-                      <div className="text-sm text-gray-500">Toggle between light and dark themes</div>
+                      <div className="text-sm font-medium">{t('dashboard.settings.appSettings.darkMode')}</div>
+                      <div className="text-sm text-gray-500">{t('dashboard.settings.appSettings.darkModeDesc')}</div>
                     </div>
                     <ModeToggle />
                   </div>
                   
                   <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-900/20 rounded-lg">
                     <div>
-                      <div className="text-sm font-medium">Data Storage</div>
-                      <div className="text-sm text-gray-500">Local JSON file storage system</div>
+                      <div className="text-sm font-medium">{t('dashboard.settings.appSettings.dataStorage')}</div>
+                      <div className="text-sm text-gray-500">{t('dashboard.settings.appSettings.dataStorageDesc')}</div>
                     </div>
-                    <Badge variant="secondary">Active</Badge>
+                    <Badge variant="secondary">{t('dashboard.settings.appSettings.active')}</Badge>
                   </div>
 
                   <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-900/20 rounded-lg">
                     <div>
-                      <div className="text-sm font-medium">Admin Approval System</div>
-                      <div className="text-sm text-gray-500">Requires approval for new admin accounts</div>
+                      <div className="text-sm font-medium">{t('dashboard.settings.appSettings.adminApproval')}</div>
+                      <div className="text-sm text-gray-500">{t('dashboard.settings.appSettings.adminApprovalDesc')}</div>
                     </div>
-                    <Badge variant="default" className="bg-green-600">Enabled</Badge>
+                    <Badge variant="default" className="bg-green-600">{t('dashboard.settings.appSettings.enabled')}</Badge>
                   </div>
                 </CardContent>
               </Card>

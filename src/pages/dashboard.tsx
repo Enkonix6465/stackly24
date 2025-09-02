@@ -7,6 +7,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Sidebar } from '@/components/ui/sidebar';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ModeToggle } from '@/components/theme/ModeToggle';
+import { LanguageSelector } from '@/components/LanguageSelector';
+import { useLanguage } from '@/components/LanguageProvider';
 import {
   Users,
   LogOut,
@@ -59,6 +61,7 @@ export default function Dashboard() {
   const [users, setUsers] = useState<User[]>([]);
   const [adminRequests, setAdminRequests] = useState<AdminRequest[]>([]);
   const [loading, setLoading] = useState(true);
+  const { t, currentLanguage } = useLanguage();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
@@ -95,19 +98,32 @@ export default function Dashboard() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'pending':
-        return <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">Pending</Badge>;
+        return <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">{t('dashboard.adminRequests.status.pending')}</Badge>;
       case 'approved':
-        return <Badge variant="default" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Approved</Badge>;
+        return <Badge variant="default" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">{t('dashboard.adminRequests.status.approved')}</Badge>;
       case 'rejected':
-        return <Badge variant="destructive">Rejected</Badge>;
+        return <Badge variant="destructive">{t('dashboard.adminRequests.status.rejected')}</Badge>;
       default:
         return <Badge variant="outline">{status}</Badge>;
     }
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleString();
+    const date = new Date(dateString);
+    const locale = currentLanguage === 'ar' ? 'ar-SA' : currentLanguage === 'he' ? 'he-IL' : 'en-US';
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    };
+    return date.toLocaleString(locale, options);
   };
+
+
 
   if (!currentUser) {
     return (
@@ -125,13 +141,14 @@ export default function Dashboard() {
   return (
     <>
       <Head>
-        <title>Admin Dashboard - ShopEase</title>
-        <meta name="description" content="ShopEase admin dashboard" />
+        <title>{t('dashboard.main.pageTitle')} - ShopEase</title>
+        <meta name="description" content={t('dashboard.main.pageDescription')} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="min-h-screen bg-background">
+        {/* Top Header */}
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="container flex h-14 items-center">
             {/* Mobile Menu Toggle */}
@@ -150,23 +167,24 @@ export default function Dashboard() {
               </Sheet>
             </div>
 
-            <div className="mr-4 flex md:hidden">
+                            <div className="mr-4 flex md:hidden">
               <h1 className="text-lg font-bold text-purple-700 dark:text-purple-400">
-                ShopEase Admin
+                {t('dashboard.main.brandName')}
               </h1>
             </div>
 
-            <div className="mr-4 hidden md:flex">
+                            <div className="mr-4 hidden md:flex">
               <h1 className="text-xl font-bold text-purple-700 dark:text-purple-400">
-                ShopEase Admin
+                {t('dashboard.main.brandName')}
               </h1>
             </div>
 
             <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
               <div className="flex items-center space-x-2">
                 <span className="hidden sm:inline text-sm text-muted-foreground">
-                  Welcome, {currentUser.username}
+                  {t('dashboard.main.welcome')}, {currentUser.username}
                 </span>
+                <LanguageSelector />
                 <ModeToggle />
                 <Button
                   variant="outline"
@@ -175,7 +193,7 @@ export default function Dashboard() {
                   className="flex items-center space-x-2"
                 >
                   <LogOut className="h-4 w-4" />
-                  <span className="hidden sm:inline">Logout</span>
+                  <span className="hidden sm:inline">{t('nav.logout')}</span>
                 </Button>
               </div>
             </div>
@@ -195,123 +213,78 @@ export default function Dashboard() {
             <div className="space-y-6">
               {/* Page Header */}
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Dashboard Overview</h2>
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tight">{t('dashboard.main.pageHeader.title')}</h2>
                 <p className="text-muted-foreground">
-                  Welcome to your admin dashboard. Monitor system activity and manage users.
+                  {t('dashboard.main.pageHeader.description')}
                 </p>
               </div>
 
               {/* Stats Cards */}
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <div className="grid gap-4 md:grid-cols-3">
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Total Users</CardTitle>
+                    <CardTitle className="text-sm font-medium">{t('dashboard.main.stats.totalUsers')}</CardTitle>
                     <Users className="h-4 w-4 text-muted-foreground" />
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">{approvedUsers.length}</div>
-                    <p className="text-xs text-muted-foreground">
-                      Approved users only
-                    </p>
+                    <div className="text-2xl font-bold">{users.length}</div>
                   </CardContent>
                 </Card>
 
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Regular Users</CardTitle>
-                    <User className="h-4 w-4 text-muted-foreground" />
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold">{approvedUsers.filter(u => u.role === 'user').length}</div>
-                    <p className="text-xs text-muted-foreground">
-                      Active user accounts
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Approved Admins</CardTitle>
-                    <Shield className="h-4 w-4 text-muted-foreground" />
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold">{approvedUsers.filter(u => u.role === 'admin' && u.isApproved).length}</div>
-                    <p className="text-xs text-muted-foreground">
-                      Active admin accounts
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Pending Admin Requests</CardTitle>
+                    <CardTitle className="text-sm font-medium">{t('dashboard.main.stats.pendingRequests')}</CardTitle>
                     <AlertCircle className="h-4 w-4 text-yellow-500" />
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold text-yellow-600">{pendingAdminRequests.length}</div>
-                    <p className="text-xs text-muted-foreground">
-                      Awaiting approval
-                    </p>
+                    <div className="text-2xl font-bold text-yellow-600">
+                      {adminRequests.filter(req => req.status === 'pending').length}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium">{t('dashboard.main.stats.approvedRequests')}</CardTitle>
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold text-green-600">
+                      {adminRequests.filter(req => req.status === 'approved').length}
+                    </div>
                   </CardContent>
                 </Card>
               </div>
 
-              {/* Admin Requests Summary */}
+              {/* Quick Actions */}
               <Card>
                 <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <CardTitle>Admin Requests Overview</CardTitle>
-                      <CardDescription>
-                        Summary of admin registration requests
-                      </CardDescription>
-                    </div>
-                    <Button onClick={() => window.location.href = '/dashboard/admin-requests'}>
-                      View All Requests
-                    </Button>
-                  </div>
+                  <CardTitle>{t('dashboard.main.quickActions.title')}</CardTitle>
+                  <CardDescription>
+                    {t('dashboard.main.quickActions.description')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid gap-4 md:grid-cols-3">
-                    <div className="flex items-center space-x-2">
-                      <AlertCircle className="h-5 w-5 text-yellow-500" />
-                      <div>
-                        <div className="text-2xl font-bold text-yellow-600">{pendingAdminRequests.length}</div>
-                        <div className="text-sm text-muted-foreground">Pending</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="h-5 w-5 text-green-500" />
-                      <div>
-                        <div className="text-2xl font-bold text-green-600">{approvedAdminRequests.length}</div>
-                        <div className="text-sm text-muted-foreground">Approved</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <XCircle className="h-5 w-5 text-red-500" />
-                      <div>
-                        <div className="text-2xl font-bold text-red-600">{rejectedAdminRequests.length}</div>
-                        <div className="text-sm text-muted-foreground">Rejected</div>
-                      </div>
-                    </div>
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <Button onClick={() => window.location.href = '/dashboard/admin-requests'}>
+                      <Shield className="h-4 w-4 mr-2" />
+                      {t('dashboard.main.quickActions.manageAdminRequests')}
+                    </Button>
+                    <Button onClick={() => window.location.href = '/dashboard/users'}>
+                      <Users className="h-4 w-4 mr-2" />
+                      {t('dashboard.main.quickActions.manageUsers')}
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
 
-              {/* Recent Users Table */}
+              {/* Recent Admin Requests */}
               <Card>
                 <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <CardTitle>Recent Users</CardTitle>
-                      <CardDescription>
-                        Latest approved users in the system
-                      </CardDescription>
-                    </div>
-                    <Button onClick={() => window.location.href = '/dashboard/users'}>
-                      View All Users
-                    </Button>
-                  </div>
+                  <CardTitle>{t('dashboard.main.recentRequests.title')}</CardTitle>
+                  <CardDescription>
+                    {t('dashboard.main.recentRequests.description')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   {loading ? (
@@ -323,66 +296,26 @@ export default function Dashboard() {
                       <Table>
                         <TableHeader>
                           <TableRow>
-                            <TableHead>User</TableHead>
-                            <TableHead className="hidden md:table-cell">Contact</TableHead>
-                            <TableHead className="hidden lg:table-cell">Role</TableHead>
-                            <TableHead className="hidden lg:table-cell">Last Active</TableHead>
-                            <TableHead className="hidden xl:table-cell">Created</TableHead>
+                            <TableHead>{t('dashboard.main.recentRequests.headers.username')}</TableHead>
+                            <TableHead>{t('dashboard.main.recentRequests.headers.email')}</TableHead>
+                            <TableHead>{t('dashboard.main.recentRequests.headers.status')}</TableHead>
+                            <TableHead>{t('dashboard.main.recentRequests.headers.date')}</TableHead>
                           </TableRow>
                         </TableHeader>
                         <TableBody>
-                          {approvedUsers.slice(0, 5).map((user, index) => (
-                            <TableRow key={index}>
+                          {adminRequests.slice(0, 5).map((request) => (
+                            <TableRow key={request.id}>
                               <TableCell>
                                 <div className="flex items-center space-x-3">
-                                  <div className={`h-8 w-8 rounded-full flex items-center justify-center ${
-                                    user.role === 'admin'
-                                      ? 'bg-purple-100 dark:bg-purple-900'
-                                      : 'bg-green-100 dark:bg-green-900'
-                                  }`}>
-                                    {user.role === 'admin' ? (
-                                      <Shield className="h-4 w-4 text-purple-600 dark:text-purple-400" />
-                                    ) : (
-                                      <User className="h-4 w-4 text-green-600 dark:text-green-400" />
-                                    )}
+                                  <div className="h-8 w-8 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
+                                    <UserCheck className="h-4 w-4 text-purple-600 dark:text-purple-400" />
                                   </div>
-                                  <div>
-                                    <div className="font-medium">{user.username}</div>
-                                    <div className="text-sm text-muted-foreground md:hidden">
-                                      {user.email}
-                                    </div>
-                                  </div>
+                                  <div className="font-medium">{request.username}</div>
                                 </div>
                               </TableCell>
-                              <TableCell className="hidden md:table-cell">
-                                <div className="space-y-1">
-                                  <div className="flex items-center space-x-2 text-sm">
-                                    <Mail className="h-3 w-3 text-muted-foreground" />
-                                    <span>{user.email}</span>
-                                  </div>
-                                  <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                                    <Phone className="h-3 w-3" />
-                                    <span>{user.mobile}</span>
-                                  </div>
-                                </div>
-                              </TableCell>
-                              <TableCell className="hidden lg:table-cell">
-                                <Badge variant={user.role === 'admin' ? 'default' : 'secondary'}>
-                                  {user.role}
-                                </Badge>
-                              </TableCell>
-                              <TableCell className="hidden lg:table-cell">
-                                <div className="flex items-center space-x-2 text-sm">
-                                  <Clock className="h-3 w-3 text-muted-foreground" />
-                                  <span>{user.lastActive || 'Never'}</span>
-                                </div>
-                              </TableCell>
-                              <TableCell className="hidden xl:table-cell">
-                                <div className="flex items-center space-x-2 text-sm">
-                                  <Calendar className="h-3 w-3 text-muted-foreground" />
-                                  <span>{user.createdAt ? formatDate(user.createdAt) : 'N/A'}</span>
-                                </div>
-                              </TableCell>
+                              <TableCell>{request.email}</TableCell>
+                              <TableCell>{getStatusBadge(request.status)}</TableCell>
+                              <TableCell>{formatDate(request.createdAt)}</TableCell>
                             </TableRow>
                           ))}
                         </TableBody>

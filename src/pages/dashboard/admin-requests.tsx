@@ -10,6 +10,8 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Sidebar } from '@/components/ui/sidebar';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ModeToggle } from '@/components/theme/ModeToggle';
+import { LanguageSelector } from '@/components/LanguageSelector';
+import { useLanguage } from '@/components/LanguageProvider';
 import {
   Users,
   LogOut,
@@ -49,17 +51,18 @@ export default function AdminRequestsPage() {
   const [selectedRequest, setSelectedRequest] = useState<AdminRequest | null>(null);
   const [rejectionReason, setRejectionReason] = useState('');
   const [loading, setLoading] = useState(true);
+  const { t, currentLanguage, isRTL } = useLanguage();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
     if (!user || user.role !== 'admin') {
-      alert('Access denied. Admin privileges required.');
+      alert(t('dashboard.adminRequests.messages.accessDenied'));
       window.location.href = '/auth';
       return;
     }
     setCurrentUser(user);
     loadAdminRequests();
-  }, []);
+  }, [t]);
 
   const loadAdminRequests = async () => {
     try {
@@ -83,11 +86,11 @@ export default function AdminRequestsPage() {
     
     try {
       await adminRequestAPI.approve(request.id, currentUser.username);
-      alert('Admin request approved successfully!');
+      alert(t('dashboard.adminRequests.messages.requestApproved'));
       loadAdminRequests(); // Reload the list
     } catch (error) {
       console.error('Error approving request:', error);
-      alert('Failed to approve request');
+      alert(t('dashboard.adminRequests.messages.approveFailed'));
     }
   };
 
@@ -96,14 +99,14 @@ export default function AdminRequestsPage() {
     
     try {
       await adminRequestAPI.reject(selectedRequest.id, currentUser.username, rejectionReason);
-      alert('Admin request rejected successfully!');
+      alert(t('dashboard.adminRequests.messages.requestRejected'));
       setIsRejectDialogOpen(false);
       setSelectedRequest(null);
       setRejectionReason('');
       loadAdminRequests(); // Reload the list
     } catch (error) {
       console.error('Error rejecting request:', error);
-      alert('Failed to reject request');
+      alert(t('dashboard.adminRequests.messages.rejectFailed'));
     }
   };
 
@@ -115,18 +118,33 @@ export default function AdminRequestsPage() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'pending':
-        return <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">Pending</Badge>;
+        return <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">{t('dashboard.adminRequests.status.pending')}</Badge>;
       case 'approved':
-        return <Badge variant="default" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Approved</Badge>;
+        return <Badge variant="default" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">{t('dashboard.adminRequests.status.approved')}</Badge>;
       case 'rejected':
-        return <Badge variant="destructive">Rejected</Badge>;
+        return <Badge variant="destructive">{t('dashboard.adminRequests.status.rejected')}</Badge>;
       default:
         return <Badge variant="outline">{status}</Badge>;
     }
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleString();
+    const date = new Date(dateString);
+    const locale = currentLanguage === 'ar' ? 'ar-SA' : currentLanguage === 'he' ? 'he-IL' : 'en-US';
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    };
+    return date.toLocaleString(locale, options);
+  };
+
+  const translateRole = (role: string) => {
+    return t(`roles.${role.toLowerCase()}`) || role;
   };
 
   if (!currentUser) {
@@ -140,13 +158,13 @@ export default function AdminRequestsPage() {
   return (
     <>
       <Head>
-        <title>Admin Requests - ShopEase Admin</title>
-        <meta name="description" content="Manage admin requests in ShopEase admin panel" />
+        <title>{t('dashboard.adminRequests.pageTitle')} - ShopEase Admin</title>
+        <meta name="description" content={t('dashboard.adminRequests.pageDescription')} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen bg-background">
+              <div className="min-h-screen bg-background">
         {/* Top Header */}
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="container flex h-14 items-center">
@@ -166,22 +184,26 @@ export default function AdminRequestsPage() {
               </Sheet>
             </div>
 
-            <div className="mr-4 flex md:hidden">
+                            <div className="mr-4 flex md:hidden items-center space-x-2">
               <h1 className="text-lg font-bold text-purple-700 dark:text-purple-400">
-                ShopEase Admin
+                <span>{t('dashboard.adminRequests.brandName.shopEase')}</span>
+                <span className="ml-2 text-gray-600">{t('dashboard.adminRequests.brandName.admin')}</span>
               </h1>
+              <LanguageSelector />
             </div>
 
-            <div className="mr-4 hidden md:flex">
+                            <div className="mr-4 hidden md:flex items-center space-x-2">
               <h1 className="text-xl font-bold text-purple-700 dark:text-purple-400">
-                ShopEase Admin
+                <span>{t('dashboard.adminRequests.brandName.shopEase')}</span>
+                <span className="ml-2 text-gray-600">{t('dashboard.adminRequests.brandName.admin')}</span>
               </h1>
+              <LanguageSelector />
             </div>
 
             <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
               <div className="flex items-center space-x-2">
                 <span className="hidden sm:inline text-sm text-muted-foreground">
-                  Welcome, {currentUser.username}
+                  {t('dashboard.adminRequests.welcome')}, {currentUser.username}
                 </span>
                 <ModeToggle />
                 <Button
@@ -191,7 +213,7 @@ export default function AdminRequestsPage() {
                   className="flex items-center space-x-2"
                 >
                   <LogOut className="h-4 w-4" />
-                  <span className="hidden sm:inline">Logout</span>
+                  <span className="hidden sm:inline">{t('nav.logout')}</span>
                 </Button>
               </div>
             </div>
@@ -211,9 +233,9 @@ export default function AdminRequestsPage() {
             <div className="space-y-6">
               {/* Page Header */}
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Admin Requests Management</h2>
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tight">{t('dashboard.adminRequests.pageHeader.title')}</h2>
                 <p className="text-muted-foreground">
-                  Review and manage admin registration requests. Approve or reject new admin applications.
+                  {t('dashboard.adminRequests.pageHeader.description')}
                 </p>
               </div>
 
@@ -221,7 +243,7 @@ export default function AdminRequestsPage() {
               <div className="grid gap-4 md:grid-cols-3">
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Total Requests</CardTitle>
+                    <CardTitle className="text-sm font-medium">{t('dashboard.adminRequests.stats.totalRequests')}</CardTitle>
                     <Shield className="h-4 w-4 text-muted-foreground" />
                   </CardHeader>
                   <CardContent>
@@ -231,7 +253,7 @@ export default function AdminRequestsPage() {
 
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Pending</CardTitle>
+                    <CardTitle className="text-sm font-medium">{t('dashboard.adminRequests.stats.pending')}</CardTitle>
                     <AlertCircle className="h-4 w-4 text-yellow-500" />
                   </CardHeader>
                   <CardContent>
@@ -243,7 +265,7 @@ export default function AdminRequestsPage() {
 
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Approved</CardTitle>
+                    <CardTitle className="text-sm font-medium">{t('dashboard.adminRequests.stats.approved')}</CardTitle>
                     <CheckCircle className="h-4 w-4 text-green-500" />
                   </CardHeader>
                   <CardContent>
@@ -257,9 +279,9 @@ export default function AdminRequestsPage() {
               {/* Admin Requests Table */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Admin Registration Requests</CardTitle>
+                  <CardTitle>{t('dashboard.adminRequests.table.title')}</CardTitle>
                   <CardDescription>
-                    All admin registration requests with their current status
+                    {t('dashboard.adminRequests.table.description')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -272,44 +294,50 @@ export default function AdminRequestsPage() {
                       <Table>
                         <TableHeader>
                           <TableRow>
-                            <TableHead>Applicant</TableHead>
-                            <TableHead className="hidden md:table-cell">Contact</TableHead>
-                            <TableHead className="hidden lg:table-cell">Requested On</TableHead>
-                            <TableHead>Status</TableHead>
-                            <TableHead className="hidden xl:table-cell">Actions</TableHead>
-                            <TableHead>Actions</TableHead>
+                            <TableHead>{t('dashboard.adminRequests.table.headers.applicant')}</TableHead>
+                            <TableHead className="hidden md:table-cell">{t('dashboard.adminRequests.table.headers.role')}</TableHead>
+                            <TableHead className="hidden md:table-cell">{t('dashboard.adminRequests.table.headers.contact')}</TableHead>
+                            <TableHead className="hidden lg:table-cell">{t('dashboard.adminRequests.table.headers.requestedOn')}</TableHead>
+                            <TableHead>{t('dashboard.adminRequests.table.headers.status')}</TableHead>
+                            <TableHead className="hidden xl:table-cell">{t('dashboard.adminRequests.table.headers.actions')}</TableHead>
+                            <TableHead>{t('dashboard.adminRequests.table.headers.actions')}</TableHead>
                           </TableRow>
                         </TableHeader>
                         <TableBody>
                           {adminRequests.map((request) => (
                             <TableRow key={request.id}>
                               <TableCell>
-                                <div className="flex items-center space-x-3">
-                                  <div className="h-8 w-8 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
-                                    <UserCheck className="h-4 w-4 text-purple-600 dark:text-purple-400" />
-                                  </div>
-                                  <div>
-                                    <div className="font-medium">{request.username}</div>
-                                    <div className="text-sm text-muted-foreground md:hidden">
-                                      {request.email}
+                                                                  <div className={`flex items-center ${isRTL ? "space-x-reverse space-x-3" : "space-x-3"}`}>
+                                    <div className="h-8 w-8 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
+                                      <UserCheck className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                                    </div>
+                                    <div>
+                                      <div className="font-medium">{request.username}</div>
+                                      <div className="text-sm text-muted-foreground md:hidden">
+                                        {request.email}
+                                      </div>
                                     </div>
                                   </div>
+                              </TableCell>
+                              <TableCell className="hidden md:table-cell">
+                                <div className="text-sm font-medium">
+                                  {translateRole(request.role)}
                                 </div>
                               </TableCell>
                               <TableCell className="hidden md:table-cell">
                                 <div className="space-y-1">
-                                  <div className="flex items-center space-x-2 text-sm">
+                                  <div className={`flex items-center ${isRTL ? "space-x-reverse space-x-2" : "space-x-2"} text-sm`}>
                                     <Mail className="h-3 w-3 text-muted-foreground" />
                                     <span>{request.email}</span>
                                   </div>
-                                  <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                                  <div className={`flex items-center ${isRTL ? "space-x-reverse space-x-2" : "space-x-2"} text-sm text-muted-foreground`}>
                                     <Phone className="h-3 w-3" />
                                     <span>{request.mobile}</span>
                                   </div>
                                 </div>
                               </TableCell>
                               <TableCell className="hidden lg:table-cell">
-                                <div className="flex items-center space-x-2 text-sm">
+                                <div className={`flex items-center ${isRTL ? "space-x-reverse space-x-2" : "space-x-2"} text-sm`}>
                                   <Calendar className="h-3 w-3 text-muted-foreground" />
                                   <span>{formatDate(request.createdAt)}</span>
                                 </div>
@@ -319,37 +347,37 @@ export default function AdminRequestsPage() {
                               </TableCell>
                               <TableCell className="hidden xl:table-cell">
                                 {request.status === 'pending' ? (
-                                  <div className="flex space-x-2">
+                                  <div className={`flex ${isRTL ? "space-x-reverse space-x-2" : "space-x-2"}`}>
                                     <Button
                                       size="sm"
                                       onClick={() => handleApprove(request)}
                                       className="bg-green-600 hover:bg-green-700"
                                     >
-                                      <CheckCircle className="h-4 w-4 mr-1" />
-                                      Approve
+                                      <CheckCircle className={`h-4 w-4 ${isRTL ? "ml-1" : "mr-1"}`} />
+                                      {t('dashboard.adminRequests.actions.approve')}
                                     </Button>
                                     <Button
                                       size="sm"
                                       variant="destructive"
                                       onClick={() => openRejectDialog(request)}
                                     >
-                                      <XCircle className="h-4 w-4 mr-1" />
-                                      Reject
+                                      <XCircle className={`h-4 w-4 ${isRTL ? "ml-1" : "mr-1"}`} />
+                                      {t('dashboard.adminRequests.actions.reject')}
                                     </Button>
                                   </div>
                                 ) : request.status === 'approved' ? (
                                   <div className="text-sm text-green-600 dark:text-green-400">
-                                    Approved on {request.approvalDate ? formatDate(request.approvalDate) : 'N/A'}
+                                    {t('dashboard.adminRequests.status.approvedOn')} {request.approvalDate ? formatDate(request.approvalDate) : t('common.notAvailable')}
                                   </div>
                                 ) : (
                                   <div className="text-sm text-red-600 dark:text-red-400">
-                                    Rejected on {request.approvalDate ? formatDate(request.approvalDate) : 'N/A'}
+                                    {t('dashboard.adminRequests.status.rejectedOn')} {request.approvalDate ? formatDate(request.approvalDate) : t('common.notAvailable')}
                                   </div>
                                 )}
                               </TableCell>
                               <TableCell>
                                 {request.status === 'pending' ? (
-                                  <div className="flex space-x-2">
+                                  <div className={`flex ${isRTL ? "space-x-reverse space-x-2" : "space-x-2"}`}>
                                     <Button
                                       size="sm"
                                       onClick={() => handleApprove(request)}
@@ -367,7 +395,7 @@ export default function AdminRequestsPage() {
                                   </div>
                                 ) : (
                                   <span className="text-sm text-muted-foreground">
-                                    {request.status === 'approved' ? 'Approved' : 'Rejected'}
+                                    {request.status === 'approved' ? t('dashboard.adminRequests.status.approved') : t('dashboard.adminRequests.status.rejected')}
                                   </span>
                                 )}
                               </TableCell>
@@ -387,23 +415,23 @@ export default function AdminRequestsPage() {
         <Dialog open={isRejectDialogOpen} onOpenChange={setIsRejectDialogOpen}>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Reject Admin Request</DialogTitle>
+              <DialogTitle>{t('dashboard.adminRequests.rejectDialog.title')}</DialogTitle>
               <DialogDescription>
-                Please provide a reason for rejecting this admin request.
+                {t('dashboard.adminRequests.rejectDialog.description')}
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="rejectionReason">Rejection Reason</Label>
+                <Label htmlFor="rejectionReason">{t('dashboard.adminRequests.rejectDialog.reasonLabel')}</Label>
                 <Input
                   id="rejectionReason"
-                  placeholder="Enter rejection reason..."
+                  placeholder={t('dashboard.adminRequests.rejectDialog.reasonPlaceholder')}
                   value={rejectionReason}
                   onChange={(e) => setRejectionReason(e.target.value)}
                   required
                 />
               </div>
-              <div className="flex justify-end space-x-2">
+              <div className={`flex justify-end ${isRTL ? "space-x-reverse space-x-2" : "space-x-2"}`}>
                 <Button
                   variant="outline"
                   onClick={() => {
@@ -412,14 +440,14 @@ export default function AdminRequestsPage() {
                     setRejectionReason('');
                   }}
                 >
-                  Cancel
+                  {t('common.cancel')}
                 </Button>
                 <Button
                   variant="destructive"
                   onClick={handleReject}
                   disabled={!rejectionReason.trim()}
                 >
-                  Reject Request
+                  {t('dashboard.adminRequests.rejectDialog.rejectButton')}
                 </Button>
               </div>
             </div>

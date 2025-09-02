@@ -15,7 +15,7 @@ const services = [
 ];
 
 export default function Header() {
-  const { t, isRTL } = useLanguage();
+  const { t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [homeDropdown, setHomeDropdown] = useState(false);
   const [servicesDropdown, setServicesDropdown] = useState(false);
@@ -88,9 +88,7 @@ export default function Header() {
                 </Link>
                 {homeDropdown && (
                   <div 
-                    className={`absolute mt-2 w-32 bg-white dark:bg-gray-800 rounded-md shadow-lg z-30 ${
-                      isRTL ? 'right-0' : 'left-0'
-                    }`}
+                    className="absolute mt-2 w-32 bg-white dark:bg-gray-800 rounded-md shadow-lg z-30 left-0"
                     onMouseEnter={handleHomeMouseEnter}
                     onMouseLeave={handleHomeMouseLeave}
                   >
@@ -128,9 +126,7 @@ export default function Header() {
                 </Link>
                 {servicesDropdown && (
                   <div 
-                    className={`absolute mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-30 ${
-                      isRTL ? 'right-0' : 'left-0'
-                    }`}
+                    className="absolute mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-30 left-0"
                     onMouseEnter={handleServicesMouseEnter}
                     onMouseLeave={handleServicesMouseLeave}
                   >
@@ -185,9 +181,7 @@ export default function Header() {
                       </span>
                     </div>
                     {/* Dropdown Menu */}
-                    <div className={`absolute mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ${
-                      isRTL ? 'left-0' : 'right-0'
-                    }`}>
+                    <div className="absolute mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 right-0">
                       <div className="py-2">
                         <div className="px-4 py-2 text-sm text-gray-700 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700">
                           {t('nav.welcome')}, {currentUser.username}

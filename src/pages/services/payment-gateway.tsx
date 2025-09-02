@@ -11,8 +11,8 @@ export default function PaymentGateway() {
   return (
     <>
       <Head>
-        <title>Payment Gateway Services - ShopHub</title>
-        <meta name="description" content="Secure and reliable payment gateway solutions for your e-commerce business. Accept payments globally with our trusted payment processing services." />
+        <title>{t('services.paymentGateway.hero.title')} - ShopHub</title>
+        <meta name="description" content={t('services.paymentGateway.hero.description')} />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
@@ -25,28 +25,27 @@ export default function PaymentGateway() {
               <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <div className="inline-flex items-center px-4 py-2 bg-white/20 rounded-full text-sm font-medium mb-6">
                   <span className="mr-2">💳</span>
-                  Payment Gateway Service
+                  {t('services.paymentGateway.hero.badge')}
                 </div>
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
-                  Secure Payment
-                  <span className="block text-indigo-200">Solutions</span>
+                  {t('services.paymentGateway.hero.title')}
+                  <span className="block text-indigo-200">{t('services.paymentGateway.hero.subtitle')}</span>
                 </h1>
                 <p className="text-xl text-indigo-100 max-w-3xl mx-auto leading-relaxed">
-                  Reliable and secure payment processing that supports multiple payment methods and ensures 
-                  smooth transactions for your customers worldwide.
+                  {t('services.paymentGateway.hero.description')}
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                   <Link 
                     href="/blog" 
                     className="inline-flex items-center px-8 py-4 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200 transform hover:scale-105"
                   >
-                    Get Started
+                    {t('services.paymentGateway.hero.getStarted')}
                   </Link>
                   <Link 
                     href="/contact" 
                     className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-indigo-600 transition-colors duration-200 transform hover:scale-105"
                   >
-                    Contact Us
+                    {t('services.paymentGateway.hero.contactUs')}
                   </Link>
                 </div>
               </div>
@@ -58,10 +57,10 @@ export default function PaymentGateway() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Enterprise-Grade Security
+                  {t('services.paymentGateway.security.title')}
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Your customers' payment information is protected with the highest level of security standards.
+                  {t('services.paymentGateway.security.subtitle')}
                 </p>
               </div>
 
@@ -70,9 +69,9 @@ export default function PaymentGateway() {
                   <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">🔒</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">PCI DSS Compliant</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.paymentGateway.security.pci.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Highest level of payment security certification for your peace of mind.
+                    {t('services.paymentGateway.security.pci.description')}
                   </p>
                 </div>
 
@@ -80,9 +79,9 @@ export default function PaymentGateway() {
                   <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">🛡️</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Fraud Protection</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.paymentGateway.security.fraud.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Advanced AI-powered fraud detection and prevention systems.
+                    {t('services.paymentGateway.security.fraud.description')}
                   </p>
                 </div>
 
@@ -90,9 +89,9 @@ export default function PaymentGateway() {
                   <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">🔐</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">End-to-End Encryption</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.paymentGateway.security.encryption.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Military-grade encryption for all payment data transmission.
+                    {t('services.paymentGateway.security.encryption.description')}
                   </p>
                 </div>
               </div>
@@ -104,10 +103,10 @@ export default function PaymentGateway() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Global Payment Methods
+                  {t('services.paymentGateway.paymentMethods.title')}
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Accept payments from customers worldwide with our comprehensive payment solution.
+                  {t('services.paymentGateway.paymentMethods.subtitle')}
                 </p>
               </div>
 
@@ -116,32 +115,32 @@ export default function PaymentGateway() {
                   <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl">💳</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Credit Cards</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Visa, Mastercard, Amex</p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('services.paymentGateway.paymentMethods.creditCards.title')}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{t('services.paymentGateway.paymentMethods.creditCards.description')}</p>
                 </div>
 
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
                   <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl">📱</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Digital Wallets</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">PayPal, Apple Pay, Google Pay</p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('services.paymentGateway.paymentMethods.digitalWallets.title')}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{t('services.paymentGateway.paymentMethods.digitalWallets.description')}</p>
                 </div>
 
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
                   <div className="w-16 h-16 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl">🏦</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Bank Transfers</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">ACH, SEPA, Wire Transfer</p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('services.paymentGateway.paymentMethods.bankTransfers.title')}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{t('services.paymentGateway.paymentMethods.bankTransfers.description')}</p>
                 </div>
 
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
                   <div className="w-16 h-16 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl">🌍</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Local Methods</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Regional payment solutions</p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('services.paymentGateway.paymentMethods.localMethods.title')}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{t('services.paymentGateway.paymentMethods.localMethods.description')}</p>
                 </div>
               </div>
             </div>
@@ -152,10 +151,10 @@ export default function PaymentGateway() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Why Choose Our Payment Gateway?
+                  {t('services.paymentGateway.benefits.title')}
                 </h2>
                 <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                  Experience the benefits of a reliable, secure, and scalable payment solution.
+                  {t('services.paymentGateway.benefits.subtitle')}
                 </p>
               </div>
 
@@ -168,8 +167,8 @@ export default function PaymentGateway() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">High Success Rates</h3>
-                      <p className="text-gray-300">Optimized payment processing with industry-leading success rates.</p>
+                      <h3 className="text-lg font-semibold text-white mb-2">{t('services.paymentGateway.benefits.successRates.title')}</h3>
+                      <p className="text-gray-300">{t('services.paymentGateway.benefits.successRates.description')}</p>
                     </div>
                   </div>
 
@@ -180,8 +179,8 @@ export default function PaymentGateway() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Global Coverage</h3>
-                      <p className="text-gray-300">Accept payments from 195+ countries and territories worldwide.</p>
+                      <h3 className="text-lg font-semibold text-white mb-2">{t('services.paymentGateway.benefits.globalCoverage.title')}</h3>
+                      <p className="text-gray-300">{t('services.paymentGateway.benefits.globalCoverage.description')}</p>
                     </div>
                   </div>
 
@@ -192,8 +191,8 @@ export default function PaymentGateway() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">24/7 Support</h3>
-                      <p className="text-gray-300">Round-the-clock technical support and customer service.</p>
+                      <h3 className="text-lg font-semibold text-white mb-2">{t('services.paymentGateway.benefits.support.title')}</h3>
+                      <p className="text-gray-300">{t('services.paymentGateway.benefits.support.description')}</p>
                     </div>
                   </div>
                 </div>
@@ -206,8 +205,8 @@ export default function PaymentGateway() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Competitive Pricing</h3>
-                      <p className="text-gray-300">Transparent pricing with no hidden fees or setup costs.</p>
+                      <h3 className="text-lg font-semibold text-white mb-2">{t('services.paymentGateway.benefits.pricing.title')}</h3>
+                      <p className="text-gray-300">{t('services.paymentGateway.benefits.pricing.description')}</p>
                     </div>
                   </div>
 
@@ -218,8 +217,8 @@ export default function PaymentGateway() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Easy Integration</h3>
-                      <p className="text-gray-300">Simple API integration with comprehensive documentation.</p>
+                      <h3 className="text-lg font-semibold text-white mb-2">{t('services.paymentGateway.benefits.integration.title')}</h3>
+                      <p className="text-gray-300">{t('services.paymentGateway.benefits.integration.description')}</p>
                     </div>
                   </div>
 
@@ -230,8 +229,8 @@ export default function PaymentGateway() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Analytics Dashboard</h3>
-                      <p className="text-gray-300">Real-time insights into payment performance and trends.</p>
+                      <h3 className="text-lg font-semibold text-white mb-2">{t('services.paymentGateway.benefits.analytics.title')}</h3>
+                      <p className="text-gray-300">{t('services.paymentGateway.benefits.analytics.description')}</p>
                     </div>
                   </div>
                 </div>
@@ -244,70 +243,70 @@ export default function PaymentGateway() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Simple, Transparent Pricing
+                  {t('services.paymentGateway.pricing.title')}
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Choose the plan that best fits your business needs and scale as you grow.
+                  {t('services.paymentGateway.pricing.subtitle')}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 text-center">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Starter</h3>
-                  <div className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">2.9%</div>
-                  <div className="text-gray-600 dark:text-gray-400 mb-6">+ $0.30 per transaction</div>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('services.paymentGateway.pricing.starter.title')}</h3>
+                  <div className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">{t('services.paymentGateway.pricing.starter.price')}</div>
+                  <div className="text-gray-600 dark:text-gray-400 mb-6">{t('services.paymentGateway.pricing.starter.transaction')}</div>
                   <ul className="space-y-3 text-gray-600 dark:text-gray-300 mb-8 text-left">
-                    <li>✓ Up to $10K/month</li>
-                    <li>✓ Basic fraud protection</li>
-                    <li>✓ Standard support</li>
-                    <li>✓ Basic analytics</li>
+                    <li>✓ {t('services.paymentGateway.pricing.starter.feature1')}</li>
+                    <li>✓ {t('services.paymentGateway.pricing.starter.feature2')}</li>
+                    <li>✓ {t('services.paymentGateway.pricing.starter.feature3')}</li>
+                    <li>✓ {t('services.paymentGateway.pricing.starter.feature4')}</li>
                   </ul>
                   <Link 
                     href="/contact" 
                     className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 block text-center"
                   >
-                    Get Started
+                    {t('services.paymentGateway.pricing.starter.cta')}
                   </Link>
                 </div>
 
                 <div className="bg-indigo-600 rounded-2xl p-8 text-center transform scale-105 relative">
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black px-4 py-2 rounded-full text-sm font-semibold">
-                    Most Popular
+                    {t('services.paymentGateway.pricing.professional.mostPopular')}
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">Professional</h3>
-                  <div className="text-4xl font-bold text-white mb-2">2.5%</div>
-                  <div className="text-indigo-100 mb-6">+ $0.25 per transaction</div>
+                  <h3 className="text-2xl font-bold text-white mb-4">{t('services.paymentGateway.pricing.professional.title')}</h3>
+                  <div className="text-4xl font-bold text-white mb-2">{t('services.paymentGateway.pricing.professional.price')}</div>
+                  <div className="text-indigo-100 mb-6">{t('services.paymentGateway.pricing.professional.transaction')}</div>
                   <ul className="space-y-3 text-indigo-100 mb-8 text-left">
-                    <li>✓ Up to $100K/month</li>
-                    <li>✓ Advanced fraud protection</li>
-                    <li>✓ Priority support</li>
-                    <li>✓ Advanced analytics</li>
-                    <li>✓ Multi-currency support</li>
+                    <li>✓ {t('services.paymentGateway.pricing.professional.feature1')}</li>
+                    <li>✓ {t('services.paymentGateway.pricing.professional.feature2')}</li>
+                    <li>✓ {t('services.paymentGateway.pricing.professional.feature3')}</li>
+                    <li>✓ {t('services.paymentGateway.pricing.professional.feature4')}</li>
+                    <li>✓ {t('services.paymentGateway.pricing.professional.feature5')}</li>
                   </ul>
                   <Link 
                     href="/contact" 
                     className="w-full bg-white text-indigo-600 hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition-colors duration-200 block text-center"
                   >
-                    Get Started
+                    {t('services.paymentGateway.pricing.professional.cta')}
                   </Link>
                 </div>
 
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 text-center">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Enterprise</h3>
-                  <div className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">Custom</div>
-                  <div className="text-gray-600 dark:text-gray-400 mb-6">Volume-based pricing</div>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('services.paymentGateway.pricing.enterprise.title')}</h3>
+                  <div className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">{t('services.paymentGateway.pricing.enterprise.price')}</div>
+                  <div className="text-gray-600 dark:text-gray-400 mb-6">{t('services.paymentGateway.pricing.enterprise.transaction')}</div>
                   <ul className="space-y-3 text-gray-600 dark:text-gray-300 mb-8 text-left">
-                    <li>✓ Unlimited volume</li>
-                    <li>✓ Custom fraud rules</li>
-                    <li>✓ Dedicated support</li>
-                    <li>✓ Custom integrations</li>
-                    <li>✓ SLA guarantees</li>
+                    <li>✓ {t('services.paymentGateway.pricing.enterprise.feature1')}</li>
+                    <li>✓ {t('services.paymentGateway.pricing.enterprise.feature2')}</li>
+                    <li>✓ {t('services.paymentGateway.pricing.enterprise.feature3')}</li>
+                    <li>✓ {t('services.paymentGateway.pricing.enterprise.feature4')}</li>
+                    <li>✓ {t('services.paymentGateway.pricing.enterprise.feature5')}</li>
                   </ul>
                   <Link 
                     href="/contact" 
                     className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 block text-center"
                   >
-                    Contact Sales
+                    {t('services.paymentGateway.pricing.enterprise.cta')}
                   </Link>
                 </div>
               </div>
@@ -326,16 +325,16 @@ export default function PaymentGateway() {
             </div>
             <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Ready to Accept Payments Globally?
+                {t('services.paymentGateway.cta.title')}
               </h2>
               <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-                Join thousands of businesses that trust us with their payment processing needs.
+                {t('services.paymentGateway.cta.description')}
               </p>
               <Link 
                 href="/contact" 
                 className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors duration-200 transform hover:scale-105"
               >
-                Get Started Today
+                {t('services.paymentGateway.cta.cta')}
               </Link>
             </div>
           </section>

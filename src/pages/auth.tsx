@@ -7,6 +7,8 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { adminRequestAPI, createNewAdminRequest } from '@/lib/apiClient';
+import { useLanguage } from '@/components/LanguageProvider';
+import { LanguageSelector } from '@/components/LanguageSelector';
 
 interface User {
   role: string;
@@ -35,6 +37,7 @@ export default function Auth() {
     password: ''
   });
   const [loading, setLoading] = useState(false);
+  const { t, currentLanguage, isRTL } = useLanguage();
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,7 +55,7 @@ export default function Auth() {
         });
 
         await adminRequestAPI.submit(adminRequest);
-        alert('Admin request submitted successfully! Please wait for approval before you can login.');
+        alert(t('auth.adminRequestSuccess'));
         setIsLogin(true);
         setFormData({ role: '', username: '', email: '', mobile: '', password: '' });
       } else {
@@ -73,17 +76,17 @@ export default function Auth() {
         });
 
         if (response.ok) {
-          alert('Registration successful! Please login.');
+          alert(t('auth.registrationSuccess'));
           setIsLogin(true);
           setFormData({ role: '', username: '', email: '', mobile: '', password: '' });
         } else {
           const error = await response.json();
-          alert(error.message || 'Registration failed!');
+          alert(error.message || t('auth.registrationFailed'));
         }
       }
     } catch (error) {
       console.error('Registration error:', error);
-      alert('Registration failed! Please try again.');
+      alert(t('auth.registrationFailed') + ' ' + t('auth.tryAgain'));
     } finally {
       setLoading(false);
     }
@@ -114,14 +117,14 @@ export default function Auth() {
       } else {
         const error = await response.json();
         if (error.message === 'Invalid email or password') {
-          alert('Invalid email or password!');
+          alert(t('auth.invalidCredentials'));
         } else {
-          alert(error.message || 'Login failed!');
+          alert(error.message || t('auth.loginFailed'));
         }
       }
     } catch (error) {
       console.error('Login error:', error);
-      alert('Login failed! Please try again.');
+      alert(t('auth.loginFailed') + ' ' + t('auth.tryAgain'));
     } finally {
       setLoading(false);
     }
@@ -130,20 +133,25 @@ export default function Auth() {
   return (
     <>
       <Head>
-        <title>Authentication - ShopEase</title>
-        <meta name="description" content="Login or register for ShopEase" />
+        <title>{t('auth.title')}</title>
+        <meta name="description" content={t('auth.description')} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+        {/* Language Selector */}
+        <div className="absolute top-4 right-4 z-10">
+          <LanguageSelector />
+        </div>
+        
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-              {isLogin ? 'Welcome Back' : 'Create Account'}
+              {isLogin ? t('auth.welcomeBack') : t('auth.createAccount')}
             </CardTitle>
             <CardDescription>
-              {isLogin ? 'Sign in to your account' : 'Join ShopEase today'}
+              {isLogin ? t('auth.signInToAccount') : t('auth.joinShopEase')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -151,22 +159,22 @@ export default function Auth() {
               // Login Form
               <form onSubmit={handleLogin} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="loginEmail">Email</Label>
+                  <Label htmlFor="loginEmail">{t('auth.email')}</Label>
                   <Input
                     id="loginEmail"
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder={t('auth.emailPlaceholder')}
                     value={loginData.email}
                     onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
                     required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="loginPassword">Password</Label>
+                  <Label htmlFor="loginPassword">{t('auth.password')}</Label>
                   <Input
                     id="loginPassword"
                     type="password"
-                    placeholder="Enter your password"
+                    placeholder={t('auth.passwordPlaceholder')}
                     value={loginData.password}
                     onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
                     required
@@ -177,7 +185,7 @@ export default function Auth() {
                   className="w-full bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600"
                   disabled={loading}
                 >
-                  {loading ? 'Signing In...' : 'Sign In'}
+                  {loading ? t('auth.signingIn') : t('auth.signIn')}
                 </Button>
                 <div className="text-center space-y-2">
                   <button
@@ -185,13 +193,13 @@ export default function Auth() {
                     onClick={() => setIsLogin(false)}
                     className="text-sm text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 block"
                   >
-                    Don't have an account? Sign up
+                    {t('auth.dontHaveAccount')}
                   </button>
                   <Link
                     href="/forgot-password"
                     className="text-sm text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 block"
                   >
-                    Reset your password?
+                    {t('auth.resetPassword')}
                   </Link>
                 </div>
               </form>
@@ -199,59 +207,59 @@ export default function Auth() {
               // Registration Form
               <form onSubmit={handleRegister} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="role">Role</Label>
+                  <Label htmlFor="role">{t('auth.role')}</Label>
                   <Select
                     value={formData.role}
                     onValueChange={(value) => setFormData({ ...formData, role: value })}
                     required
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select your role" />
+                      <SelectValue placeholder={t('auth.selectRole')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="user">User</SelectItem>
-                      <SelectItem value="admin">Admin</SelectItem>
+                      <SelectItem value="user">{t('auth.user')}</SelectItem>
+                      <SelectItem value="admin">{t('auth.admin')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="username">Username</Label>
+                  <Label htmlFor="username">{t('auth.username')}</Label>
                   <Input
                     id="username"
-                    placeholder="Enter username"
+                    placeholder={t('auth.usernamePlaceholder')}
                     value={formData.username}
                     onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                     required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">{t('auth.email')}</Label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder="Enter email"
+                    placeholder={t('auth.emailPlaceholder')}
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="mobile">Mobile Number</Label>
+                  <Label htmlFor="mobile">{t('auth.mobile')}</Label>
                   <Input
                     id="mobile"
                     type="tel"
-                    placeholder="Enter mobile number"
+                    placeholder={t('auth.mobilePlaceholder')}
                     value={formData.mobile}
                     onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
                     required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">{t('auth.password')}</Label>
                   <Input
                     id="password"
                     type="password"
-                    placeholder="Enter password"
+                    placeholder={t('auth.passwordPlaceholder')}
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     required
@@ -261,7 +269,7 @@ export default function Auth() {
                 {formData.role === 'admin' && (
                   <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
                     <p className="text-sm text-yellow-800 dark:text-yellow-200">
-                      <strong>Note:</strong> Admin registration requires approval. You will be notified once your request is approved.
+                      <strong>{t('common.note')}:</strong> {t('auth.adminNote')}
                     </p>
                   </div>
                 )}
@@ -271,7 +279,7 @@ export default function Auth() {
                   className="w-full bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600"
                   disabled={loading}
                 >
-                  {loading ? 'Creating Account...' : 'Create Account'}
+                  {loading ? t('auth.creatingAccount') : t('auth.createAccountButton')}
                 </Button>
                 <div className="text-center">
                   <button
@@ -279,7 +287,7 @@ export default function Auth() {
                     onClick={() => setIsLogin(true)}
                     className="text-sm text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
                   >
-                    Already have an account? Sign in
+                    {t('auth.alreadyHaveAccount')}
                   </button>
                 </div>
               </form>

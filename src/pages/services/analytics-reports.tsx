@@ -11,8 +11,8 @@ export default function AnalyticsReports() {
   return (
     <>
       <Head>
-        <title>Analytics & Reports Services - ShopHub</title>
-        <meta name="description" content="Data-driven insights and comprehensive analytics for your e-commerce business. Make informed decisions with our advanced reporting services." />
+        <title>{t('services.analyticsReports.hero.title')} - ShopHub</title>
+        <meta name="description" content={t('services.analyticsReports.hero.description')} />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
@@ -25,28 +25,27 @@ export default function AnalyticsReports() {
               <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <div className="inline-flex items-center px-4 py-2 bg-white/20 rounded-full text-sm font-medium mb-6">
                   <span className="mr-2">📊</span>
-                  Analytics & Reports Service
+                  {t('services.analyticsReports.hero.badge')}
                 </div>
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
-                  Data-Driven
-                  <span className="block text-indigo-200">Business Insights</span>
+                  {t('services.analyticsReports.hero.title')}
+                  <span className="block text-indigo-200">{t('services.analyticsReports.hero.subtitle')}</span>
                 </h1>
                 <p className="text-xl text-indigo-100 max-w-3xl mx-auto leading-relaxed">
-                  Transform your business with actionable insights from comprehensive analytics and reporting. 
-                  Make informed decisions based on real-time data and performance metrics.
+                  {t('services.analyticsReports.hero.description')}
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                   <Link 
                     href="/blog" 
                     className="inline-flex items-center px-8 py-4 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200 transform hover:scale-105"
                   >
-                    Get Started
+                    {t('services.analyticsReports.hero.getStarted')}
                   </Link>
                   <Link 
                     href="/contact" 
                     className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-indigo-600 transition-colors duration-200 transform hover:scale-105"
                   >
-                    Contact Us
+                    {t('services.analyticsReports.hero.contactUs')}
                   </Link>
                 </div>
               </div>
@@ -58,10 +57,10 @@ export default function AnalyticsReports() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Powerful Analytics Features
+                  {t('services.analyticsReports.features.title')}
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Comprehensive tools and insights to help you understand and optimize your business performance.
+                  {t('services.analyticsReports.features.subtitle')}
                 </p>
               </div>
 
@@ -70,9 +69,9 @@ export default function AnalyticsReports() {
                   <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">📈</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Performance Metrics</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.analyticsReports.features.performance.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Track key performance indicators and business metrics in real-time.
+                    {t('services.analyticsReports.features.performance.description')}
                   </p>
                 </div>
 
@@ -80,9 +79,9 @@ export default function AnalyticsReports() {
                   <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">👥</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Customer Insights</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.analyticsReports.features.customer.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Deep dive into customer behavior, preferences, and purchasing patterns.
+                    {t('services.analyticsReports.features.customer.description')}
                   </p>
                 </div>
 
@@ -90,9 +89,9 @@ export default function AnalyticsReports() {
                   <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">🛒</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Sales Analytics</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.analyticsReports.features.sales.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Comprehensive sales tracking and revenue analysis across all channels.
+                    {t('services.analyticsReports.features.sales.description')}
                   </p>
                 </div>
 
@@ -100,9 +99,9 @@ export default function AnalyticsReports() {
                   <div className="w-16 h-16 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">🎯</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Conversion Tracking</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.analyticsReports.features.conversion.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Monitor conversion rates and optimize your sales funnel for better results.
+                    {t('services.analyticsReports.features.conversion.description')}
                   </p>
                 </div>
 
@@ -110,9 +109,9 @@ export default function AnalyticsReports() {
                   <div className="w-16 h-16 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">📱</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Mobile Analytics</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.analyticsReports.features.mobile.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Track mobile performance and optimize for mobile-first customers.
+                    {t('services.analyticsReports.features.mobile.description')}
                   </p>
                 </div>
 
@@ -120,9 +119,9 @@ export default function AnalyticsReports() {
                   <div className="w-16 h-16 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">🔍</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">SEO Analytics</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('services.analyticsReports.features.seo.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Monitor search performance and optimize your content for better visibility.
+                    {t('services.analyticsReports.features.seo.description')}
                   </p>
                 </div>
               </div>
@@ -134,10 +133,10 @@ export default function AnalyticsReports() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Interactive Dashboard
+                  {t('services.analyticsReports.dashboard.title')}
                 </h2>
                 <p className="text-xl text-indigo-100 max-w-2xl mx-auto">
-                  Get a bird's eye view of your business with our intuitive and customizable dashboard.
+                  {t('services.analyticsReports.dashboard.subtitle')}
                 </p>
               </div>
 
@@ -145,23 +144,23 @@ export default function AnalyticsReports() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-white mb-2">$45,230</div>
-                    <div className="text-indigo-200">Total Revenue</div>
-                    <div className="text-green-400 text-sm mt-1">+12.5% vs last month</div>
+                    <div className="text-indigo-200">{t('services.analyticsReports.dashboard.revenue')}</div>
+                    <div className="text-green-400 text-sm mt-1">+12.5% {t('services.analyticsReports.dashboard.vsLastMonth')}</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-white mb-2">1,234</div>
-                    <div className="text-indigo-200">Orders</div>
-                    <div className="text-green-400 text-sm mt-1">+8.2% vs last month</div>
+                    <div className="text-indigo-200">{t('services.analyticsReports.dashboard.orders')}</div>
+                    <div className="text-green-400 text-sm mt-1">+8.2% {t('services.analyticsReports.dashboard.vsLastMonth')}</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-white mb-2">3.2%</div>
-                    <div className="text-indigo-200">Conversion Rate</div>
-                    <div className="text-red-400 text-sm mt-1">-0.5% vs last month</div>
+                    <div className="text-indigo-200">{t('services.analyticsReports.dashboard.conversion')}</div>
+                    <div className="text-red-400 text-sm mt-1">-0.5% {t('services.analyticsReports.dashboard.vsLastMonth')}</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-white mb-2">$36.70</div>
-                    <div className="text-indigo-200">Average Order Value</div>
-                    <div className="text-green-400 text-sm mt-1">+5.1% vs last month</div>
+                    <div className="text-indigo-200">{t('services.analyticsReports.dashboard.aov')}</div>
+                    <div className="text-green-400 text-sm mt-1">+5.1% {t('services.analyticsReports.dashboard.vsLastMonth')}</div>
                   </div>
                 </div>
               </div>
@@ -173,10 +172,10 @@ export default function AnalyticsReports() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Comprehensive Reports
+                  {t('services.analyticsReports.reports.title')}
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  Get detailed insights with our wide range of customizable reports and analytics.
+                  {t('services.analyticsReports.reports.subtitle')}
                 </p>
               </div>
 
@@ -187,9 +186,9 @@ export default function AnalyticsReports() {
                       <span className="text-lg">📊</span>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Daily Performance Reports</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('services.analyticsReports.reports.daily.title')}</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        Track your daily metrics and performance indicators for immediate insights.
+                        {t('services.analyticsReports.reports.daily.description')}
                       </p>
                     </div>
                   </div>
@@ -199,9 +198,9 @@ export default function AnalyticsReports() {
                       <span className="text-lg">📅</span>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Weekly Summary Reports</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('services.analyticsReports.reports.weekly.title')}</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        Comprehensive weekly summaries with trend analysis and recommendations.
+                        {t('services.analyticsReports.reports.weekly.description')}
                       </p>
                     </div>
                   </div>
@@ -211,9 +210,9 @@ export default function AnalyticsReports() {
                       <span className="text-lg">📈</span>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Monthly Analytics Reports</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('services.analyticsReports.reports.monthly.title')}</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        Deep-dive monthly analysis with year-over-year comparisons and insights.
+                        {t('services.analyticsReports.reports.monthly.description')}
                       </p>
                     </div>
                   </div>
@@ -225,9 +224,9 @@ export default function AnalyticsReports() {
                       <span className="text-lg">🎯</span>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Custom Reports</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('services.analyticsReports.reports.custom.title')}</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        Tailored reports based on your specific business needs and requirements.
+                        {t('services.analyticsReports.reports.custom.description')}
                       </p>
                     </div>
                   </div>
@@ -237,9 +236,9 @@ export default function AnalyticsReports() {
                       <span className="text-lg">📧</span>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Automated Reports</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('services.analyticsReports.reports.automated.title')}</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        Scheduled reports delivered to your inbox at your preferred frequency.
+                        {t('services.analyticsReports.reports.automated.description')}
                       </p>
                     </div>
                   </div>
@@ -249,9 +248,9 @@ export default function AnalyticsReports() {
                       <span className="text-lg">📱</span>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Mobile Reports</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('services.analyticsReports.reports.mobile.title')}</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        Access your reports on-the-go with our mobile-optimized dashboard.
+                        {t('services.analyticsReports.reports.mobile.description')}
                       </p>
                     </div>
                   </div>
@@ -265,10 +264,10 @@ export default function AnalyticsReports() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Benefits of Our Analytics Services
+                  {t('services.analyticsReports.benefits.title')}
                 </h2>
                 <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                  Discover how data-driven insights can transform your business performance.
+                  {t('services.analyticsReports.benefits.subtitle')}
                 </p>
               </div>
 
@@ -277,9 +276,9 @@ export default function AnalyticsReports() {
                   <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">🚀</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">Improved Performance</h3>
+                  <h3 className="text-xl font-semibold text-white mb-3">{t('services.analyticsReports.benefits.performance.title')}</h3>
                   <p className="text-gray-300">
-                    Identify bottlenecks and optimize your business processes for better efficiency.
+                    {t('services.analyticsReports.benefits.performance.description')}
                   </p>
                 </div>
 
@@ -287,9 +286,9 @@ export default function AnalyticsReports() {
                   <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">💰</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">Increased Revenue</h3>
+                  <h3 className="text-xl font-semibold text-white mb-3">{t('services.analyticsReports.benefits.revenue.title')}</h3>
                   <p className="text-gray-300">
-                    Make data-driven decisions that lead to higher sales and profitability.
+                    {t('services.analyticsReports.benefits.revenue.description')}
                   </p>
                 </div>
 
@@ -297,9 +296,9 @@ export default function AnalyticsReports() {
                   <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl">👥</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">Better Customer Experience</h3>
+                  <h3 className="text-xl font-semibold text-white mb-3">{t('services.analyticsReports.benefits.customer.title')}</h3>
                   <p className="text-gray-300">
-                    Understand your customers better and deliver personalized experiences.
+                    {t('services.analyticsReports.benefits.customer.description')}
                   </p>
                 </div>
               </div>
@@ -318,16 +317,16 @@ export default function AnalyticsReports() {
             </div>
             <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Ready to Unlock Your Business Potential?
+                {t('services.analyticsReports.ctaPage.title')}
               </h2>
               <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-                Start making data-driven decisions today with our comprehensive analytics and reporting services.
+                {t('services.analyticsReports.ctaPage.description')}
               </p>
               <Link 
                 href="/contact" 
                 className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors duration-200 transform hover:scale-105"
               >
-                Get Started Today
+                {t('services.analyticsReports.ctaPage.cta')}
               </Link>
             </div>
           </section>

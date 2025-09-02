@@ -394,32 +394,29 @@ export default function Services() {
 
           {/* CTA Section */}
           <section className="py-20 bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 text-white relative overflow-hidden">
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute inset-0" style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              }}></div>
+            {/* Background Image with Black Overlay */}
+            <div className="absolute inset-0">
+              <img 
+                src="/images/SCTA.jpg" 
+                alt="Customer Support Team" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-60"></div>
             </div>
             
             <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                {t('services.hero.cta')}
+                {t('services.cta.title')}
               </h2>
               <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
-                {t('services.hero.description')}
+                {t('services.cta.description')}
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact" className="bg-white text-indigo-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-indigo-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-center">
                   {t('services.hero.cta')}
                 </Link>
-                <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-indigo-600 transition-all duration-300 text-center">
-                  {t('services.hero.learnMore')}
-                </Link>
               </div>
-              
-              <p className="text-indigo-200 mt-6 text-sm">
-                {t('services.hero.description')}
-              </p>
             </div>
           </section>
         </div>

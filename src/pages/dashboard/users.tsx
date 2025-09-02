@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useLanguage } from '../../components/LanguageProvider';
+import { LanguageSelector } from '../../components/LanguageSelector';
 import Head from 'next/head';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -48,6 +51,8 @@ interface NewUser {
 }
 
 export default function UsersPage() {
+  const { t } = useLanguage();
+  const router = useRouter();
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [users, setUsers] = useState<User[]>([]);
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
@@ -64,13 +69,13 @@ export default function UsersPage() {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
     if (!user || user.role !== 'admin') {
-      alert('Access denied. Admin privileges required.');
+      alert(t('dashboard.users.messages.accessDenied'));
       window.location.href = '/auth';
       return;
     }
     setCurrentUser(user);
     loadUsers();
-  }, []);
+  }, [t]);
 
   const loadUsers = async () => {
     try {
@@ -112,28 +117,28 @@ export default function UsersPage() {
       });
       setIsCreateDialogOpen(false);
 
-      alert('User created successfully!');
+      alert(t('dashboard.users.messages.userCreated'));
       loadUsers(); // Reload the list
     } catch (error) {
       console.error('Error creating user:', error);
-      alert('Failed to create user. Please try again.');
+      alert(t('dashboard.users.messages.createFailed'));
     }
   };
 
   const handleDeleteUser = async (email: string) => {
     if (email === currentUser?.email) {
-      alert('You cannot delete your own account!');
+      alert(t('dashboard.users.messages.cannotDeleteSelf'));
       return;
     }
 
-    if (confirm('Are you sure you want to delete this user?')) {
+    if (confirm(t('dashboard.users.messages.confirmDelete'))) {
       try {
         await userAPI.delete(email);
-        alert('User deleted successfully!');
+        alert(t('dashboard.users.messages.userDeleted'));
         loadUsers(); // Reload the list
       } catch (error) {
         console.error('Error deleting user:', error);
-        alert('Failed to delete user. Please try again.');
+        alert(t('dashboard.users.messages.deleteFailed'));
       }
     }
   };
@@ -154,8 +159,8 @@ export default function UsersPage() {
   return (
     <>
       <Head>
-        <title>User Management - ShopEase Admin</title>
-        <meta name="description" content="Manage regular users in ShopEase admin panel" />
+        <title>{t('dashboard.users.pageTitle')}</title>
+        <meta name="description" content={t('dashboard.users.pageDescription')} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -180,24 +185,28 @@ export default function UsersPage() {
               </Sheet>
             </div>
 
-            <div className="mr-4 flex md:hidden">
+            <div className="mr-4 flex md:hidden items-center space-x-2">
               <h1 className="text-lg font-bold text-purple-700 dark:text-purple-400">
-                ShopEase Admin
+                <span>{t('dashboard.users.brandName.shopEase')}</span>
+                <span className="ml-2 text-gray-600">{t('dashboard.users.brandName.admin')}</span>
               </h1>
+              <LanguageSelector />
             </div>
 
-            <div className="mr-4 hidden md:flex">
+            <div className="mr-4 hidden md:flex items-center space-x-2">
               <h1 className="text-xl font-bold text-purple-700 dark:text-purple-400">
-                ShopEase Admin
+                <span>{t('dashboard.users.brandName.shopEase')}</span>
+                <span className="ml-2 text-gray-600">{t('dashboard.users.brandName.admin')}</span>
               </h1>
+              <LanguageSelector />
             </div>
 
             <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
               <div className="flex items-center space-x-2">
-                <span className="hidden sm:inline text-sm text-muted-foreground">
-                  Welcome, {currentUser.username}
-                </span>
-                <ModeToggle />
+                                 <span className="hidden sm:inline text-sm text-muted-foreground">
+                   {t('dashboard.users.welcome')}, {currentUser.username}
+                 </span>
+                 <ModeToggle />
                 <Button
                   variant="outline"
                   size="sm"
@@ -205,7 +214,7 @@ export default function UsersPage() {
                   className="flex items-center space-x-2"
                 >
                   <LogOut className="h-4 w-4" />
-                  <span className="hidden sm:inline">Logout</span>
+                  <span className="hidden sm:inline">{t('dashboard.users.logout')}</span>
                 </Button>
               </div>
             </div>
@@ -225,9 +234,9 @@ export default function UsersPage() {
             <div className="space-y-6">
               {/* Page Header */}
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Regular User Management</h2>
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tight">{t('dashboard.users.pageHeader.title')}</h2>
                 <p className="text-muted-foreground">
-                  Manage all regular users in the system, view their activity, and create new user accounts.
+                  {t('dashboard.users.pageHeader.description')}
                 </p>
               </div>
 
@@ -236,7 +245,7 @@ export default function UsersPage() {
                 <div className="relative w-full sm:w-80">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
-                    placeholder="Search users..."
+                    placeholder={t('dashboard.users.search.placeholder')}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="pl-10"
@@ -246,80 +255,80 @@ export default function UsersPage() {
                 <div className="flex flex-col space-y-2 sm:flex-row sm:items-center sm:space-x-2 sm:space-y-0">
                   <Button variant="outline" size="sm" className="w-full sm:w-auto">
                     <Filter className="mr-2 h-4 w-4" />
-                    <span className="hidden sm:inline">Filter</span>
+                    <span className="hidden sm:inline">{t('dashboard.users.actions.filter')}</span>
                   </Button>
 
                   <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
                     <DialogTrigger asChild>
                       <Button size="sm" className="w-full sm:w-auto">
                         <Plus className="mr-2 h-4 w-4" />
-                        <span className="hidden sm:inline">Create User</span>
+                        <span className="hidden sm:inline">{t('dashboard.users.actions.createUser')}</span>
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px]">
                       <DialogHeader>
-                        <DialogTitle>Create New Regular User</DialogTitle>
+                        <DialogTitle>{t('dashboard.users.createDialog.title')}</DialogTitle>
                         <DialogDescription>
-                          Fill in the details to create a new regular user account.
+                          {t('dashboard.users.createDialog.description')}
                         </DialogDescription>
                       </DialogHeader>
                       <form onSubmit={handleCreateUser} className="space-y-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="username">Username</Label>
-                          <Input
-                            id="username"
-                            placeholder="Enter username"
-                            value={newUser.username}
-                            onChange={(e) => setNewUser(prev => ({ ...prev, username: e.target.value }))}
-                            required
-                          />
-                        </div>
+                                                 <div className="space-y-2">
+                           <Label htmlFor="username">{t('dashboard.users.form.username')}</Label>
+                           <Input
+                             id="username"
+                             placeholder={t('dashboard.users.form.usernamePlaceholder')}
+                             value={newUser.username}
+                             onChange={(e) => setNewUser(prev => ({ ...prev, username: e.target.value }))}
+                             required
+                           />
+                         </div>
 
-                        <div className="space-y-2">
-                          <Label htmlFor="email">Email</Label>
-                          <Input
-                            id="email"
-                            type="email"
-                            placeholder="Enter email"
-                            value={newUser.email}
-                            onChange={(e) => setNewUser(prev => ({ ...prev, email: e.target.value }))}
-                            required
-                          />
-                        </div>
+                                                 <div className="space-y-2">
+                           <Label htmlFor="email">{t('dashboard.users.form.email')}</Label>
+                           <Input
+                             id="email"
+                             type="email"
+                             placeholder={t('dashboard.users.form.emailPlaceholder')}
+                             value={newUser.email}
+                             onChange={(e) => setNewUser(prev => ({ ...prev, email: e.target.value }))}
+                             required
+                           />
+                         </div>
 
-                        <div className="space-y-2">
-                          <Label htmlFor="mobile">Mobile Number</Label>
-                          <Input
-                            id="mobile"
-                            type="tel"
-                            placeholder="Enter mobile number"
-                            value={newUser.mobile}
-                            onChange={(e) => setNewUser(prev => ({ ...prev, mobile: e.target.value }))}
-                            required
-                          />
-                        </div>
+                                                 <div className="space-y-2">
+                           <Label htmlFor="mobile">{t('dashboard.users.form.mobile')}</Label>
+                           <Input
+                             id="mobile"
+                             type="tel"
+                             placeholder={t('dashboard.users.form.mobilePlaceholder')}
+                             value={newUser.mobile}
+                             onChange={(e) => setNewUser(prev => ({ ...prev, mobile: e.target.value }))}
+                             required
+                           />
+                         </div>
 
-                        <div className="space-y-2">
-                          <Label htmlFor="password">Password</Label>
-                          <Input
-                            id="password"
-                            type="password"
-                            placeholder="Enter password"
-                            value={newUser.password}
-                            onChange={(e) => setNewUser(prev => ({ ...prev, password: e.target.value }))}
-                            required
-                          />
-                        </div>
+                                                 <div className="space-y-2">
+                           <Label htmlFor="password">{t('dashboard.users.form.password')}</Label>
+                           <Input
+                             id="password"
+                             type="password"
+                             placeholder={t('dashboard.users.form.passwordPlaceholder')}
+                             value={newUser.password}
+                             onChange={(e) => setNewUser(prev => ({ ...prev, password: e.target.value }))}
+                             required
+                           />
+                         </div>
 
                         <div className="flex justify-end space-x-2">
-                          <Button
-                            type="button"
-                            variant="outline"
-                            onClick={() => setIsCreateDialogOpen(false)}
-                          >
-                            Cancel
-                          </Button>
-                          <Button type="submit">Create User</Button>
+                                                     <Button
+                             type="button"
+                             variant="outline"
+                             onClick={() => setIsCreateDialogOpen(false)}
+                           >
+                             {t('dashboard.users.form.cancel')}
+                           </Button>
+                           <Button type="submit">{t('dashboard.users.form.submit')}</Button>
                         </div>
                       </form>
                     </DialogContent>
@@ -330,10 +339,10 @@ export default function UsersPage() {
               {/* Users Table */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Regular Users ({filteredUsers.length})</CardTitle>
-                  <CardDescription>
-                    Complete list of all regular users with their activity timestamps
-                  </CardDescription>
+                                   <CardTitle>{t('dashboard.users.table.title')} ({filteredUsers.length})</CardTitle>
+                 <CardDescription>
+                   {t('dashboard.users.table.description')}
+                 </CardDescription>
                 </CardHeader>
                 <CardContent>
                   {loading ? (
@@ -344,14 +353,14 @@ export default function UsersPage() {
                     <div className="overflow-x-auto">
                       <Table>
                         <TableHeader>
-                          <TableRow>
-                            <TableHead>User</TableHead>
-                            <TableHead className="hidden md:table-cell">Contact</TableHead>
-                            <TableHead className="hidden lg:table-cell">Login Time</TableHead>
-                            <TableHead className="hidden lg:table-cell">Logout Time</TableHead>
-                            <TableHead className="hidden xl:table-cell">Last Active</TableHead>
-                            <TableHead>Actions</TableHead>
-                          </TableRow>
+                                                     <TableRow>
+                             <TableHead>{t('dashboard.users.table.headers.user')}</TableHead>
+                             <TableHead className="hidden md:table-cell">{t('dashboard.users.table.headers.contact')}</TableHead>
+                             <TableHead className="hidden lg:table-cell">{t('dashboard.users.table.headers.loginTime')}</TableHead>
+                             <TableHead className="hidden lg:table-cell">{t('dashboard.users.table.headers.logoutTime')}</TableHead>
+                             <TableHead className="hidden xl:table-cell">{t('dashboard.users.table.headers.lastActive')}</TableHead>
+                             <TableHead>{t('dashboard.users.table.headers.actions')}</TableHead>
+                           </TableRow>
                         </TableHeader>
                         <TableBody>
                           {filteredUsers.map((user, index) => (
@@ -400,18 +409,24 @@ export default function UsersPage() {
                                 </div>
                               </TableCell>
                               <TableCell>
-                                <Button
-                                  variant="destructive"
-                                  size="sm"
-                                  onClick={() => handleDeleteUser(user.email)}
-                                >
-                                  Delete
-                                </Button>
+                                                                 <Button
+                                   variant="destructive"
+                                   size="sm"
+                                   onClick={() => handleDeleteUser(user.email)}
+                                 >
+                                   {t('dashboard.users.table.actions.delete')}
+                                 </Button>
                               </TableCell>
                             </TableRow>
                           ))}
                         </TableBody>
                       </Table>
+                      
+                      {filteredUsers.length === 0 && !loading && (
+                        <div className="text-center py-8">
+                          <p className="text-gray-500">{t('dashboard.users.table.noData')}</p>
+                        </div>
+                      )}
                     </div>
                   )}
                 </CardContent>

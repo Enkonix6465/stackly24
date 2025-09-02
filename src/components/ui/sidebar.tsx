@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { useLanguage } from '@/components/LanguageProvider';
 import { 
   Users, 
   Settings, 
@@ -20,28 +21,29 @@ interface SidebarProps {
 export function Sidebar({ className, currentUser, onLogout }: SidebarProps) {
   const router = useRouter();
   const currentPath = router.pathname;
+  const { t } = useLanguage();
 
   const sidebarItems = [
     {
-      title: "Dashboard",
+      title: t('dashboard.sidebar.dashboard'),
       icon: Home,
       href: "/dashboard",
       active: currentPath === "/dashboard"
     },
     {
-      title: "User",
+      title: t('dashboard.sidebar.users'),
       icon: Users,
       href: "/dashboard/users",
       active: currentPath === "/dashboard/users"
     },
     {
-      title: "Admin Requests",
+      title: t('dashboard.sidebar.adminRequests'),
       icon: UserCheck,
       href: "/dashboard/admin-requests",
       active: currentPath === "/dashboard/admin-requests"
     },
     {
-      title: "Settings",
+      title: t('dashboard.sidebar.settings'),
       icon: Settings,
       href: "/dashboard/settings",
       active: currentPath === "/dashboard/settings"
@@ -59,7 +61,7 @@ export function Sidebar({ className, currentUser, onLogout }: SidebarProps) {
           <div className="flex items-center space-x-2 px-4 py-2">
             <Shield className="h-6 w-6 text-purple-600" />
             <h2 className="text-lg font-semibold text-purple-600 dark:text-purple-400">
-              Admin Panel
+              {t('dashboard.sidebar.adminPanel')}
             </h2>
           </div>
           <div className="px-4 py-2">
@@ -67,25 +69,25 @@ export function Sidebar({ className, currentUser, onLogout }: SidebarProps) {
               {currentUser?.username}
             </div>
             <div className="text-xs text-gray-500 dark:text-gray-400">
-              {currentUser?.role}
+              {currentUser?.role === 'admin' ? t('dashboard.users.role.admin') : t('dashboard.users.role.user')}
             </div>
           </div>
         </div>
         <div className="px-3 py-2">
           <div className="space-y-1">
             {sidebarItems.map((item) => (
-              <Button
-                key={item.title}
-                variant={item.active ? "secondary" : "ghost"}
-                className={cn(
-                  "w-full justify-start",
-                  item.active && "bg-purple-100 text-purple-900 dark:bg-purple-900 dark:text-purple-100"
-                )}
-                onClick={() => handleNavigation(item.href)}
-              >
-                <item.icon className="mr-2 h-4 w-4" />
-                {item.title}
-              </Button>
+                          <Button
+              key={item.title}
+              variant={item.active ? "secondary" : "ghost"}
+              className={cn(
+                "w-full justify-start",
+                item.active && "bg-purple-100 text-purple-900 dark:bg-purple-900 dark:text-purple-100"
+              )}
+              onClick={() => handleNavigation(item.href)}
+            >
+              <item.icon className="mr-2 h-4 w-4" />
+              {item.title}
+            </Button>
             ))}
           </div>
         </div>
@@ -97,7 +99,7 @@ export function Sidebar({ className, currentUser, onLogout }: SidebarProps) {
           onClick={onLogout}
         >
           <Shield className="mr-2 h-4 w-4" />
-          Logout
+          {t('nav.logout')}
         </Button>
       </div>
     </div>
