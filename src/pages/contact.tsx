@@ -419,13 +419,21 @@ export default function Contact() {
             </div>
           </section>
 
-          {/* CTA Section - Indigo Background */}
-          <section className="py-20 bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 text-white">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* CTA Section - Background Image with Black Overlay */}
+          <section className="py-20 relative text-white overflow-hidden">
+            {/* Background Image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: 'url(/images/CCTA.jpeg)' }}
+            />
+            {/* Black Overlay */}
+            <div className="absolute inset-0 bg-black/60" />
+            {/* Content */}
+            <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 {t('contact.cta.title')}
               </h2>
-              <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
                 {t('contact.cta.subtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -125,6 +125,18 @@
       "loginTime": "2025-08-29T05:59:14.761Z",
       "logoutTime": "-",
       "lastActive": "2025-08-29T05:59:14.762Z"
+    },
+    {
+      "role": "user",
+      "username": "Priya",
+      "email": "priya@gmail.com",
+      "mobile": "1234567894",
+      "password": "123456",
+      "createdAt": "2025-01-15T12:00:00.000Z",
+      "updatedAt": "2025-01-15T12:00:00.000Z",
+      "loginTime": "-",
+      "logoutTime": "-",
+      "lastActive": "-"
     }
   ],
   "adminRequests": [

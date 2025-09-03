@@ -4,14 +4,12 @@ import Image from "next/image";
 import { useLanguage } from "./LanguageProvider";
 
 export default function Footer() {
-  const { t, isRTL } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <footer className="bg-black text-white pt-10 pb-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex flex-col md:flex-row gap-10 ${
-          isRTL ? 'md:flex-row-reverse' : 'md:justify-between'
-        }`}>
+        <div className="flex flex-col md:flex-row gap-10 md:justify-between">
           {/* Brand & Social */}
           <div className="md:w-1/3">
             <div className="flex items-center mb-4">
@@ -26,11 +24,11 @@ export default function Footer() {
                 />
               </Link>
             </div>
-            <h2 className="text-xl font-bold text-indigo-400 mb-2">E-commerce</h2>
+            <h2 className="text-xl font-bold text-indigo-400 mb-2">{t('footer.ecommerce')}</h2>
             <p className="mb-4 text-white/80">
               {t('footer.description')}
             </p>
-            <div className={`flex space-x-3 ${isRTL ? 'space-x-reverse' : ''}`}>
+            <div className="flex space-x-3">
               <a href="https://www.linkedin.com/" className="bg-white hover:bg-indigo-500 text-black hover:text-white p-2 rounded-full transition">
                 {/* LinkedIn */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -71,12 +69,12 @@ export default function Footer() {
           </div>
           {/* Blog & Resources */}
           <div className="md:w-1/4">
-            <h3 className="text-lg font-bold text-indigo-400 mb-3">{t('nav.blog')} & Resources</h3>
+            <h3 className="text-lg font-bold text-indigo-400 mb-3">{t('nav.blog')} & {t('footer.resources')}</h3>
             <ul className="space-y-2">
-              <li><Link href="/blog" className="hover:text-indigo-400 transition-colors">All Articles</Link></li>
-              <li><Link href="/blog/future-ecommerce-ai-powered-shopping" className="hover:text-indigo-400 transition-colors">AI in E-commerce</Link></li>
-              <li><Link href="/blog/essential-strategies-boosting-conversion-rate" className="hover:text-indigo-400 transition-colors">Conversion Strategies</Link></li>
-              <li><Link href="/blog/building-customer-trust-ecommerce-success" className="hover:text-indigo-400 transition-colors">Building Trust</Link></li>
+              <li><Link href="/blog" className="hover:text-indigo-400 transition-colors">{t('footer.allArticles')}</Link></li>
+              <li><Link href="/blog/future-ecommerce-ai-powered-shopping" className="hover:text-indigo-400 transition-colors">{t('footer.aiInEcommerce')}</Link></li>
+              <li><Link href="/blog/essential-strategies-boosting-conversion-rate" className="hover:text-indigo-400 transition-colors">{t('footer.conversionStrategies')}</Link></li>
+              <li><Link href="/blog/building-customer-trust-ecommerce-success" className="hover:text-indigo-400 transition-colors">{t('footer.buildingTrust')}</Link></li>
             </ul>
           </div>
           {/* Our Services */}
@@ -95,34 +93,32 @@ export default function Footer() {
           <div className="md:w-1/4">
             <h3 className="text-lg font-bold text-indigo-400 mb-3">{t('contact.subtitle')}</h3>
             <ul className="space-y-2 text-white/80">
-              <li className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <span className={isRTL ? 'ml-2' : 'mr-2'}>📞</span>
-                <span>+91 9000000000</span>
+              <li className="flex items-center">
+                <span className="mr-2">📞</span>
+                <span>{t('footer.phone')}</span>
               </li>
-              <li className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <span className={isRTL ? 'ml-2' : 'mr-2'}>✉️</span>
-                <span>support@stackly.com</span>
+              <li className="flex items-center">
+                <span className="mr-2">✉️</span>
+                <span>{t('footer.email')}</span>
               </li>
-              <li className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <span className={isRTL ? 'ml-2' : 'mr-2'}>📍</span>
-                <span>India</span>
+              <li className="flex items-center">
+                <span className="mr-2">📍</span>
+                <span>{t('footer.location')}</span>
               </li>
-              <li className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <span className={isRTL ? 'ml-2' : 'mr-2'}>⏰</span>
-                <span>Mon - Fri: 9am - 6pm</span>
+              <li className="flex items-center">
+                <span className="mr-2">⏰</span>
+                <span>{t('footer.workingHours')}</span>
               </li>
             </ul>
           </div>
         </div>
         {/* Bottom Bar */}
-        <div className={`border-t border-white/10 mt-10 pt-4 flex flex-col md:flex-row items-center text-sm text-white/60 ${
-          isRTL ? 'md:flex-row-reverse md:justify-between' : 'md:justify-between'
-        }`}>
+        <div className="border-t border-white/10 mt-10 pt-4 flex flex-col md:flex-row items-center text-sm text-white/60 md:justify-between">
           <div>{t('footer.copyright')}</div>
-          <div className={`flex space-x-6 mt-2 md:mt-0 ${isRTL ? 'space-x-reverse' : ''}`}>
-            <a href="#" className="hover:text-indigo-400 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-indigo-400 transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-indigo-400 transition-colors">Cookie Policy</a>
+          <div className="flex space-x-6 mt-2 md:mt-0">
+            <a href="#" className="hover:text-indigo-400 transition-colors">{t('footer.privacyPolicy')}</a>
+            <a href="#" className="hover:text-indigo-400 transition-colors">{t('footer.termsOfService')}</a>
+            <a href="#" className="hover:text-indigo-400 transition-colors">{t('footer.cookiePolicy')}</a>
           </div>
         </div>
       </div>
