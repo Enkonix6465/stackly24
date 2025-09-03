@@ -121,10 +121,10 @@
       "mobile": "6305250296",
       "password": "adminn",
       "createdAt": "2025-08-28T03:35:00.728Z",
-      "updatedAt": "2025-08-29T05:59:14.770Z",
-      "loginTime": "2025-08-29T05:59:14.761Z",
+      "updatedAt": "2025-09-03T13:41:07.058Z",
+      "loginTime": "2025-09-03T13:41:07.057Z",
       "logoutTime": "-",
-      "lastActive": "2025-08-29T05:59:14.762Z"
+      "lastActive": "2025-09-03T13:41:07.057Z"
     },
     {
       "role": "user",
@@ -192,15 +192,15 @@
   ],
   "currentUser": {
     "role": "user",
-    "username": "Jay",
-    "email": "jay@gmail.com",
-    "mobile": "1234567892",
+    "username": "Jayasri",
+    "email": "jayasrim226@gmail.com",
+    "mobile": "6305250296",
     "password": "adminn",
-    "createdAt": "2025-08-24T11:14:05.638Z",
-    "updatedAt": "2025-08-29T11:22:07.747Z",
-    "loginTime": "2025-08-29T11:22:07.747Z",
+    "createdAt": "2025-08-28T03:35:00.728Z",
+    "updatedAt": "2025-09-03T13:41:07.046Z",
+    "loginTime": "2025-09-03T13:41:07.046Z",
     "logoutTime": "-",
-    "lastActive": "2025-08-29T11:22:07.747Z"
+    "lastActive": "2025-09-03T13:41:07.046Z"
   },
-  "lastUpdated": "2025-08-29T11:22:07.777Z"
+  "lastUpdated": "2025-09-03T13:41:07.059Z"
 }
