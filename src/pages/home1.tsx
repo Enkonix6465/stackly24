@@ -216,12 +216,9 @@ export default function Home1() {
                   {t('hero.subtitle')}
                 </p>
                 <div className="flex justify-center">
-                  <Link href="/contact" className="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-lg rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                  <Link href="/contact" className="group relative inline-flex items-center justify-center px-8 py-4 bg-indigo-600 text-white font-semibold text-lg rounded-xl hover:bg-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300">
                     <span className="relative z-10">{t('hero.cta')}</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-purple-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
+                    <div className="absolute inset-0 bg-indigo-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </Link>
                 </div>
               </div>
@@ -479,11 +476,6 @@ export default function Home1() {
             
             <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-6">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   {t('home1.newsletter.title')}
                 </h2>
@@ -495,40 +487,19 @@ export default function Home1() {
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 {/* Left Side - Benefits */}
                 <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div className="text-left">
-                      <h3 className="font-semibold text-lg mb-1">{t('home1.newsletter.exclusiveDeals')}</h3>
-                      <p className="text-indigo-100">{t('home1.newsletter.exclusiveDealsDesc')}</p>
-                    </div>
+                  <div className="text-left">
+                    <h3 className="font-semibold text-lg mb-1">{t('home1.newsletter.exclusiveDeals')}</h3>
+                    <p className="text-indigo-100">{t('home1.newsletter.exclusiveDealsDesc')}</p>
                   </div>
                   
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div className="text-left">
-                      <h3 className="font-semibold text-lg mb-1">{t('home1.newsletter.newProducts')}</h3>
-                      <p className="text-indigo-100">{t('home1.newsletter.newProductsDesc')}</p>
-                    </div>
+                  <div className="text-left">
+                    <h3 className="font-semibold text-lg mb-1">{t('home1.newsletter.newProducts')}</h3>
+                    <p className="text-indigo-100">{t('home1.newsletter.newProductsDesc')}</p>
                   </div>
                   
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div className="text-left">
-                      <h3 className="font-semibold text-lg mb-1">{t('home1.newsletter.shoppingTips')}</h3>
-                      <p className="text-indigo-100">{t('home1.newsletter.shoppingTipsDesc')}</p>
-                    </div>
+                  <div className="text-left">
+                    <h3 className="font-semibold text-lg mb-1">{t('home1.newsletter.shoppingTips')}</h3>
+                    <p className="text-indigo-100">{t('home1.newsletter.shoppingTipsDesc')}</p>
                   </div>
                 </div>
 

@@ -609,11 +609,6 @@ export default function Home2() {
             
             <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-6">
-                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">
                   {t('home2.cta.title')}
                 </h2>
@@ -625,40 +620,19 @@ export default function Home2() {
                              <div className="max-w-4xl mx-auto">
                  {/* Benefits */}
                  <div className="grid md:grid-cols-3 gap-8">
-                   <div className="flex items-start space-x-4">
-                     <div className="flex-shrink-0 w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                       <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                       </svg>
-                     </div>
-                     <div>
-                       <h3 className="font-semibold text-lg mb-1">{t('home2.cta.benefits.instantSetup.title')}</h3>
-                       <p className="text-indigo-100">{t('home2.cta.benefits.instantSetup.description')}</p>
-                     </div>
+                   <div className="text-left">
+                     <h3 className="font-semibold text-lg mb-1">{t('home2.cta.benefits.instantSetup.title')}</h3>
+                     <p className="text-indigo-100">{t('home2.cta.benefits.instantSetup.description')}</p>
                    </div>
                    
-                   <div className="flex items-start space-x-4">
-                     <div className="flex-shrink-0 w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                       <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                       </svg>
-                     </div>
-                     <div>
-                       <h3 className="font-semibold text-lg mb-1">{t('home2.cta.benefits.support247.title')}</h3>
-                       <p className="text-indigo-100">{t('home2.cta.benefits.support247.description')}</p>
-                     </div>
+                   <div className="text-left">
+                     <h3 className="font-semibold text-lg mb-1">{t('home2.cta.benefits.support247.title')}</h3>
+                     <p className="text-indigo-100">{t('home2.cta.benefits.support247.description')}</p>
                    </div>
                    
-                   <div className="flex items-start space-x-4">
-                     <div className="flex-shrink-0 w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                       <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                       </svg>
-                     </div>
-                     <div>
-                       <h3 className="font-semibold text-lg mb-1">{t('home2.cta.benefits.scaleConfidence.title')}</h3>
-                       <p className="text-indigo-100">{t('home2.cta.benefits.scaleConfidence.description')}</p>
-                     </div>
+                   <div className="text-left">
+                     <h3 className="font-semibold text-lg mb-1">{t('home2.cta.benefits.scaleConfidence.title')}</h3>
+                     <p className="text-indigo-100">{t('home2.cta.benefits.scaleConfidence.description')}</p>
                    </div>
                  </div>
                </div>
