@@ -29,7 +29,7 @@ import {
   UserCheck
 } from 'lucide-react';
 import { adminRequestAPI } from '@/lib/apiClient';
-import { AdminRequest } from '@/lib/dataService';
+import { AdminRequest } from '@/lib/types';
 
 interface User {
   role: string;

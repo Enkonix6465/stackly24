@@ -13,10 +13,9 @@ import {
   authenticateUser,
   setCurrentUser,
   getCurrentUser,
-  updateUserActivity,
-  User,
-  AdminRequest
+  updateUserActivity
 } from '@/lib/dataService';
+import { User, AdminRequest } from '@/lib/types';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req;

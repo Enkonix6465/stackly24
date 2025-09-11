@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -91,9 +91,46 @@ const faqs = [
   }
 ];
 
+// Custom hook for fade-in animations
+const useFadeIn = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return [ref, isVisible] as const;
+};
+
 export default function Home2() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const { t, currentLanguage } = useLanguage();
+  
+  // Animation refs for each section
+  const [heroRef, heroVisible] = useFadeIn();
+  const [servicesRef, servicesVisible] = useFadeIn();
+  const [testimonialsRef, testimonialsVisible] = useFadeIn();
+  const [pricingRef, pricingVisible] = useFadeIn();
+  const [statsRef, statsVisible] = useFadeIn();
+  const [ctaRef, ctaVisible] = useFadeIn();
 
   return (
     <>
@@ -108,7 +145,7 @@ export default function Home2() {
         <div className="pt-16">
           {/* Hero Section */}
           <VideoBackground videoSrc="/vedios/vedio2.mp4" className="text-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 min-h-screen flex items-center">
+            <div ref={heroRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 min-h-screen flex items-center transition-all duration-1000 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
                 <div>
                   <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
@@ -207,7 +244,7 @@ export default function Home2() {
           </VideoBackground>
 
           {/* Services Section */}
-          <section className="py-20 bg-gray-50 dark:bg-gray-800">
+          <section ref={servicesRef} className={`py-20 bg-gray-50 dark:bg-gray-800 transition-all duration-1000 ${servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -342,7 +379,7 @@ export default function Home2() {
           </section>
 
           {/* Testimonials Section */}
-          <section className="py-20 bg-white dark:bg-gray-900">
+          <section ref={testimonialsRef} className={`py-20 bg-white dark:bg-gray-900 transition-all duration-1000 ${testimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -417,7 +454,7 @@ export default function Home2() {
           </section>
 
           {/* Pricing Section */}
-          <section className="py-20 bg-gray-50 dark:bg-gray-800">
+          <section ref={pricingRef} className={`py-20 bg-gray-50 dark:bg-gray-800 transition-all duration-1000 ${pricingVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -573,7 +610,7 @@ export default function Home2() {
           </section>
 
           {/* Stats Section */}
-          <section className="py-20 bg-indigo-900 text-white">
+          <section ref={statsRef} className={`py-20 bg-indigo-900 text-white transition-all duration-1000 ${statsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('home2.stats.title')}</h2>
@@ -599,7 +636,7 @@ export default function Home2() {
           </section>
 
           {/* CTA Section */}
-          <section className="py-20 bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 text-white relative overflow-hidden">
+          <section ref={ctaRef} className={`py-20 bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 text-white relative overflow-hidden transition-all duration-1000 ${ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0" style={{

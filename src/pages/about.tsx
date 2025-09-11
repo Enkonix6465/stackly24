@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import VideoBackground from '../components/VideoBackground';
+import FadeIn from '../components/FadeIn';
 import Link from 'next/link';
 import { useLanguage } from '../components/LanguageProvider';
 export default function About() {
@@ -62,7 +63,7 @@ const values = [
   {
     icon: <svg xmlns="http://www.w3.org/2000/svg" width={45} height={45} viewBox="0 0 36 36"><path fill="#a0041e" d="m1 17l8-7l16 1l1 16l-7 8s.001-5.999-6-12s-12-6-12-6"></path><path fill="#ffac33" d="M.973 35s-.036-7.979 2.985-11S15 21.187 15 21.187S14.999 29 11.999 32S.973 35 .973 35"></path><circle cx={8.999} cy={27} r={4} fill="#ffcc4d"></circle><path fill="#55acee" d="M35.999 0s-10 0-22 10c-6 5-6 14-4 16s11 2 16-4c10-12 10-22 10-22"></path><path d="M26.999 5a4 4 0 0 0-3.641 2.36A4 4 0 0 1 24.999 7a4 4 0 0 1 4 4c0 .586-.133 1.139-.359 1.64A3.99 3.99 0 0 0 30.999 9a4 4 0 0 0-4-4"></path><path fill="#a0041e" d="M8 28s0-4 1-5s13.001-10.999 14-10s-9.001 13-10.001 14S8 28 8 28"></path></svg>,
     title: t('about.innovation'),
-    description: t('about.innovation')
+    description: t('about.innovationDesc')
   },
   {
     icon: <svg xmlns="http://www.w3.org/2000/svg" width={45} height={45} viewBox="0 0 32 32"><g fill="none"><path fill="#ffc83d" d="M11.406 6.156c-5.275-.65-7.156 2-8.062 3.219c-2.469 3.64-.985 7.64.812 9.563c0 0 10.094 9.828 10.375 10.093s.946 1.172 2.547.914c1.398-.225 1.797-1.914 1.797-1.914s1.032.842 2.516 0c1.156-.656 1.109-1.968 1.109-1.968s1.238.62 2.563-.5c1.192-1.01.453-2.782.453-2.782s1.07.176 1.828-.656c1.025-1.125.672-2.547 0-3.187L19.625 10.5l-.594-3.125z"></path><path fill="#d67d00" d="m26.707 22.593l-2.226-2.257a.5.5 0 1 0-.712.703l1.764 1.788l-.017-.046s.582.096 1.191-.188m-2.729 3.557l-2.31-2.563a.5.5 0 0 0-.743.67l1.66 1.841c.199.076.73.232 1.393.053m-3.402 2.2l-1.806-1.913a.5.5 0 1 0-.727.687l.904.957c.199.13.795.45 1.629.269m-2.173.703c-.759.202-2.167.265-3.137-.773l-.776.71l.041.04q.044.042.1.1c.328.34 1.01 1.046 2.447.814c.622-.1 1.046-.49 1.325-.892"></path><path fill="#f59f00" d="M6.375 6.813c-1.687 2.166-4.287 7.775.313 11.625L5.24 19.993l-1.084-1.055C2.36 17.016.875 13.016 3.344 9.375l.04-.055c.525-.706 1.366-1.839 2.95-2.567z"></path><path fill="#d67d00" d="M17.25 23.688c1.203 1.39-.3 3.162-1 3.906L5.669 16.584c1.974-2.002 3.278-2.203 4.16-1.334c.88.869.468 1.484.468 1.484s1.194-.678 2.453.563c1.26 1.241.39 2.187.39 2.187s1.3-.234 2.22.797c1.03 1.157.374 2.5.374 2.5s.79.068 1.516.907"></path><path fill="#ffc83d" d="M12.438 8c3.234-1.297 8.14-1.953 10.39-1.984c1.531 0 3.481.37 5.547 2.797c3.3 3.874.828 8.296-1.125 10.093V17.5s-7.506-6.536-7.75-6.766c-.45-.425-2.302-.296-2.5-.234c-.604.188-1.65.5-3 1c-1.098.407-1.969.078-2.328-.766c-.36-.843-.842-2.09.765-2.734"></path><path fill="#d67d00" d="M28.31 17.71a8.4 8.4 0 0 1-1.06 1.196c-2.76-2.406-8.378-7.325-8.828-7.75s-.974-.406-1.172-.344A79 79 0 0 0 13.75 12c-1.098.407-2.203-.422-2.562-1.266c-.33-.771-.356-1.879.87-2.556l.632-.277l.05-.019c-1.953 1.468-.228 3.262 1.385 3.056c.567-.073 1.5-.266 2.406-.5c.36-.094.713-.259 1.046-.414c.625-.293 1.18-.552 1.58-.243c1.5 1.165 5.976 4.968 9.154 7.929"></path><path fill="#ffc83d" d="M8.82 16.879a2.203 2.203 0 0 0-3.09-.398L3.812 18.1c-.883.735-1.112 2.11-.467 3.002c.584.808 1.48 1.142 2.303.908c-.365.835-.334 1.903.367 2.49c.655.547 1.464.922 2.275.669c-.078.535.08 1.121.63 1.705c.52.551 1.276.826 2.087.643c-.107.572.074 1.208.743 1.853c.819.79 2.08.858 3.265-.23l.772-.9c.62-.78 1.478-2.136.196-3.288c-.443-.398-.952-.619-1.481-.62c.287-.7.282-1.558-.55-2.38c-.52-.513-1.157-.736-1.86-.568c.38-.808.371-1.633-.39-2.385c-.691-.683-1.543-1.007-2.643-.39c.194-.596.148-1.228-.24-1.731"></path><path fill="#d67d00" d="M9.034 17.242L4.31 21.907c.418.186.873.229 1.31.112l3.469-3.426l-.029.016c.15-.459.156-.94-.026-1.367m3.212 2.584L6.96 25.085c.425.171.878.226 1.332.085l3.807-3.786l-.005.001c.245-.52.328-1.048.153-1.559m2.326 3.071l-4.918 4.498c.404.177.865.231 1.345.125l3.513-3.213c.17-.427.23-.912.06-1.41"></path></g></svg>,
@@ -128,14 +129,21 @@ const testimonials = [
           {/* Hero Section */}
           <VideoBackground videoSrc="/vedios/vedio2.mp4" className="text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 min-h-screen flex items-center justify-center">
-              <div className="text-center">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-                  {t('about.title')}
-                </h1>
-                <p className="text-lg text-indigo-200 max-w-2xl mx-auto">
-                  {t('about.description')}
-                </p>
-              </div>
+              <FadeIn direction="up" delay={0.3} duration={1.2}>
+                <div className="text-center">
+                  <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+                    {t('about.title')}
+                  </h1>
+                  <p className="text-lg text-indigo-200 max-w-2xl mx-auto mb-8">
+                    {t('about.description')}
+                  </p>
+                  <div className="flex justify-center">
+                    <Link href="/contact" className="bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors duration-300 shadow-lg text-center">
+                      Connect With Us
+                    </Link>
+                  </div>
+                </div>
+              </FadeIn>
             </div>
             <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white dark:from-gray-900 to-transparent"></div>
           </VideoBackground>
@@ -145,35 +153,39 @@ const testimonials = [
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 {/* Mission */}
-                <div>
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 rounded-full mb-6">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    </svg>
+                <FadeIn direction="left" delay={0.2} duration={0.8}>
+                  <div>
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 rounded-full mb-6">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                      </svg>
+                    </div>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                      {t('about.mission')}
+                    </h2>
+                    <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                      {t('about.missionText')}
+                    </p>
                   </div>
-                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                    {t('about.mission')}
-                  </h2>
-                  <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                    {t('about.missionText')}
-                  </p>
-                </div>
+                </FadeIn>
                 
                 {/* Vision */}
-                <div>
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 rounded-full mb-6">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                    </svg>
+                <FadeIn direction="right" delay={0.4} duration={0.8}>
+                  <div>
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 rounded-full mb-6">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                    </div>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                      {t('about.vision')}
+                    </h2>
+                    <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                      {t('about.visionText')}
+                    </p>
                   </div>
-                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                    {t('about.vision')}
-                  </h2>
-                  <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                    {t('about.visionText')}
-                  </p>
-                </div>
+                </FadeIn>
               </div>
             </div>
           </section>
@@ -181,29 +193,33 @@ const testimonials = [
           {/* Values Section */}
           <section className="py-20 bg-white dark:bg-gray-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t('about.values')}
-                </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  {t('about.valuesSubtitle')}
-                </p>
-              </div>
+              <FadeIn direction="up" delay={0.2} duration={0.8}>
+                <div className="text-center mb-16">
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    {t('about.values')}
+                  </h2>
+                  <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    {t('about.valuesSubtitle')}
+                  </p>
+                </div>
+              </FadeIn>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {values.map((value, index) => (
-                  <div key={index} className="text-center group">
-                    <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
-                      <div className="text-4xl mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
-                        {value.icon}
+                  <FadeIn key={index} direction="up" delay={0.3 + (index * 0.1)} duration={0.8}>
+                    <div className="text-center group">
+                      <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
+                        <div className="text-4xl mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                          {value.icon}
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                          {value.title}
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                          {value.description}
+                        </p>
                       </div>
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                        {value.title}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                        {value.description}
-                      </p>
                     </div>
-                  </div>
+                  </FadeIn>
                 ))}
               </div>
             </div>
@@ -212,14 +228,16 @@ const testimonials = [
           {/* Achievements Section */}
           <section className="py-20 bg-indigo-900 text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {t('about.achievements')}
-                </h2>
-                <p className="text-xl text-indigo-200 max-w-3xl mx-auto">
-                  {t('about.achievementsSubtitle')}
-                </p>
-              </div>
+              <FadeIn direction="up" delay={0.2} duration={0.8}>
+                <div className="text-center mb-16">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                    {t('about.achievements')}
+                  </h2>
+                  <p className="text-xl text-indigo-200 max-w-3xl mx-auto">
+                    {t('about.achievementsSubtitle')}
+                  </p>
+                </div>
+              </FadeIn>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
                 {achievements.map((achievement, index) => (
                   <div key={index} className="text-center">
@@ -241,14 +259,16 @@ const testimonials = [
           {/* Team Section */}
           <section className="py-20 bg-gray-50 dark:bg-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t('about.team')}
-                </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  {t('about.teamSubtitle')}
-                </p>
-              </div>
+              <FadeIn direction="up" delay={0.2} duration={0.8}>
+                <div className="text-center mb-16">
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    {t('about.team')}
+                  </h2>
+                  <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    {t('about.teamSubtitle')}
+                  </p>
+                </div>
+              </FadeIn>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {teamMembers.map((member) => (
                   <div key={member.id} className="group">
@@ -298,14 +318,16 @@ const testimonials = [
           {/* Milestones Section */}
           <section className="py-20 bg-white dark:bg-gray-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t('about.journey')}
-                </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  {t('about.journeySubtitle')}
-                </p>
-              </div>
+              <FadeIn direction="up" delay={0.2} duration={0.8}>
+                <div className="text-center mb-16">
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    {t('about.journey')}
+                  </h2>
+                  <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    {t('about.journeySubtitle')}
+                  </p>
+                </div>
+              </FadeIn>
               <div className="relative">
                 {/* Timeline line */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-indigo-200 dark:bg-indigo-800 h-full"></div>
@@ -341,25 +363,26 @@ const testimonials = [
           <section className="relative py-20 text-white overflow-hidden">
             {/* Background Image with Black Overlay */}
             <div 
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: 'url(/images/ACTA.jpg)' }}
-            >
-              <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-            </div>
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+              style={{ backgroundImage: 'url(/images/CTA1.jpg)' }}
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-60"></div>
             
             {/* Content */}
             <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                {t('about.cta.title')}
-              </h2>
-              <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
-                {t('about.cta.subtitle')}
-              </p>
-              <div className="flex justify-center">
-                <Link href="/contact" className="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors duration-300 shadow-lg">
-                  {t('about.cta.getStarted')}
-                </Link>
-              </div>
+              <FadeIn direction="up" delay={0.2} duration={0.8}>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  {t('about.cta.title')}
+                </h2>
+                <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
+                  {t('about.cta.subtitle')}
+                </p>
+                <div className="flex justify-center">
+                  <Link href="/contact" className="bg-white text-indigo-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-indigo-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-center">
+                    {t('about.cta.getStarted')}
+                  </Link>
+                </div>
+              </FadeIn>
             </div>
           </section>
         </div>

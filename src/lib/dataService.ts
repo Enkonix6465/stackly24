@@ -1,43 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-
-// Define the data structure
-export interface User {
-  role: string;
-  username: string;
-  email: string;
-  mobile: string;
-  password: string;
-  loginTime?: string;
-  logoutTime?: string;
-  lastActive?: string;
-  createdAt: string;
-  updatedAt: string;
-  isApproved?: boolean; // For admin approval
-  approvalDate?: string; // When admin was approved
-  approvedBy?: string; // Who approved the admin
-}
-
-export interface AdminRequest {
-  id: string;
-  role: string;
-  username: string;
-  email: string;
-  mobile: string;
-  password: string;
-  createdAt: string;
-  status: 'pending' | 'approved' | 'rejected';
-  approvalDate?: string;
-  approvedBy?: string;
-  rejectionReason?: string;
-}
-
-export interface AppData {
-  users: User[];
-  adminRequests: AdminRequest[];
-  currentUser: User | null;
-  lastUpdated: string;
-}
+import * as fs from 'fs';
+import * as path from 'path';
+import { User, AdminRequest, AppData } from './types';
 
 // Path to the data file
 const DATA_FILE_PATH = path.join(process.cwd(), 'data', 'app-data.json');
@@ -218,6 +181,11 @@ export const deleteUser = (email: string): void => {
   const data = loadData();
   data.users = data.users.filter(u => u.email !== email);
   saveData(data);
+};
+
+export const getMainAdmin = (): User | null => {
+  const data = loadData();
+  return data.users.find(user => user.role === 'admin' && user.isMainAdmin) || null;
 };
 
 export const getUserByEmail = (email: string): User | undefined => {

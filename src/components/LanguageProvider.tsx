@@ -58,7 +58,7 @@ const translations = {
     'home1.cart.checkout': 'Checkout',
     'home1.cart.addedToCart': 'Added to cart! ✓',
     'home1.stats.title': 'Why Choose Us ?',
-    'home1.stats.subtitle': 'We\'re committed to providing the best shopping experience with quality products and exceptional service',
+    'home1.stats.subtitle': 'committed to providing the best shopping experience with quality products and exceptional service',
     'home1.testimonials.title': 'What Our Customers Say',
     'home1.testimonials.subtitle': 'Don\'t just take our word for it - hear from our satisfied customers',
     'home1.testimonials.clickToSeeMore': 'Click to see more',
@@ -118,7 +118,7 @@ const translations = {
     // About Page
     'about.title': 'About us',
     'about.subtitle': '',
-    'about.description': 'We are a leading e-commerce solutions provider, helping businesses of all sizes succeed in the digital marketplace.',
+    'about.description': 'We are a leading e-commerce solutions provider, helping businesses of all sizes',
     'about.mission': 'Our Mission',
     'about.missionText': 'To empower businesses with innovative e-commerce tools that drive growth and customer satisfaction.',
     'about.vision': 'Our Vision',
@@ -126,12 +126,13 @@ const translations = {
     'about.values': 'Our Values',
     'about.valuesSubtitle': 'The principles that guide everything we do',
     'about.innovation': 'Innovation',
+    'about.innovationDesc': 'Continuously pushing boundaries and embracing cutting-edge technology.',
     'about.quality': 'Quality',
     'about.customerFocus': 'Customer Focus',
     'about.integrity': 'Integrity',
     'about.customerFirst': 'Customer First',
     'about.customerFirstDesc': 'Every decision we make is centered around our customers\' needs and satisfaction.',
-    'about.integrityDesc': 'Honest, transparent, and ethical in all our business practices.',
+    'about.integrityDesc': 'We uphold the highest standards of honesty, transparency, and ethical conduct in everything we do.',
     'about.sustainability': 'Sustainability',
     'about.sustainabilityDesc': 'Committed to environmental responsibility and sustainable business practices.',
     'about.achievements': 'Our Achievements',
@@ -187,7 +188,7 @@ const translations = {
     // Services Page
     'services.title': 'Our Services',
     'services.subtitle': 'Comprehensive E-Commerce Solutions',
-    'services.description': 'From product listing to customer support, we provide end-to-end solutions for your e-commerce success.',
+    'services.description': 'From product listing to customer support, we provide end-to-end solutions.',
     
     // Services CTA Section
     'services.cta.title': 'Get started today with reach out',
@@ -239,9 +240,9 @@ const translations = {
     // Services Page Sections
     'services.hero.title': 'Our Services',
     'services.hero.subtitle': 'Comprehensive E-Commerce Solutions',
-    'services.hero.description': 'From product listing to customer support, we provide end-to-end solutions for your e-commerce success.',
+    'services.hero.description': 'From product listing to customer support, we provide end-to-end solutions.',
     'services.hero.cta': 'Get Started Today',
-    'services.hero.learnMore': 'Learn More',
+    'services.hero.learnMore': 'Know More',
     
     'services.pricing.title': 'Choose Your Plan',
     'services.pricing.subtitle': 'Flexible pricing options to fit your business needs',
@@ -712,6 +713,40 @@ const translations = {
     'blog.futureEcommerce.date': 'March 15, 2025',
     'blog.futureEcommerce.readTime': '8 min read',
     
+    // Blog posts for main blog page
+    'blog.posts.futureEcommerce.title': 'The Future of E-commerce: AI-Powered Shopping Experiences',
+    'blog.posts.futureEcommerce.excerpt': 'Discover how artificial intelligence is revolutionizing the way customers shop online and what it means for your business.',
+    'blog.posts.futureEcommerce.author': 'Sarah Johnson',
+    'blog.posts.futureEcommerce.date': 'March 15, 2025',
+    'blog.posts.futureEcommerce.readTime': '8 min read',
+    'blog.posts.futureEcommerce.category': 'Technology',
+    
+    'blog.posts.conversionRate.title': '10 Essential Strategies for Boosting Your Conversion Rate',
+    'blog.posts.conversionRate.excerpt': 'Learn proven techniques that successful e-commerce businesses use to turn visitors into loyal customers.',
+    'blog.posts.conversionRate.author': 'Michael Chen',
+    'blog.posts.conversionRate.date': 'March 12, 2025',
+    'blog.posts.conversionRate.readTime': '12 min read',
+    'blog.posts.conversionRate.category': 'Marketing',
+    
+    'blog.posts.customerTrust.title': 'Building Customer Trust: The Foundation of E-commerce Success',
+    'blog.posts.customerTrust.excerpt': 'Explore the key elements that build trust with your customers and how to implement them effectively.',
+    'blog.posts.customerTrust.author': 'Emily Rodriguez',
+    'blog.posts.customerTrust.date': 'March 10, 2025',
+    'blog.posts.customerTrust.readTime': '6 min read',
+    'blog.posts.customerTrust.category': 'Customer Experience',
+    
+    'blog.posts.mobileFirst.title': 'Mobile-First Design: Why It\'s Critical for E-commerce',
+    'blog.posts.mobileFirst.date': 'March 8, 2025',
+    'blog.posts.mobileFirst.readTime': '5 min read',
+    
+    'blog.posts.pricing.title': 'The Psychology of Pricing: How to Price Your Products Right',
+    'blog.posts.pricing.date': 'March 5, 2025',
+    'blog.posts.pricing.readTime': '10 min read',
+    
+    'blog.posts.inventory.title': 'Best Practices for Inventory Management in Growing Businesses',
+    'blog.posts.inventory.date': 'March 2, 2025',
+    'blog.posts.inventory.readTime': '7 min read',
+    
     'blog.futureEcommerce.introduction.paragraph1': 'Artificial intelligence is no longer a futuristic concept—it\'s here, and it\'s fundamentally changing how customers interact with e-commerce platforms. From personalized product recommendations to intelligent chatbots, AI is creating shopping experiences that are more intuitive, engaging, and conversion-focused than ever before.',
     'blog.futureEcommerce.introduction.paragraph2': 'In this comprehensive guide, we\'ll explore the key AI technologies reshaping e-commerce and how forward-thinking businesses can leverage them to stay ahead of the competition.',
     
@@ -1117,6 +1152,14 @@ const translations = {
     'blog.categories.title': 'Explore by Category',
     'blog.categories.subtitle': 'Find the content that matters most to your business needs',
     'blog.categories.articles': 'articles',
+    
+    'blog.categories.technology.name': 'Technology',
+    'blog.categories.marketing.name': 'Marketing',
+    'blog.categories.happyClients.name': 'Happy Clients',
+    'blog.categories.businessStrategy.name': 'Business Strategy',
+    'blog.categories.analytics.name': 'Analytics',
+    'blog.categories.caseStudies.name': 'Case Studies',
+    
     'blog.recent.title': 'Recent Articles',
     'blog.newsletter.title': 'Stay Updated with Latest Insights',
     'blog.newsletter.subtitle': 'Get weekly tips, industry news, and exclusive content delivered to your inbox.',
@@ -1130,11 +1173,23 @@ const translations = {
     'blog.authors.title': 'Meet Our Expert Writers',
     'blog.authors.subtitle': 'Industry professionals sharing their knowledge and insights',
     'blog.authors.articlesPublished': 'articles published',
+    
+    'blog.authors.sarah.name': 'Sarah Johnson',
+    'blog.authors.sarah.role': 'Senior Technology Writer',
+    'blog.authors.sarah.expertise': 'AI & E-commerce',
+    
+    'blog.authors.michael.name': 'Michael Chen',
+    'blog.authors.michael.role': 'Marketing Strategist',
+    'blog.authors.michael.expertise': 'Digital Marketing',
+    
+    'blog.authors.emily.name': 'Emily Rodriguez',
+    'blog.authors.emily.role': 'Customer Experience Expert',
+    'blog.authors.emily.expertise': 'UX & CX',
+    
     'blog.cta.title': 'Ready to Transform Your E-commerce Business?',
     'blog.cta.subtitle': 'Apply the insights from our blog to your business and start seeing real results today',
     'blog.cta.exploreServices': 'Explore Our Services',
     'blog.cta.contactExperts': 'Contact Our Experts',
-    'blog.cta.questions': 'Questions? Contact our team at blog@shophub.com',
     
     // Dashboard
     'dashboard.title': 'Dashboard',
@@ -1400,7 +1455,7 @@ const translations = {
               'home.description': 'Welcome to ShopEase - Your trusted e-commerce platform',
               'home.welcomeTitle': 'Welcome to',
               'home.brandName': 'ShopEase',
-              'home.welcomeDescription': 'Sign in to access exclusive deals and manage your account.',
+              'home.welcomeDescription': 'Sign in to access exclusive deals',
               'home.goToLogin': 'Go to Login',
             
     // Common
@@ -1783,6 +1838,7 @@ const translations = {
     'about.values': 'قيمنا',
     'about.valuesSubtitle': 'المبادئ التي توجه كل ما نقوم به',
     'about.innovation': 'الابتكار',
+    'about.innovationDesc': 'نواصل دفع الحدود واعتماد أحدث التقنيات لتقديم حلول مبتكرة.',
     'about.quality': 'الجودة',
     'about.customerFocus': 'تركيز العملاء',
     'about.integrity': 'النزاهة',
@@ -3366,6 +3422,7 @@ const translations = {
     'about.values': 'הערכים שלנו',
     'about.valuesSubtitle': 'העקרונות שמנחים כל מה שאנחנו עושים',
     'about.innovation': 'חדשנות',
+    'about.innovationDesc': 'ממשיכים לדחוף את הגבולות ומאמצים טכנולוגיה מתקדמת כדי לספק פתרונות חדשניים.',
     'about.quality': 'איכות',
     'about.customerFocus': 'מיקוד לקוחות',
     'about.integrity': 'יושרה',
@@ -4657,21 +4714,29 @@ const translations = {
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // Load saved language from localStorage
-    const savedLanguage = localStorage.getItem('language') as Language;
-    if (savedLanguage && ['en', 'ar', 'he'].includes(savedLanguage)) {
-      setCurrentLanguage(savedLanguage);
+    // Mark as client-side
+    setIsClient(true);
+    
+    // Load saved language from localStorage only on client
+    if (typeof window !== 'undefined') {
+      const savedLanguage = localStorage.getItem('language') as Language;
+      if (savedLanguage && ['en', 'ar', 'he'].includes(savedLanguage)) {
+        setCurrentLanguage(savedLanguage);
+      }
     }
   }, []);
 
   const setLanguage = (lang: Language) => {
     setCurrentLanguage(lang);
-    localStorage.setItem('language', lang);
     
-    // Set document language without changing direction
-    document.documentElement.lang = lang;
+    // Only access localStorage and document on client-side
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('language', lang);
+      document.documentElement.lang = lang;
+    }
   };
 
   const t = (key: string): string => {
@@ -4681,8 +4746,10 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   const isRTL = false;
 
   useEffect(() => {
-    // Set initial document language without changing direction
-    document.documentElement.lang = currentLanguage;
+    // Set initial document language only on client-side
+    if (typeof window !== 'undefined') {
+      document.documentElement.lang = currentLanguage;
+    }
   }, [currentLanguage]);
 
   return (

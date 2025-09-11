@@ -1,4 +1,4 @@
-import { User, AdminRequest } from './dataService';
+import { User, AdminRequest } from './types';
 
 // API base URL
 const API_BASE = '/api';

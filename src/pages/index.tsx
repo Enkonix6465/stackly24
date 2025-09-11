@@ -1,12 +1,13 @@
 import { ModeToggle } from "@/components/theme/ModeToggle";
-import Header from "@/components/Header";
 import Head from "next/head";
 import Image from "next/image";
 import { useLanguage } from "@/components/LanguageProvider";
 import { LanguageSelector } from "@/components/LanguageSelector";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const { t, currentLanguage, isRTL } = useLanguage();
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -15,13 +16,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
       <>
         <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4 pt-20">
-          <div className="absolute top-4 right-4 z-10">
+          <div className="absolute top-4 right-4 z-10 flex items-center gap-3">
             <LanguageSelector />
-          </div>
-          <div>
             <ModeToggle />
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-10 flex flex-col items-center max-w-md w-full">
@@ -40,7 +38,7 @@ export default function Home() {
             </p>
             <button
               className="w-full bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 mb-2"
-              onClick={() => (window.location.href = "/auth")}
+              onClick={() => router.push("/auth")}
             >
               {t('home.goToLogin')}
             </button>

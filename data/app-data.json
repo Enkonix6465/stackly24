@@ -3,30 +3,16 @@
     {
       "role": "admin",
       "username": "admin",
-      "email": "admin@enkonix.in",
+      "email": "admin@enkonix.com",
       "mobile": "1234567890",
       "password": "admin123",
-      "loginTime": "2025-09-11T12:08:01.290Z",
+      "loginTime": "2025-09-11T14:09:31.689Z",
       "logoutTime": "2024-01-15T18:00:00.000Z",
-      "lastActive": "2025-09-11T12:08:01.290Z",
+      "lastActive": "2025-09-11T14:09:31.689Z",
       "createdAt": "2024-01-01T00:00:00.000Z",
-      "updatedAt": "2025-09-11T12:08:01.290Z",
+      "updatedAt": "2025-09-11T14:09:31.690Z",
       "isApproved": true,
-      "approvalDate": "2024-01-01T00:00:00.000Z",
-      "approvedBy": "system"
-    },
-    {
-      "role": "admin",
-      "username": "admin",
-      "email": "admin@example.com",
-      "mobile": "1234567890",
-      "password": "admin123",
-      "loginTime": "2024-01-15T10:30:00.000Z",
-      "logoutTime": "2024-01-15T18:00:00.000Z",
-      "lastActive": "2024-01-15T18:00:00.000Z",
-      "createdAt": "2024-01-01T00:00:00.000Z",
-      "updatedAt": "2024-01-15T18:00:00.000Z",
-      "isApproved": true,
+      "isMainAdmin": true,
       "approvalDate": "2024-01-01T00:00:00.000Z",
       "approvedBy": "system"
     },
@@ -58,13 +44,13 @@
       "role": "user",
       "username": "Jayasri",
       "email": "jayasrim226@gmail.com",
-      "mobile": "6305250296",
-      "password": "adminn",
-      "createdAt": "2025-08-28T03:35:00.728Z",
-      "updatedAt": "2025-09-11T12:33:17.355Z",
-      "loginTime": "2025-09-11T12:33:17.355Z",
+      "mobile": "1234567890",
+      "password": "123456",
+      "createdAt": "2025-09-11T15:17:15.162Z",
+      "updatedAt": "2025-09-11T19:00:46.839Z",
+      "loginTime": "2025-09-11T19:00:46.838Z",
       "logoutTime": "-",
-      "lastActive": "2025-09-11T12:33:17.355Z"
+      "lastActive": "2025-09-11T19:00:46.838Z"
     }
   ],
   "adminRequests": [
@@ -122,13 +108,13 @@
     "role": "user",
     "username": "Jayasri",
     "email": "jayasrim226@gmail.com",
-    "mobile": "6305250296",
-    "password": "adminn",
-    "createdAt": "2025-08-28T03:35:00.728Z",
-    "updatedAt": "2025-09-11T12:33:17.354Z",
-    "loginTime": "2025-09-11T12:33:17.354Z",
+    "mobile": "1234567890",
+    "password": "123456",
+    "createdAt": "2025-09-11T15:17:15.162Z",
+    "updatedAt": "2025-09-11T19:00:46.835Z",
+    "loginTime": "2025-09-11T19:00:46.835Z",
     "logoutTime": "-",
-    "lastActive": "2025-09-11T12:33:17.354Z"
+    "lastActive": "2025-09-11T19:00:46.835Z"
   },
-  "lastUpdated": "2025-09-11T12:33:17.355Z"
+  "lastUpdated": "2025-09-11T19:00:46.839Z"
 }

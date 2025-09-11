@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import VideoBackground from '../components/VideoBackground';
+import FadeIn from '../components/FadeIn';
 import Link from 'next/link';
 import { useLanguage } from '../components/LanguageProvider';
 
@@ -61,21 +62,28 @@ export default function Blog() {
           <VideoBackground videoSrc="/vedios/vedio6.mp4" className="text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 min-h-screen flex items-center justify-center">
               <div className="text-center">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-                  {t('blog.hero.title')}
-                  <span className="block text-indigo-200">{t('blog.hero.subtitle')}</span>
-                </h1>
-                <p className="text-xl md:text-2xl text-indigo-100 mb-8 max-w-3xl mx-auto">
-                  {t('blog.hero.description')}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/contact" className="bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors duration-300 shadow-lg">
-                    {t('blog.hero.talkToUs')}
-                  </Link>
-                  <Link href="/services" className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-indigo-900 transition-all duration-300">
-                    {t('blog.hero.whatWeOffer')}
-                  </Link>
-                </div>
+                <FadeIn direction="up" delay={0.2} duration={0.8}>
+                  <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white">
+                    {t('blog.hero.title')} {t('blog.hero.subtitle')}
+                  </h1>
+                </FadeIn>
+                
+                <FadeIn direction="up" delay={0.4} duration={0.8}>
+                  <p className="text-xl md:text-2xl text-indigo-100 mb-8 max-w-3xl mx-auto">
+                    Stay ahead of the curve with expert insights, and proven strategies
+                  </p>
+                </FadeIn>
+                
+                <FadeIn direction="up" delay={0.6} duration={0.8}>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link href="/contact" className="bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors duration-300 shadow-lg">
+                      {t('blog.hero.talkToUs')}
+                    </Link>
+                    <Link href="/services" className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-indigo-900 transition-all duration-300">
+                      {t('blog.hero.whatWeOffer')}
+                    </Link>
+                  </div>
+                </FadeIn>
               </div>
             </div>
             <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white dark:from-gray-900 to-transparent"></div>
@@ -84,19 +92,22 @@ export default function Blog() {
           {/* Featured Posts Section */}
           <section id="featured" className="py-20 bg-gray-50 dark:bg-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t('blog.featured.title')}
-                </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  {t('blog.featured.subtitle')}
-                </p>
-              </div>
+              <FadeIn direction="up" delay={0.2} duration={0.8}>
+                <div className="text-center mb-16">
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    {t('blog.featured.title')}
+                  </h2>
+                  <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    {t('blog.featured.subtitle')}
+                  </p>
+                </div>
+              </FadeIn>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {featuredPosts.map((post) => (
-                  <article key={post.id} className="group">
-                    <div className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100 dark:border-gray-600">
+                {featuredPosts.map((post, index) => (
+                  <FadeIn key={post.id} direction="up" delay={0.4 + (index * 0.2)} duration={0.8}>
+                    <article className="group">
+                      <div className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100 dark:border-gray-600">
                       <div className="relative overflow-hidden">
                         <img 
                           src={post.image} 
@@ -138,7 +149,8 @@ export default function Blog() {
                         </Link>
                       </div>
                     </div>
-                  </article>
+                    </article>
+                  </FadeIn>
                 ))}
               </div>
             </div>
@@ -147,14 +159,16 @@ export default function Blog() {
           {/* Categories Section */}
           <section className="py-20 bg-white dark:bg-gray-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t('blog.categories.title')}
-                </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  {t('blog.categories.subtitle')}
-                </p>
-              </div>
+              <FadeIn direction="up" delay={0.2} duration={0.8}>
+                <div className="text-center mb-16">
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    {t('blog.categories.title')}
+                  </h2>
+                  <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    {t('blog.categories.subtitle')}
+                  </p>
+                </div>
+              </FadeIn>
               
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
                 {[ 
@@ -189,9 +203,11 @@ export default function Blog() {
               <div className="grid lg:grid-cols-2 gap-12">
                 {/* Recent Posts */}
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-                    {t('blog.recent.title')}
-                  </h2>
+                  <FadeIn direction="up" delay={0.2} duration={0.8}>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+                      {t('blog.recent.title')}
+                    </h2>
+                  </FadeIn>
                   <div className="space-y-6">
                     {[
                       { title: t('blog.posts.mobileFirst.title'), date: t('blog.posts.mobileFirst.date'), readTime: t('blog.posts.mobileFirst.readTime'), slug: "mobile-first-design" },
@@ -277,14 +293,16 @@ export default function Blog() {
           {/* Authors Section */}
           <section className="py-20 bg-white dark:bg-gray-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t('blog.authors.title')}
-                </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                  {t('blog.authors.subtitle')}
-                </p>
-              </div>
+              <FadeIn direction="up" delay={0.2} duration={0.8}>
+                <div className="text-center mb-16">
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    {t('blog.authors.title')}
+                  </h2>
+                  <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    {t('blog.authors.subtitle')}
+                  </p>
+                </div>
+              </FadeIn>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
@@ -321,23 +339,24 @@ export default function Blog() {
           {/* CTA Section */}
           <section className="py-20 text-white relative overflow-hidden">
             {/* Background Image */}
-            <div className="absolute inset-0">
-              <img 
-                src="/images/BCTA.jpg" 
-                alt="CTA Background" 
-                className="w-full h-full object-cover"
-              />
-              {/* Black Overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-            </div>
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+              style={{ backgroundImage: 'url(/images/CTA4.jpg)' }}
+            />
+            {/* Black Overlay */}
+            <div className="absolute inset-0 bg-black bg-opacity-60"></div>
             
             <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                {t('blog.cta.title')}
-              </h2>
-              <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
-                {t('blog.cta.subtitle')}
-              </p>
+              <FadeIn direction="up" delay={0.2} duration={0.8}>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  {t('blog.cta.title')}
+                </h2>
+              </FadeIn>
+              <FadeIn direction="up" delay={0.4} duration={0.8}>
+                <p className="text-xl text-white mb-8 whitespace-nowrap overflow-hidden text-ellipsis">
+                  {t('blog.cta.subtitle')}
+                </p>
+              </FadeIn>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/services" className="bg-white text-indigo-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-indigo-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
@@ -348,9 +367,6 @@ export default function Blog() {
                 </button>
               </div>
               
-              <p className="text-white mt-6 text-sm">
-                {t('blog.cta.questions')}
-              </p>
             </div>
           </section>
         </div>

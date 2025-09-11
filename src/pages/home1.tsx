@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -140,6 +140,18 @@ export default function Home1() {
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [cart, setCart] = useState<Array<{id: number, name: string, price: string, image: string, quantity: number}>>([]);
   const [showCartMessage, setShowCartMessage] = useState<number | null>(null);
+  const [isCategorySectionVisible, setIsCategorySectionVisible] = useState(false);
+  const [isFeaturedProductsSectionVisible, setIsFeaturedProductsSectionVisible] = useState(false);
+  const [isCartSectionVisible, setIsCartSectionVisible] = useState(false);
+  const [isStatsSectionVisible, setIsStatsSectionVisible] = useState(false);
+  const [isTestimonialsSectionVisible, setIsTestimonialsSectionVisible] = useState(false);
+  const [isNewsletterSectionVisible, setIsNewsletterSectionVisible] = useState(false);
+  const categorySectionRef = useRef<HTMLElement>(null);
+  const featuredProductsSectionRef = useRef<HTMLElement>(null);
+  const cartSectionRef = useRef<HTMLElement>(null);
+  const statsSectionRef = useRef<HTMLElement>(null);
+  const testimonialsSectionRef = useRef<HTMLElement>(null);
+  const newsletterSectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     // Check if user is logged in
@@ -149,6 +161,150 @@ export default function Home1() {
       window.location.href = '/auth';
       return;
     }
+  }, []);
+
+  // Intersection Observer for category section animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsCategorySectionVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (categorySectionRef.current) {
+      observer.observe(categorySectionRef.current);
+    }
+
+    return () => {
+      if (categorySectionRef.current) {
+        observer.unobserve(categorySectionRef.current);
+      }
+    };
+  }, []);
+
+  // Intersection Observer for featured products section animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsFeaturedProductsSectionVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (featuredProductsSectionRef.current) {
+      observer.observe(featuredProductsSectionRef.current);
+    }
+
+    return () => {
+      if (featuredProductsSectionRef.current) {
+        observer.unobserve(featuredProductsSectionRef.current);
+      }
+    };
+  }, []);
+
+  // Intersection Observer for cart section animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsCartSectionVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (cartSectionRef.current) {
+      observer.observe(cartSectionRef.current);
+    }
+
+    return () => {
+      if (cartSectionRef.current) {
+        observer.unobserve(cartSectionRef.current);
+      }
+    };
+  }, []);
+
+  // Intersection Observer for stats section animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsStatsSectionVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (statsSectionRef.current) {
+      observer.observe(statsSectionRef.current);
+    }
+
+    return () => {
+      if (statsSectionRef.current) {
+        observer.unobserve(statsSectionRef.current);
+      }
+    };
+  }, []);
+
+  // Intersection Observer for testimonials section animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsTestimonialsSectionVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (testimonialsSectionRef.current) {
+      observer.observe(testimonialsSectionRef.current);
+    }
+
+    return () => {
+      if (testimonialsSectionRef.current) {
+        observer.unobserve(testimonialsSectionRef.current);
+      }
+    };
+  }, []);
+
+  // Intersection Observer for newsletter section animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsNewsletterSectionVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (newsletterSectionRef.current) {
+      observer.observe(newsletterSectionRef.current);
+    }
+
+    return () => {
+      if (newsletterSectionRef.current) {
+        observer.unobserve(newsletterSectionRef.current);
+      }
+    };
   }, []);
 
   const handleSubscribe = (e: React.FormEvent) => {
@@ -209,16 +365,15 @@ export default function Home1() {
           <VideoBackground videoSrc="/vedios/vedio1.mp4" className="text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 min-h-screen flex items-center justify-center">
               <div className="text-center">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+                <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight fade-in-up">
                   {t('hero.title')}
                 </h1>
-                <p className="text-xl md:text-2xl text-indigo-100 mb-8 whitespace-nowrap">
+                <p className="text-xl md:text-2xl text-indigo-100 mb-8 whitespace-nowrap fade-in-delay-1">
                   {t('hero.subtitle')}
                 </p>
-                <div className="flex justify-center">
-                  <Link href="/contact" className="group relative inline-flex items-center justify-center px-8 py-4 bg-indigo-600 text-white font-semibold text-lg rounded-xl hover:bg-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                    <span className="relative z-10">{t('hero.cta')}</span>
-                    <div className="absolute inset-0 bg-indigo-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="flex justify-center fade-in-delay-2">
+                  <Link href="/contact" className="bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors duration-300 shadow-lg text-center">
+                    {t('hero.cta')}
                   </Link>
                 </div>
               </div>
@@ -227,23 +382,55 @@ export default function Home1() {
           </VideoBackground>
 
           {/* Categories Section */}
-          <section className="py-20 bg-gray-50 dark:bg-gray-800">
+          <section ref={categorySectionRef} className="py-20 bg-gray-50 dark:bg-gray-800 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                <h2 className={`text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-all duration-1000 transform ${
+                  isCategorySectionVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}>
                   {t('home1.categories.title')}
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                <p className={`text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-all duration-1000 delay-200 transform ${
+                  isCategorySectionVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}>
                   {t('home1.categories.subtitle')}
                 </p>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
                 {categories.map((category, index) => (
-                  <div key={index} className="group cursor-pointer">
-                    <div className="bg-white dark:bg-gray-700 rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 dark:border-gray-600">
-                      <div className="text-4xl mb-3 flex justify-center">{category.icon}</div>
-                      <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{t(category.name)}</h3>
-                      <p className="text-sm text-indigo-600 dark:text-indigo-400 font-medium">{category.count}</p>
+                  <div 
+                    key={index} 
+                    className="group cursor-pointer"
+                    style={{
+                      animationDelay: `${index * 100}ms`
+                    }}
+                  >
+                    <div className={`relative bg-white dark:bg-gray-700 rounded-xl p-6 text-center shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-600 transform ${
+                      isCategorySectionVisible 
+                        ? 'opacity-100 translate-y-0 scale-100' 
+                        : 'opacity-0 translate-y-12 scale-95'
+                    } hover:scale-105 hover:border-indigo-300 dark:hover:border-indigo-500 hover:bg-gradient-to-br hover:from-white hover:to-indigo-50 dark:hover:from-gray-700 dark:hover:to-indigo-900/20`}>
+                      {/* Main content */}
+                      <div className="relative z-20">
+                        <div className="text-4xl mb-3 flex justify-center transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg">
+                          <div className="transition-all duration-300 group-hover:brightness-110 group-hover:contrast-110">
+                            {category.icon}
+                          </div>
+                        </div>
+                        <h3 className="font-semibold text-gray-900 dark:text-white mb-2 transition-all duration-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:font-bold">
+                          {t(category.name)}
+                        </h3>
+                        <p className="text-sm text-indigo-600 dark:text-indigo-400 font-medium transition-all duration-300 group-hover:text-indigo-700 dark:group-hover:text-indigo-300 group-hover:font-semibold">
+                          {category.count}
+                        </p>
+                      </div>
+                      
+                      {/* Subtle glow effect */}
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-400/0 via-indigo-400/5 to-indigo-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                     </div>
                   </div>
                 ))}
@@ -252,20 +439,38 @@ export default function Home1() {
           </section>
 
           {/* Featured Products Section */}
-          <section className="py-20 bg-white dark:bg-gray-900">
+          <section ref={featuredProductsSectionRef} className="py-20 bg-white dark:bg-gray-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                <h2 className={`text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-all duration-1000 transform ${
+                  isFeaturedProductsSectionVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}>
                   {t('home1.featuredProducts.title')}
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                <p className={`text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-all duration-1000 delay-200 transform ${
+                  isFeaturedProductsSectionVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}>
                   {t('home1.featuredProducts.subtitle')}
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {(showAllProducts ? allProducts : featuredProducts).map((product) => (
-                  <div key={product.id} className="group">
-                    <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+                {(showAllProducts ? allProducts : featuredProducts).map((product, index) => (
+                  <div 
+                    key={product.id} 
+                    className="group"
+                    style={{
+                      animationDelay: `${index * 100}ms`
+                    }}
+                  >
+                    <div className={`bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-700 transform ${
+                      isFeaturedProductsSectionVisible 
+                        ? 'opacity-100 translate-y-0 scale-100' 
+                        : 'opacity-0 translate-y-12 scale-95'
+                    }`}>
                       <div className="relative overflow-hidden">
                         <img 
                           src={product.image} 
@@ -314,7 +519,11 @@ export default function Home1() {
                   </div>
                 ))}
               </div>
-              <div className="text-center mt-12">
+              <div className={`text-center mt-12 transition-all duration-1000 delay-400 transform ${
+                isFeaturedProductsSectionVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-8'
+              }`}>
                 <button 
                   onClick={handleViewAllProducts}
                   className="bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors inline-block"
@@ -327,9 +536,13 @@ export default function Home1() {
 
           {/* Cart Display Section */}
           {cart.length > 0 && (
-            <section className="py-12 bg-gray-50 dark:bg-gray-800">
+            <section ref={cartSectionRef} className="py-12 bg-gray-50 dark:bg-gray-800">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-8">
+                <div className={`text-center mb-8 transition-all duration-1000 transform ${
+                  isCartSectionVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}>
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     {t('home1.cart.title')} ({cart.reduce((total, item) => total + item.quantity, 0)} {t('home1.cart.items')})
                   </h3>
@@ -337,7 +550,11 @@ export default function Home1() {
                     {t('home1.cart.total')}: ${cart.reduce((total, item) => total + (parseFloat(item.price.replace('$', '')) * item.quantity), 0).toFixed(2)}
                   </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-1000 delay-200 transform ${
+                  isCartSectionVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}>
                   {cart.map((item) => (
                     <div key={item.id} className="bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-600">
                       <div className="flex items-center space-x-3">
@@ -366,7 +583,11 @@ export default function Home1() {
                     </div>
                   ))}
                 </div>
-                <div className="text-center mt-6">
+                <div className={`text-center mt-6 transition-all duration-1000 delay-400 transform ${
+                  isCartSectionVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}>
                   <button 
                     onClick={() => setCart([])}
                     className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium mr-4"
@@ -382,19 +603,33 @@ export default function Home1() {
           )}
 
           {/* Stats Section */}
-          <section className="py-20 bg-indigo-900 text-white">
+          <section ref={statsSectionRef} className="py-20 bg-indigo-900 text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
+              <div className={`text-center mb-16 transition-all duration-1000 transform ${
+                isStatsSectionVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-8'
+              }`}>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   {t('home1.stats.title')}
                 </h2>
-                <p className="text-xl text-indigo-200 max-w-3xl mx-auto">
+                <p className="text-xl text-indigo-200 max-w-3xl mx-auto whitespace-nowrap">
                   {t('home1.stats.subtitle')}
                 </p>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {stats.map((stat, index) => (
-                  <div key={index} className="text-center">
+                  <div 
+                    key={index} 
+                    className={`text-center transition-all duration-1000 transform ${
+                      isStatsSectionVisible 
+                        ? 'opacity-100 translate-y-0 scale-100' 
+                        : 'opacity-0 translate-y-12 scale-95'
+                    }`}
+                    style={{
+                      animationDelay: `${index * 150}ms`
+                    }}
+                  >
                     <div className="text-4xl md:text-5xl font-bold text-indigo-200 mb-2">
                       {stat.number}
                     </div>
@@ -408,9 +643,13 @@ export default function Home1() {
           </section>
 
           {/* Testimonials Section - Flip Cards */}
-          <section className="py-20 bg-gray-50 dark:bg-gray-800">
+          <section ref={testimonialsSectionRef} className="py-20 bg-gray-50 dark:bg-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
+              <div className={`text-center mb-16 transition-all duration-1000 transform ${
+                isTestimonialsSectionVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-8'
+              }`}>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                   {t('home1.testimonials.title')}
                 </h2>
@@ -420,8 +659,18 @@ export default function Home1() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {testimonials.map((testimonial, index) => (
-                  <div key={index} className="group perspective-1000">
-                    <div className="relative w-full h-80 transition-all duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
+                  <div 
+                    key={index} 
+                    className="group perspective-1000"
+                    style={{
+                      animationDelay: `${index * 200}ms`
+                    }}
+                  >
+                    <div className={`relative w-full h-80 transition-all duration-700 transform-style-preserve-3d group-hover:rotate-y-180 ${
+                      isTestimonialsSectionVisible 
+                        ? 'opacity-100 translate-y-0 scale-100' 
+                        : 'opacity-0 translate-y-12 scale-95'
+                    }`}>
                       {/* Front of card */}
                       <div className="absolute inset-0 w-full h-full backface-hidden bg-white dark:bg-gray-700 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-600 flex flex-col items-center justify-center text-center">
                         <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-4 border-indigo-100 dark:border-indigo-900">
@@ -466,7 +715,7 @@ export default function Home1() {
           </section>
 
           {/* New Stay Updated Section - Modern Template */}
-          <section className="py-20 bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 text-white relative overflow-hidden">
+          <section ref={newsletterSectionRef} className="py-20 bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 text-white relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0" style={{
@@ -475,7 +724,11 @@ export default function Home1() {
             </div>
             
             <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
+              <div className={`text-center mb-16 transition-all duration-1000 transform ${
+                isNewsletterSectionVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-8'
+              }`}>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   {t('home1.newsletter.title')}
                 </h2>
@@ -484,7 +737,11 @@ export default function Home1() {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className={`grid md:grid-cols-2 gap-12 items-center transition-all duration-1000 delay-200 transform ${
+                isNewsletterSectionVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-8'
+              }`}>
                 {/* Left Side - Benefits */}
                 <div className="space-y-6">
                   <div className="text-left">

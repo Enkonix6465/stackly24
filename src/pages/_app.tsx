@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Error from "next/error";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -12,7 +13,9 @@ export default function App({ Component, pageProps }: AppProps) {
   // Scroll to top when route changes
   useEffect(() => {
     const handleRouteChange = () => {
-      window.scrollTo(0, 0);
+      if (typeof window !== 'undefined') {
+        window.scrollTo(0, 0);
+      }
     };
 
     router.events.on('routeChangeComplete', handleRouteChange);
@@ -21,6 +24,11 @@ export default function App({ Component, pageProps }: AppProps) {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
+
+  // Handle errors
+  if (pageProps.error) {
+    return <Error statusCode={pageProps.error.statusCode || 500} />;
+  }
 
   return (
     <ThemeProvider
