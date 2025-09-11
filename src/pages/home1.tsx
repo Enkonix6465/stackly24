@@ -212,15 +212,16 @@ export default function Home1() {
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
                   {t('hero.title')}
                 </h1>
-                <p className="text-xl md:text-2xl text-indigo-100 mb-8 max-w-3xl mx-auto">
+                <p className="text-xl md:text-2xl text-indigo-100 mb-8 whitespace-nowrap">
                   {t('hero.subtitle')}
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/contact" className="bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors duration-300 shadow-lg text-center">
-                    {t('hero.cta')}
-                  </Link>
-                  <Link href="/about" className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-indigo-900 transition-all duration-300 text-center">
-                    {t('hero.learnMore')}
+                <div className="flex justify-center">
+                  <Link href="/contact" className="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-lg rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                    <span className="relative z-10">{t('hero.cta')}</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-purple-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
                   </Link>
                 </div>
               </div>

@@ -3,14 +3,14 @@
     {
       "role": "admin",
       "username": "admin",
-      "email": "admin@gmail.com",
+      "email": "admin@enkonix.in",
       "mobile": "1234567890",
-      "password": "admin",
-      "loginTime": "2025-08-25T07:23:43.266Z",
+      "password": "admin123",
+      "loginTime": "2025-09-11T11:25:08.620Z",
       "logoutTime": "2024-01-15T18:00:00.000Z",
-      "lastActive": "2025-08-25T07:23:43.266Z",
+      "lastActive": "2025-09-11T11:25:08.620Z",
       "createdAt": "2024-01-01T00:00:00.000Z",
-      "updatedAt": "2025-08-25T07:23:43.266Z",
+      "updatedAt": "2025-09-11T11:25:08.620Z",
       "isApproved": true,
       "approvalDate": "2024-01-01T00:00:00.000Z",
       "approvedBy": "system"
@@ -121,10 +121,10 @@
       "mobile": "6305250296",
       "password": "adminn",
       "createdAt": "2025-08-28T03:35:00.728Z",
-      "updatedAt": "2025-09-03T13:41:07.058Z",
-      "loginTime": "2025-09-03T13:41:07.057Z",
+      "updatedAt": "2025-09-11T10:28:24.946Z",
+      "loginTime": "2025-09-11T10:28:24.945Z",
       "logoutTime": "-",
-      "lastActive": "2025-09-03T13:41:07.057Z"
+      "lastActive": "2025-09-11T10:28:24.945Z"
     },
     {
       "role": "user",
@@ -191,16 +191,19 @@
     }
   ],
   "currentUser": {
-    "role": "user",
-    "username": "Jayasri",
-    "email": "jayasrim226@gmail.com",
-    "mobile": "6305250296",
-    "password": "adminn",
-    "createdAt": "2025-08-28T03:35:00.728Z",
-    "updatedAt": "2025-09-03T13:41:07.046Z",
-    "loginTime": "2025-09-03T13:41:07.046Z",
-    "logoutTime": "-",
-    "lastActive": "2025-09-03T13:41:07.046Z"
+    "role": "admin",
+    "username": "admin",
+    "email": "admin@enkonix.in",
+    "mobile": "1234567890",
+    "password": "admin123",
+    "loginTime": "2025-09-11T11:25:08.618Z",
+    "logoutTime": "2024-01-15T18:00:00.000Z",
+    "lastActive": "2025-09-11T11:25:08.618Z",
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2025-09-11T11:25:08.618Z",
+    "isApproved": true,
+    "approvalDate": "2024-01-01T00:00:00.000Z",
+    "approvedBy": "system"
   },
-  "lastUpdated": "2025-09-03T13:41:07.059Z"
+  "lastUpdated": "2025-09-11T11:25:08.620Z"
 }

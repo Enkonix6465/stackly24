@@ -39,7 +39,7 @@ const translations = {
     
     // Hero Section
     'hero.title': 'Transform Your E-Commerce Business',
-    'hero.subtitle': 'Streamline operations, boost sales, and deliver exceptional customer experiences with our comprehensive e-commerce solutions.',
+    'hero.subtitle': 'Deliver exceptional customer experiences with our e-commerce solutions.',
     'hero.cta': 'Get Started Today',
     'hero.learnMore': 'Learn More',
     
@@ -1695,7 +1695,7 @@ const translations = {
     
     // Hero Section
     'hero.title': 'حوّل عملك التجاري الإلكتروني',
-    'hero.subtitle': 'بسط العمليات، عزز المبيعات، وقدم تجارب عملاء استثنائية مع حلولنا الشاملة للتجارة الإلكترونية.',
+    'hero.subtitle': 'قدم تجارب عملاء استثنائية مع حلولنا للتجارة الإلكترونية.',
     'hero.cta': 'ابدأ اليوم',
     'hero.learnMore': 'اعرف المزيد',
     
@@ -3277,7 +3277,7 @@ const translations = {
     
     // Hero Section
     'hero.title': 'שנה את עסק המסחר האלקטרוני שלך',
-    'hero.subtitle': 'פשט פעולות, הגבר מכירות, וספק חוויות לקוח יוצאות דופן עם פתרונות המסחר האלקטרוני המקיפים שלנו.',
+    'hero.subtitle': 'ספק חוויות לקוח יוצאות דופן עם פתרונות המסחר האלקטרוני שלנו.',
     'hero.cta': 'התחל היום',
     'hero.learnMore': 'למידע נוסף',
     
