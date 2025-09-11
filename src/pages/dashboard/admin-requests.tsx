@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -168,6 +169,17 @@ export default function AdminRequestsPage() {
         {/* Top Header */}
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="container flex h-14 items-center">
+            {/* Logo */}
+            <div className="flex items-center mr-4">
+              <Image
+                src="/logo-stackly.png"
+                alt={t('common.ecommerceLogo')}
+                className="w-28 h-8"
+                height={32}
+                width={112}
+              />
+            </div>
+
             {/* Mobile Menu Toggle */}
             <div className="flex md:hidden">
               <Sheet>
@@ -184,28 +196,13 @@ export default function AdminRequestsPage() {
               </Sheet>
             </div>
 
-                            <div className="mr-4 flex md:hidden items-center space-x-2">
-              <h1 className="text-lg font-bold text-purple-700 dark:text-purple-400">
-                <span>{t('dashboard.adminRequests.brandName.shopEase')}</span>
-                <span className="ml-2 text-gray-600">{t('dashboard.adminRequests.brandName.admin')}</span>
-              </h1>
-              <LanguageSelector />
-            </div>
-
-                            <div className="mr-4 hidden md:flex items-center space-x-2">
-              <h1 className="text-xl font-bold text-purple-700 dark:text-purple-400">
-                <span>{t('dashboard.adminRequests.brandName.shopEase')}</span>
-                <span className="ml-2 text-gray-600">{t('dashboard.adminRequests.brandName.admin')}</span>
-              </h1>
-              <LanguageSelector />
-            </div>
-
-            <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+                            <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
               <div className="flex items-center space-x-2">
                 <span className="hidden sm:inline text-sm text-muted-foreground">
                   {t('dashboard.adminRequests.welcome')}, {currentUser.username}
                 </span>
                 <ModeToggle />
+                <LanguageSelector />
                 <Button
                   variant="outline"
                   size="sm"

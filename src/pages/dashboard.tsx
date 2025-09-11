@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -61,6 +63,7 @@ export default function Dashboard() {
   const [users, setUsers] = useState<User[]>([]);
   const [adminRequests, setAdminRequests] = useState<AdminRequest[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const { t, currentLanguage } = useLanguage();
 
   useEffect(() => {
@@ -77,14 +80,26 @@ export default function Dashboard() {
   const loadData = async () => {
     try {
       setLoading(true);
+      setError(null);
+      
+      console.log('Starting to load dashboard data...');
+      
       const [usersData, requestsData] = await Promise.all([
         userAPI.getApproved(),
         adminRequestAPI.getAll()
       ]);
+      
+      console.log('Successfully loaded data:', { usersCount: usersData.length, requestsCount: requestsData.length });
+      
       setUsers(usersData);
       setAdminRequests(requestsData);
     } catch (error) {
       console.error('Error loading data:', error);
+      setError(error instanceof Error ? error.message : 'Failed to load dashboard data');
+      
+      // Set fallback empty data to prevent UI crashes
+      setUsers([]);
+      setAdminRequests([]);
     } finally {
       setLoading(false);
     }
@@ -93,6 +108,10 @@ export default function Dashboard() {
   const handleLogout = () => {
     localStorage.removeItem('currentUser');
     window.location.href = '/';
+  };
+
+  const handleRetry = () => {
+    loadData();
   };
 
   const getStatusBadge = (status: string) => {
@@ -167,16 +186,17 @@ export default function Dashboard() {
               </Sheet>
             </div>
 
-                            <div className="mr-4 flex md:hidden">
-              <h1 className="text-lg font-bold text-purple-700 dark:text-purple-400">
-                {t('dashboard.main.brandName')}
-              </h1>
-            </div>
-
-                            <div className="mr-4 hidden md:flex">
-              <h1 className="text-xl font-bold text-purple-700 dark:text-purple-400">
-                {t('dashboard.main.brandName')}
-              </h1>
+            {/* Logo */}
+            <div className="flex-shrink-0 flex items-center">
+              <Link href="/home1" className="flex items-center">
+                <Image
+                  src="/logo-stackly.png"
+                  alt={t('common.ecommerceLogo')}
+                  className="w-28 h-8"
+                  height={32}
+                  width={112}
+                />
+              </Link>
             </div>
 
             <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
@@ -218,6 +238,33 @@ export default function Dashboard() {
                   {t('dashboard.main.pageHeader.description')}
                 </p>
               </div>
+
+              {/* Error Display */}
+              {error && (
+                <Card className="border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center space-x-3">
+                      <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400" />
+                      <div className="flex-1">
+                        <h3 className="text-sm font-medium text-red-800 dark:text-red-200">
+                          Error Loading Data
+                        </h3>
+                        <p className="text-sm text-red-700 dark:text-red-300 mt-1">
+                          {error}
+                        </p>
+                      </div>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={handleRetry}
+                        className="border-red-300 text-red-700 hover:bg-red-100 dark:border-red-700 dark:text-red-300 dark:hover:bg-red-900"
+                      >
+                        Retry
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
 
               {/* Stats Cards */}
               <div className="grid gap-4 md:grid-cols-3">
@@ -288,8 +335,17 @@ export default function Dashboard() {
                 </CardHeader>
                 <CardContent>
                   {loading ? (
-                    <div className="flex items-center justify-center py-8">
+                    <div className="flex flex-col items-center justify-center py-8 space-y-3">
                       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
+                      <p className="text-sm text-muted-foreground">Loading dashboard data...</p>
+                    </div>
+                  ) : error ? (
+                    <div className="flex flex-col items-center justify-center py-8 space-y-3">
+                      <AlertCircle className="h-8 w-8 text-red-500" />
+                      <p className="text-sm text-red-600 dark:text-red-400">Unable to load recent requests</p>
+                      <Button variant="outline" size="sm" onClick={handleRetry}>
+                        Try Again
+                      </Button>
                     </div>
                   ) : (
                     <div className="overflow-x-auto">

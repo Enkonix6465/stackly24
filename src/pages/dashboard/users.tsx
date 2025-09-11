@@ -169,6 +169,15 @@ export default function UsersPage() {
         {/* Top Header */}
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="container flex h-14 items-center">
+            {/* Logo */}
+            <div className="flex items-center">
+              <img 
+                src="/logo-stackly.png" 
+                alt="Stackly Logo" 
+                className="h-8 w-auto mr-4"
+              />
+            </div>
+
             {/* Mobile Menu Toggle */}
             <div className="flex md:hidden">
               <Sheet>
@@ -185,21 +194,6 @@ export default function UsersPage() {
               </Sheet>
             </div>
 
-            <div className="mr-4 flex md:hidden items-center space-x-2">
-              <h1 className="text-lg font-bold text-purple-700 dark:text-purple-400">
-                <span>{t('dashboard.users.brandName.shopEase')}</span>
-                <span className="ml-2 text-gray-600">{t('dashboard.users.brandName.admin')}</span>
-              </h1>
-              <LanguageSelector />
-            </div>
-
-            <div className="mr-4 hidden md:flex items-center space-x-2">
-              <h1 className="text-xl font-bold text-purple-700 dark:text-purple-400">
-                <span>{t('dashboard.users.brandName.shopEase')}</span>
-                <span className="ml-2 text-gray-600">{t('dashboard.users.brandName.admin')}</span>
-              </h1>
-              <LanguageSelector />
-            </div>
 
             <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
               <div className="flex items-center space-x-2">
@@ -207,6 +201,7 @@ export default function UsersPage() {
                    {t('dashboard.users.welcome')}, {currentUser.username}
                  </span>
                  <ModeToggle />
+                <LanguageSelector />
                 <Button
                   variant="outline"
                   size="sm"

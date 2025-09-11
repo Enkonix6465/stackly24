@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageProvider';
-import { LanguageSelector } from '@/components/LanguageSelector';
+import SimpleHeader from '@/components/SimpleHeader';
 
 export default function ForgotPassword() {
   const router = useRouter();
@@ -77,11 +77,9 @@ export default function ForgotPassword() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
-        <div className="absolute top-4 right-4">
-          <LanguageSelector />
-        </div>
-        
+      <SimpleHeader />
+      
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4 pt-20">
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl font-bold text-purple-600 dark:text-purple-400">

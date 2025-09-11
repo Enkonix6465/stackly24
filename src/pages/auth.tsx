@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -140,6 +141,17 @@ export default function Auth() {
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+        {/* Logo */}
+        <div className="absolute top-4 left-4 z-10">
+          <Image
+            src="/logo-stackly.png"
+            alt={t('common.ecommerceLogo')}
+            className="w-28 h-8"
+            height={32}
+            width={112}
+          />
+        </div>
+
         {/* Language Selector */}
         <div className="absolute top-4 right-4 z-10">
           <LanguageSelector />
@@ -150,9 +162,11 @@ export default function Auth() {
             <CardTitle className="text-2xl font-bold text-purple-600 dark:text-purple-400">
               {isLogin ? t('auth.welcomeBack') : t('auth.createAccount')}
             </CardTitle>
-            <CardDescription>
-              {isLogin ? t('auth.signInToAccount') : t('auth.joinShopEase')}
-            </CardDescription>
+            {isLogin && (
+              <CardDescription>
+                {t('auth.signInToAccount')}
+              </CardDescription>
+            )}
           </CardHeader>
           <CardContent>
             {isLogin ? (
@@ -188,13 +202,16 @@ export default function Auth() {
                   {loading ? t('auth.signingIn') : t('auth.signIn')}
                 </Button>
                 <div className="text-center space-y-2">
-                  <button
-                    type="button"
-                    onClick={() => setIsLogin(false)}
-                    className="text-sm text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 block"
-                  >
-                    {t('auth.dontHaveAccount')}
-                  </button>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                    {t('auth.dontHaveAccount')}{' '}
+                    <button
+                      type="button"
+                      onClick={() => setIsLogin(false)}
+                      className="text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 underline cursor-pointer"
+                    >
+                      {t('auth.signUpNow')}
+                    </button>
+                  </div>
                   <Link
                     href="/forgot-password"
                     className="text-sm text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 block"
@@ -282,13 +299,16 @@ export default function Auth() {
                   {loading ? t('auth.creatingAccount') : t('auth.createAccountButton')}
                 </Button>
                 <div className="text-center">
-                  <button
-                    type="button"
-                    onClick={() => setIsLogin(true)}
-                    className="text-sm text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
-                  >
-                    {t('auth.alreadyHaveAccount')}
-                  </button>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                    {t('auth.alreadyHaveAccount')}{' '}
+                    <button
+                      type="button"
+                      onClick={() => setIsLogin(true)}
+                      className="text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 underline cursor-pointer"
+                    >
+                      {t('auth.signIn')}
+                    </button>
+                  </div>
                 </div>
               </form>
             )}

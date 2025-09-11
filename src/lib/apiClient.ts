@@ -3,22 +3,77 @@ import { User, AdminRequest } from './dataService';
 // API base URL
 const API_BASE = '/api';
 
-// Generic API request function
-const apiRequest = async (endpoint: string, options: RequestInit = {}) => {
-  const response = await fetch(`${API_BASE}${endpoint}`, {
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-    ...options,
-  });
+// Development mode check
+const isDevelopment = process.env.NODE_ENV === 'development';
 
-  if (!response.ok) {
-    const error = await response.json().catch(() => ({ message: 'Network error' }));
-    throw new Error(error.message || `HTTP error! status: ${response.status}`);
+// Generic API request function with improved error handling and retry mechanism
+const apiRequest = async (endpoint: string, options: RequestInit = {}, retryCount = 0): Promise<any> => {
+  const maxRetries = 3;
+  const retryDelay = Math.pow(2, retryCount) * 1000; // Exponential backoff: 1s, 2s, 4s
+  
+  try {
+    const url = `${API_BASE}${endpoint}`;
+    if (isDevelopment) {
+      console.log(`Making API request to: ${url} (attempt ${retryCount + 1})`);
+    }
+    
+    const response = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        ...options.headers,
+      },
+      ...options,
+    });
+
+    if (isDevelopment) {
+      console.log(`Response status: ${response.status} for ${url}`);
+    }
+
+    if (!response.ok) {
+      let errorMessage = `HTTP error! status: ${response.status}`;
+      
+      try {
+        const errorData = await response.json();
+        errorMessage = errorData.message || errorMessage;
+      } catch (parseError) {
+        console.warn('Could not parse error response:', parseError);
+        // Use the default error message
+      }
+      
+      throw new Error(errorMessage);
+    }
+
+    const data = await response.json();
+    if (isDevelopment) {
+      console.log(`Successfully fetched data from ${url}`);
+    }
+    return data;
+  } catch (error) {
+    console.error(`API request failed for ${endpoint} (attempt ${retryCount + 1}):`, error);
+    
+    // Retry logic for network errors
+    if (retryCount < maxRetries && (
+      error instanceof TypeError && error.message.includes('fetch') ||
+      (error instanceof Error && error.message.includes('Network'))
+    )) {
+      if (isDevelopment) {
+        console.log(`Retrying request in ${retryDelay}ms...`);
+      }
+      await new Promise(resolve => setTimeout(resolve, retryDelay));
+      return apiRequest(endpoint, options, retryCount + 1);
+    }
+    
+    // Handle different types of errors
+    if (error instanceof TypeError && error.message.includes('fetch')) {
+      throw new Error('Network connection failed. Please check your internet connection.');
+    }
+    
+    if (error instanceof Error) {
+      throw error;
+    }
+    
+    throw new Error('An unexpected error occurred while making the API request.');
   }
-
-  return response.json();
 };
 
 // User management API calls

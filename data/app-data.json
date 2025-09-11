@@ -6,11 +6,11 @@
       "email": "admin@enkonix.in",
       "mobile": "1234567890",
       "password": "admin123",
-      "loginTime": "2025-09-11T11:25:08.620Z",
+      "loginTime": "2025-09-11T12:08:01.290Z",
       "logoutTime": "2024-01-15T18:00:00.000Z",
-      "lastActive": "2025-09-11T11:25:08.620Z",
+      "lastActive": "2025-09-11T12:08:01.290Z",
       "createdAt": "2024-01-01T00:00:00.000Z",
-      "updatedAt": "2025-09-11T11:25:08.620Z",
+      "updatedAt": "2025-09-11T12:08:01.290Z",
       "isApproved": true,
       "approvalDate": "2024-01-01T00:00:00.000Z",
       "approvedBy": "system"
@@ -29,30 +29,6 @@
       "isApproved": true,
       "approvalDate": "2024-01-01T00:00:00.000Z",
       "approvedBy": "system"
-    },
-    {
-      "role": "user",
-      "username": "john_doe",
-      "email": "john@example.com",
-      "mobile": "9876543210",
-      "password": "password123",
-      "loginTime": "2024-01-15T09:00:00.000Z",
-      "logoutTime": "2024-01-15T17:30:00.000Z",
-      "lastActive": "2024-01-15T17:30:00.000Z",
-      "createdAt": "2024-01-02T00:00:00.000Z",
-      "updatedAt": "2024-01-15T17:30:00.000Z"
-    },
-    {
-      "role": "user",
-      "username": "jane_smith",
-      "email": "jane@example.com",
-      "mobile": "5555555555",
-      "password": "securepass",
-      "loginTime": "2024-01-15T08:45:00.000Z",
-      "logoutTime": "2024-01-15T16:20:00.000Z",
-      "lastActive": "2024-01-15T16:20:00.000Z",
-      "createdAt": "2024-01-03T00:00:00.000Z",
-      "updatedAt": "2024-01-15T16:20:00.000Z"
     },
     {
       "role": "admin",
@@ -80,63 +56,15 @@
     },
     {
       "role": "user",
-      "username": "Jay",
-      "email": "jay@gmail.com",
-      "mobile": "1234567892",
-      "password": "adminn",
-      "createdAt": "2025-08-24T11:14:05.638Z",
-      "updatedAt": "2025-08-29T11:22:07.777Z",
-      "loginTime": "2025-08-29T11:22:07.771Z",
-      "logoutTime": "-",
-      "lastActive": "2025-08-29T11:22:07.771Z"
-    },
-    {
-      "role": "user",
-      "username": "Surendra",
-      "email": "surendra@gmail.com",
-      "mobile": "12345667899",
-      "password": "user",
-      "createdAt": "2025-08-25T04:58:20.905Z",
-      "updatedAt": "2025-08-28T03:33:46.093Z",
-      "loginTime": "2025-08-28T03:33:46.093Z",
-      "logoutTime": "-",
-      "lastActive": "2025-08-28T03:33:46.093Z"
-    },
-    {
-      "role": "user",
-      "username": "jayasri",
-      "email": "jayasri@gmail.com",
-      "mobile": "1234567893",
-      "password": "jayasri",
-      "createdAt": "2025-08-25T07:25:54.502Z",
-      "updatedAt": "2025-08-25T07:26:58.284Z",
-      "loginTime": "2025-08-25T07:26:58.284Z",
-      "logoutTime": "-",
-      "lastActive": "2025-08-25T07:26:58.284Z"
-    },
-    {
-      "role": "user",
       "username": "Jayasri",
       "email": "jayasrim226@gmail.com",
       "mobile": "6305250296",
       "password": "adminn",
       "createdAt": "2025-08-28T03:35:00.728Z",
-      "updatedAt": "2025-09-11T10:28:24.946Z",
-      "loginTime": "2025-09-11T10:28:24.945Z",
+      "updatedAt": "2025-09-11T12:33:17.355Z",
+      "loginTime": "2025-09-11T12:33:17.355Z",
       "logoutTime": "-",
-      "lastActive": "2025-09-11T10:28:24.945Z"
-    },
-    {
-      "role": "user",
-      "username": "Priya",
-      "email": "priya@gmail.com",
-      "mobile": "1234567894",
-      "password": "123456",
-      "createdAt": "2025-01-15T12:00:00.000Z",
-      "updatedAt": "2025-01-15T12:00:00.000Z",
-      "loginTime": "-",
-      "logoutTime": "-",
-      "lastActive": "-"
+      "lastActive": "2025-09-11T12:33:17.355Z"
     }
   ],
   "adminRequests": [
@@ -191,19 +119,16 @@
     }
   ],
   "currentUser": {
-    "role": "admin",
-    "username": "admin",
-    "email": "admin@enkonix.in",
-    "mobile": "1234567890",
-    "password": "admin123",
-    "loginTime": "2025-09-11T11:25:08.618Z",
-    "logoutTime": "2024-01-15T18:00:00.000Z",
-    "lastActive": "2025-09-11T11:25:08.618Z",
-    "createdAt": "2024-01-01T00:00:00.000Z",
-    "updatedAt": "2025-09-11T11:25:08.618Z",
-    "isApproved": true,
-    "approvalDate": "2024-01-01T00:00:00.000Z",
-    "approvedBy": "system"
+    "role": "user",
+    "username": "Jayasri",
+    "email": "jayasrim226@gmail.com",
+    "mobile": "6305250296",
+    "password": "adminn",
+    "createdAt": "2025-08-28T03:35:00.728Z",
+    "updatedAt": "2025-09-11T12:33:17.354Z",
+    "loginTime": "2025-09-11T12:33:17.354Z",
+    "logoutTime": "-",
+    "lastActive": "2025-09-11T12:33:17.354Z"
   },
-  "lastUpdated": "2025-09-11T11:25:08.620Z"
+  "lastUpdated": "2025-09-11T12:33:17.355Z"
 }
