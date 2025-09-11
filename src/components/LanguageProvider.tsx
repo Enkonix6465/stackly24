@@ -296,12 +296,12 @@ const translations = {
     'services.productListing.hero.badge': 'Product Listing Service',
     'services.productListing.hero.title': 'Transform Your Product',
     'services.productListing.hero.subtitle': 'Catalog Today',
-    'services.productListing.hero.description': 'Professional product listing services that boost visibility, improve conversions, and drive sales. Let our experts optimize your product catalog for maximum impact.',
+    'services.productListing.hero.description': 'Professional product listing services that boost visibility and improve conversions',
     'services.productListing.hero.getStarted': 'Get Started',
     'services.productListing.hero.contactUs': 'Contact Us',
     
     'services.productListing.features.title': 'Why Choose Our Product Listing Services?',
-    'services.productListing.features.subtitle': 'We combine expertise, technology, and creativity to deliver exceptional product listing solutions.',
+    'services.productListing.features.subtitle': 'Expert solutions combining technology and creativity for exceptional results.',
     'services.productListing.features.fastImplementation.title': 'Fast Implementation',
     'services.productListing.features.fastImplementation.description': 'Get your products listed and optimized within 48 hours with our streamlined process.',
     'services.productListing.features.dataDriven.title': 'Data-Driven Approach',
@@ -310,7 +310,7 @@ const translations = {
     'services.productListing.features.seoOptimized.description': 'Improve search rankings with keyword-optimized product descriptions and titles.',
     
     'services.productListing.process.title': 'Our 4-Step Process',
-    'services.productListing.process.subtitle': 'We follow a proven methodology to ensure your product listings are optimized for success.',
+    'services.productListing.process.subtitle': 'A proven methodology for optimized product listings.',
     'services.productListing.process.step1.title': 'Analysis',
     'services.productListing.process.step1.description': 'We analyze your current listings and identify optimization opportunities.',
     'services.productListing.process.step2.title': 'Optimization',
@@ -348,13 +348,13 @@ const translations = {
     'services.productListing.pricing.enterprise.cta': 'Get Started',
     
     'services.productListing.testimonials.title': 'What Our Clients Say',
-    'services.productListing.testimonials.subtitle': 'Don\'t just take our word for it. Here\'s what our clients have to say about our services.',
-    'services.productListing.testimonials.sarah.name': 'Sarah Johnson',
-    'services.productListing.testimonials.sarah.role': 'CEO, Fashion Forward',
-    'services.productListing.testimonials.sarah.content': 'ShopHub\'s product listing service transformed our catalog. Sales increased by 40% within the first month!',
-    'services.productListing.testimonials.mike.name': 'Mike Chen',
-    'services.productListing.testimonials.mike.role': 'Marketing Director, TechGear',
-    'services.productListing.testimonials.mike.content': 'Professional, efficient, and results-driven. Our product visibility improved dramatically.',
+    'services.productListing.testimonials.subtitle': 'Hear from our satisfied customers who have transformed their businesses with our product listing solutions',
+    'services.productListing.testimonials.david.name': 'David Rodriguez',
+    'services.productListing.testimonials.david.role': 'CEO, TechSolutions Inc.',
+    'services.productListing.testimonials.david.content': 'The product listing service has been a game-changer for our business. Our online visibility increased by 300% within the first month, and we\'ve seen a significant boost in sales. The team\'s expertise in SEO and product optimization is unmatched.',
+    'services.productListing.testimonials.sarah.name': 'Sarah Chen',
+    'services.productListing.testimonials.sarah.role': 'Marketing Director, Fashion Forward',
+    'services.productListing.testimonials.sarah.content': 'Working with this team has been incredible. They transformed our product listings from basic descriptions to compelling, conversion-focused content. Our click-through rates improved dramatically, and customer engagement is at an all-time high.',
     
     'services.productListing.cta.title': 'Ready to Optimize Your Product Listings?',
     'services.productListing.cta.description': 'Join hundreds of successful businesses that have transformed their product catalogs with our expert services.',
@@ -502,7 +502,7 @@ const translations = {
     'services.paymentGateway.pricing.enterprise.cta': 'Contact Sales',
     
     'services.paymentGateway.cta.title': 'Ready to Accept Payments Globally?',
-    'services.paymentGateway.cta.description': 'Join thousands of businesses that trust us with their payment processing needs.',
+    'services.paymentGateway.cta.description': 'Join thousands of businesses trusting our secure payment solutions.',
     'services.paymentGateway.cta.cta': 'Get Started Today',
     
 
@@ -1998,7 +1998,7 @@ const translations = {
     'services.paymentGateway.pricing.enterprise.cta': 'اتصل بالمبيعات',
     
     'services.paymentGateway.cta.title': 'مستعد لقبول المدفوعات عالمياً؟',
-    'services.paymentGateway.cta.description': 'انضم إلى آلاف الشركات التي تثق بنا لاحتياجات معالجة الدفع لديها.',
+    'services.paymentGateway.cta.description': 'انضم إلى آلاف الشركات التي تثق بحلول الدفع الآمنة لدينا.',
     'services.paymentGateway.cta.cta': 'ابدأ اليوم',
     
     'services.customerSupport.title': 'دعم العملاء',
@@ -2640,13 +2640,13 @@ const translations = {
     'services.productListing.pricing.enterprise.cta': 'ابدأ',
     
     'services.productListing.testimonials.title': 'ماذا يقول عملاؤنا',
-    'services.productListing.testimonials.subtitle': 'لا تأخذ كلمتنا فقط. إليك ما يقوله عملاؤنا عن خدماتنا.',
-    'services.productListing.testimonials.sarah.name': 'سارة جونسون',
-    'services.productListing.testimonials.sarah.role': 'الرئيس التنفيذي، فاشن فوروارد',
-    'services.productListing.testimonials.sarah.content': 'خدمة قائمة المنتجات في ShopHub حولت كتالوجنا. زادت المبيعات بنسبة 40% في الشهر الأول!',
-    'services.productListing.testimonials.mike.name': 'مايك تشين',
-    'services.productListing.testimonials.mike.role': 'مدير التسويق، تيك جير',
-    'services.productListing.testimonials.mike.content': 'مهني، فعال، وموجه نحو النتائج. تحسنت رؤية منتجاتنا بشكل كبير.',
+    'services.productListing.testimonials.subtitle': 'استمع إلى عملائنا الراضين الذين حولوا أعمالهم مع حلول قائمة المنتجات الخاصة بنا',
+    'services.productListing.testimonials.david.name': 'ديفيد رودريغيز',
+    'services.productListing.testimonials.david.role': 'الرئيس التنفيذي، تيك سولوشنز إنك',
+    'services.productListing.testimonials.david.content': 'خدمة قائمة المنتجات كانت نقطة تحول لأعمالنا. زادت رؤيتنا عبر الإنترنت بنسبة 300% في الشهر الأول، ولاحظنا زيادة كبيرة في المبيعات. خبرة الفريق في تحسين محركات البحث وتحسين المنتجات لا مثيل لها.',
+    'services.productListing.testimonials.sarah.name': 'سارة تشين',
+    'services.productListing.testimonials.sarah.role': 'مدير التسويق، فاشن فوروارد',
+    'services.productListing.testimonials.sarah.content': 'العمل مع هذا الفريق كان رائعاً. حولوا قوائم منتجاتنا من أوصاف أساسية إلى محتوى مقنع وموجه نحو التحويل. تحسنت معدلات النقر بشكل كبير، والتفاعل مع العملاء في أعلى مستوياته.',
     
     'services.productListing.cta.title': 'مستعد لتحسين قوائم منتجاتك؟',
     'services.productListing.cta.description': 'انضم إلى مئات الشركات الناجحة التي حولت كتالوجات منتجاتها مع خدماتنا الخبيرة.',
@@ -3582,7 +3582,7 @@ const translations = {
     'services.paymentGateway.pricing.enterprise.cta': 'צור קשר עם מכירות',
     
     'services.paymentGateway.cta.title': 'מוכן לקבל תשלומים ברחבי העולם?',
-    'services.paymentGateway.cta.description': 'הצטרף לאלפי עסקים שמבטיחים בנו לצרכי עיבוד התשלום שלהם.',
+    'services.paymentGateway.cta.description': 'הצטרף לאלפי עסקים הסומכים על פתרונות התשלום הבטוחים שלנו.',
     'services.paymentGateway.cta.cta': 'התחל היום',
     
     'services.customerSupport.title': 'תמיכת לקוחות',
@@ -4224,13 +4224,13 @@ const translations = {
     'services.productListing.pricing.enterprise.cta': 'התחל',
     
     'services.productListing.testimonials.title': 'מה הלקוחות שלנו אומרים',
-    'services.productListing.testimonials.subtitle': 'אל תקח רק את המילה שלנו. הנה מה שהלקוחות שלנו אומרים על השירותים שלנו.',
-    'services.productListing.testimonials.sarah.name': 'שרה ג\'ונסון',
-    'services.productListing.testimonials.sarah.role': 'מנכ"ל, Fashion Forward',
-    'services.productListing.testimonials.sarah.content': 'שירות רשימת המוצרים של ShopHub שינה את הקטלוג שלנו. המכירות עלו ב-40% בחודש הראשון!',
-    'services.productListing.testimonials.mike.name': 'מייק צ\'ן',
-    'services.productListing.testimonials.mike.role': 'מנהל שיווק, TechGear',
-    'services.productListing.testimonials.mike.content': 'מקצועי, יעיל ומונע תוצאות. הנראות של המוצרים שלנו השתפרה באופן דרמטי.',
+    'services.productListing.testimonials.subtitle': 'שמעו מלקוחותינו המרוצים שהפכו את העסקים שלהם עם פתרונות רשימת המוצרים שלנו',
+    'services.productListing.testimonials.david.name': 'דוד רודריגז',
+    'services.productListing.testimonials.david.role': 'מנכ"ל, TechSolutions Inc.',
+    'services.productListing.testimonials.david.content': 'שירות רשימת המוצרים היה נקודת מפנה לעסק שלנו. הנראות המקוונת שלנו עלתה ב-300% בחודש הראשון, וראינו עלייה משמעותית במכירות. המומחיות של הצוות ב-SEO ובאופטימיזציה של מוצרים היא חסרת תחרות.',
+    'services.productListing.testimonials.sarah.name': 'שרה צ\'ן',
+    'services.productListing.testimonials.sarah.role': 'מנהלת שיווק, Fashion Forward',
+    'services.productListing.testimonials.sarah.content': 'העבודה עם הצוות הזה הייתה מדהימה. הם הפכו את רשימות המוצרים שלנו מתיאורים בסיסיים לתוכן משכנע וממוקד המרות. שיעורי הלחיצה שלנו השתפרו באופן דרמטי, והמעורבות של הלקוחות היא בשיא.',
     
     'services.productListing.cta.title': 'מוכן לייעל את רשימות המוצרים שלך?',
     'services.productListing.cta.description': 'הצטרף למאות עסקים מצליחים ששינו את קטלוגי המוצרים שלהם עם השירותים המומחים שלנו.',
