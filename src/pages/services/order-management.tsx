@@ -37,9 +37,7 @@ export default function OrderManagement() {
                     </h1>
                   </FadeIn>
                   <FadeIn delay={0.9} duration={1} direction="up">
-                    <p className="text-xl text-indigo-100 max-w-3xl mx-auto leading-relaxed">
-                      Professional order management services that streamline operations, reduce errors, and improve customer satisfaction.
-                    </p>
+                    <p className="text-xl text-indigo-100 max-w-3xl mx-auto leading-relaxed whitespace-nowrap">{t('services.orderManagement.hero.description')}</p>
                   </FadeIn>
                   <FadeIn delay={1.1} duration={1} direction="up">
                     <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
@@ -356,7 +354,7 @@ export default function OrderManagement() {
               <FadeIn delay={0.6} duration={1} direction="up">
                 <Link 
                   href="/contact" 
-                  className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors duration-200 transform hover:scale-105"
+                  className="inline-flex items-center px-8 py-4 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200 transform hover:scale-105"
                 >
                   {t('services.orderManagement.cta.cta')}
                 </Link>

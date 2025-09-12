@@ -331,7 +331,7 @@ export default function CustomerSupport() {
               <FadeIn delay={0.6} duration={1} direction="up">
                 <Link 
                   href="/contact" 
-                  className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors duration-200 transform hover:scale-105"
+                  className="inline-flex items-center px-8 py-4 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200 transform hover:scale-105"
                 >
                   {t('services.customerSupport.ctaPage.cta')}
                 </Link>

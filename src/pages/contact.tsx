@@ -51,7 +51,7 @@ export default function Contact() {
                   </FadeIn>
                   <FadeIn direction="up" delay={0.7} duration={0.8}>
                     <p className="text-xl text-indigo-100 max-w-3xl mx-auto leading-relaxed">
-                      Ready to transform your e-commerce business? Our team of experts is here to help
+                      {t('contact.hero.description')}
                     </p>
                   </FadeIn>
                   <FadeIn direction="up" delay={0.9} duration={0.8}>
@@ -479,7 +479,7 @@ export default function Contact() {
               </FadeIn>
               <FadeIn direction="up" delay={0.4} duration={0.8}>
                 <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-                  Don't wait to transform your e-commerce business.
+                  {t('contact.cta.shortSubtitle')}
                 </p>
               </FadeIn>
               <FadeIn direction="up" delay={0.6} duration={0.8}>

@@ -70,7 +70,7 @@ export default function Blog() {
                 
                 <FadeIn direction="up" delay={0.4} duration={0.8}>
                   <p className="text-xl md:text-2xl text-indigo-100 mb-8 max-w-3xl mx-auto">
-                    Stay ahead of the curve with expert insights, and proven strategies
+                    {t('blog.hero.description')}
                   </p>
                 </FadeIn>
                 

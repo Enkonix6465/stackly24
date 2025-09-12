@@ -38,7 +38,7 @@ export default function PaymentGateway() {
                   </FadeIn>
                   <FadeIn delay={0.9} duration={1} direction="up">
                     <p className="text-xl text-indigo-100 max-w-3xl mx-auto leading-relaxed">
-                      Reliable and secure payment processing that supports multiple payment methods
+                      {t('services.paymentGateway.hero.subtitleText')}
                     </p>
                   </FadeIn>
                   <FadeIn delay={1.1} duration={1} direction="up">
@@ -71,7 +71,7 @@ export default function PaymentGateway() {
                     {t('services.paymentGateway.security.title')}
                   </h2>
                   <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                    Enterprise-grade security features to protect your business and customers
+                    {t('services.paymentGateway.security.subtitleText')}
                   </p>
                 </div>
               </FadeIn>
@@ -379,7 +379,7 @@ export default function PaymentGateway() {
               <FadeIn delay={0.6} duration={1} direction="up">
                 <Link 
                   href="/contact" 
-                  className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors duration-200 transform hover:scale-105"
+                  className="inline-flex items-center px-8 py-4 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200 transform hover:scale-105"
                 >
                   {t('services.paymentGateway.cta.cta')}
                 </Link>
